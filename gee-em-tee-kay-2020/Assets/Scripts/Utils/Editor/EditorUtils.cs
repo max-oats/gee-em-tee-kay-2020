@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using System.IO;
 using UnityEditorInternal;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,6 +33,55 @@ namespace Socks
 {
     public static class EditorUtils
     {
+        [MenuItem("Assets/Create Custom Editor", false, 0)]
+        private static void CreateCustomEditor() 
+        {
+            if (Selection.activeObject.GetType() != typeof(MonoScript))
+            {
+                return;
+            }
+
+            string path = AssetDatabase.GetAssetPath(Selection.activeObject);
+            Debug.LogFormat("Creating Custom Editor for '{0}'", Selection.activeObject.name);
+
+            path = path.Substring(0, path.LastIndexOf('/')) + "/Editor";
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            path = path + "/" + Selection.activeObject.name + "Inspector.cs";
+            if (File.Exists(path))
+            {
+                return;
+            }
+
+            StreamWriter writer = File.CreateText(path);
+            writer.WriteLine("using UnityEngine;");
+            writer.WriteLine("using UnityEditor;");
+            writer.WriteLine("using System.Collections;");
+            writer.WriteLine("using System.Collections.Generic;");
+            writer.WriteLine("");
+            writer.WriteLine(string.Format("[CustomEditor(typeof({0}))]", Selection.activeObject.name));
+            writer.WriteLine(string.Format("public class {0}Inspector : Editor", Selection.activeObject.name));
+            writer.WriteLine("{");
+            writer.WriteLine("    List<Socks.PropertyCategory> categories = new List<Socks.PropertyCategory>();");
+            writer.WriteLine("    void OnEnable()");
+            writer.WriteLine("    {");
+            writer.WriteLine(string.Format("        categories = Socks.EditorUtils.GetFields(typeof({0}), serializedObject);", Selection.activeObject.name));
+            writer.WriteLine("    }");
+            writer.WriteLine("");
+            writer.WriteLine("    public override void OnInspectorGUI()");
+            writer.WriteLine("    {");
+            writer.WriteLine("        Socks.EditorUtils.DrawFields(serializedObject, categories);");
+            writer.WriteLine("    }");
+            writer.WriteLine("}");
+            writer.Close();
+
+            AssetDatabase.Refresh();
+        }
+
         public static LayerMask LayerMaskField(string label, LayerMask selected) 
         {
             List<string> layers = new List<string>();
