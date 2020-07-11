@@ -103,6 +103,12 @@ public class WorldGenerator : MonoBehaviour
 
                 newTile.transform.localScale = new Vector3(tileSideLengthInUnits,1f,tileSideLengthInUnits);
 
+                if (i == 0 || i == sideLengthInTiles - 1 || j == 0 || j == sideLengthInTiles - 1)
+                {
+                    worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(EntityType.Hedge), i,j);
+                    continue; 
+                }
+
                 if (i == treeTopLeftCornerLocation.x || i == treeTopLeftCornerLocation.x + 1)
                 {
                     if (j == treeTopLeftCornerLocation.y || j == treeTopLeftCornerLocation.y + 1)
@@ -111,7 +117,7 @@ public class WorldGenerator : MonoBehaviour
                         {
                             if (worldTreePrefab)
                             {
-                                worldTree = worldMap.CreateEntityAtLocation(worldTreePrefab, treeTopLeftCornerLocation.x, treeTopLeftCornerLocation.y) as WorldTree;
+                                worldTree = worldMap.CreateEntityAtLocation(worldTreePrefab, i, j) as WorldTree;
                             }
                         }
                         worldMap.SetInhabitant(i, j, worldTree);
