@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class InteractParams
 {
+    public int tileX = 0;
+    public int tileY = 0;
     public bool holdingWater = false;
-    public bool holdingAncestor = false;
+    public Ancestor heldAncestor = null;
     public int eggsToLay = 0;
     public PlayerEntity interactingCharacter = null;
 }

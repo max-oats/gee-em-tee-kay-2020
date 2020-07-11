@@ -133,30 +133,17 @@ public class WorldGenerator : MonoBehaviour
 
                 if (i == playerInitialPosition.x && j == playerInitialPosition.y)
                 {
-                    CreateEntityAtLocation(Game.entities.GetPrefab(EntityType.Player), i, j, x, z);
+                    worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(EntityType.Player), i, j);
                 }
 
                 foreach (DebugEntitySpawnPosition debugSpawn in debugEntitySpawnPositionMap)
                 {
                     if (debugSpawn.position.x == i && debugSpawn.position.y == j)
                     {
-                        CreateEntityAtLocation(Game.entities.GetPrefab(debugSpawn.type), i, j, x, z);
+                        worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(debugSpawn.type), i, j);
                     }
                 }
             }
         }
-    }
-
-    void CreateEntityAtLocation(GameObject entityPrefab, int tileX, int tileY, int gamePosX, int gamePosZ)
-    {
-        GameObject newObject = Instantiate
-        (
-            entityPrefab,
-            new Vector3(gamePosX, 0f, gamePosZ),
-            Quaternion.identity,
-            transform
-        ) as GameObject;
-        BaseEntity entity = newObject.GetComponent<BaseEntity>();
-        Game.worldMap.SetInhabitant(tileX, tileY, entity);
     }
 }

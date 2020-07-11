@@ -22,6 +22,23 @@ public class PlayerController : MonoBehaviour
     private int x, y;
     private int age;
 
+    public void MoveAside()
+    {
+        if (TryMove(Direction.North, false))
+        {
+            return;
+        }
+        if (TryMove(Direction.East, false))
+        {
+            return;
+        }
+        if (TryMove(Direction.South, false))
+        {
+            return;
+        }
+        TryMove(Direction.West, false);
+    }
+
     void Awake()
     {
         // stub
@@ -56,7 +73,7 @@ public class PlayerController : MonoBehaviour
         onInteractWith?.Invoke(x, y);
     }
 
-    bool TryMove(Direction dir)
+    bool TryMove(Direction dir, bool canInteract = true)
     {
         int newX = x;
         int newY = y;
@@ -93,7 +110,7 @@ public class PlayerController : MonoBehaviour
                 MoveToValidLocation(newX, newY);
                 onMoveTo?.Invoke(newX, newY);
             }
-            else
+            else if (canInteract)
             {
                 onInteractWith?.Invoke(newX, newY);
             }

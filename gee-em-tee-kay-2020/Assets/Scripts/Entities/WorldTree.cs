@@ -7,7 +7,7 @@ public class WorldTree : BaseEntity
 
     public override void TriggerInteract(InteractParams interactParams)
     {
-        if (interactParams.holdingAncestor)
+        if (interactParams.heldAncestor)
         {
             // Plant ancestor
             debugColor = debugColourWhenPlanted;

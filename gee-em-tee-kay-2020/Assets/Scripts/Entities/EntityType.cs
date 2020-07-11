@@ -4,7 +4,7 @@ public enum EntityType
     Enemy,
     Incubator,
     Player,
+    Tower_Water,
     Water,
-    WaterTower,
     WorldTree,
 }

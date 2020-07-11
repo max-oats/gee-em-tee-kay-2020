@@ -36,4 +36,17 @@ public class WorldMap : MonoBehaviour
     {
         tileGrid[x,y].TriggerInteract(interactParams);
     }
+
+    public void CreateEntityAtLocation(GameObject entityPrefab, int tileX, int tileY)
+    {
+        GameObject newObject = Instantiate
+        (
+            entityPrefab,
+            GetTilePos(tileX, tileY),
+            Quaternion.identity,
+            transform
+        ) as GameObject;
+        BaseEntity entity = newObject.GetComponent<BaseEntity>();
+        SetInhabitant(tileX, tileY, entity);
+    }
 }

@@ -53,7 +53,7 @@ MonoBehaviour:
   debugEntitySpawnPositionMap:
   - type: 0
     position: {x: 0, y: 3}
-  - type: 4
+  - type: 5
     position: {x: 3, y: 0}
   - type: 2
     position: {x: 5, y: 0}

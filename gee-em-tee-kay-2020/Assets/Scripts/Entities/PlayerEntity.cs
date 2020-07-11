@@ -5,7 +5,7 @@ public class PlayerEntity : BaseEntity
     public int maxEggsLaidAtOnce = 1;
 
     private bool holdingWater = false;
-    private bool holdingAncestor = false;
+    private Ancestor heldAncestor = null;
     private int eggsToLay = 0;
 
     public Color debugColourWithWater;
@@ -14,10 +14,9 @@ public class PlayerEntity : BaseEntity
 
     public override void TriggerInteract(InteractParams interactParams)
     {
-        if (holdingAncestor)
+        if (heldAncestor)
         {
-            Debug.Log("spawning tower");
-            // plant Ancestor, spawn tower
+            SpawnTowerFrom(heldAncestor, interactParams.tileX, interactParams.tileY);
         }
         else
         {
@@ -26,16 +25,29 @@ public class PlayerEntity : BaseEntity
         }
     }
 
-    public void GatherAncestor()
+    public void GatherAncestor(Ancestor inAncestor)
     {
         // Trigger animation
-        holdingAncestor = true;
+        heldAncestor = inAncestor;
     }
 
     public void BuryAncestor()
     {
         // Trigger animation
-        holdingAncestor = false;
+        heldAncestor = null;
+    }
+
+    public void SpawnTowerFrom(Ancestor ancestor, int tileX, int tileY)
+    {
+        BuryAncestor();
+
+        // Move out of square
+        PlayerController playerController = GetComponentInChildren<PlayerController>();
+        playerController.MoveAside();
+
+        // Spawn tower
+        GameObject towerPrefabToSpawn = TowerTypeSelector.TowerToSpawnFromAncestor(ancestor);
+        Game.worldMap.CreateEntityAtLocation(towerPrefabToSpawn, tileX, tileY);
     }
 
     public void UseWater()
@@ -80,7 +92,7 @@ public class PlayerEntity : BaseEntity
         {
             debugColor = debugColourWithWater;
         }
-        else if (holdingAncestor)
+        else if (heldAncestor)
         {
             debugColor = debugColourWithAncestor;
         }
@@ -94,9 +106,11 @@ public class PlayerEntity : BaseEntity
     {
         InteractParams interactParams = new InteractParams();
         interactParams.holdingWater = holdingWater;
-        interactParams.holdingAncestor = holdingAncestor;
+        interactParams.heldAncestor = heldAncestor;
         interactParams.eggsToLay = eggsToLay;
         interactParams.interactingCharacter = this;
+        interactParams.tileX = x;
+        interactParams.tileY = y;
 
         Game.worldMap.InteractWith(x, y, interactParams);
     }
