@@ -26,6 +26,6 @@ public class LifeCycleManager : MonoBehaviour
             }
         }
 
-        Debug.Log("Game over, no incubators with eggs");
+        Game.gameStateMachine.GameOver();
     }
 }

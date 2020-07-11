@@ -11,8 +11,8 @@ public class EntityToPrefab
 
 public class EntityManager : MonoBehaviour
 {
-    public delegate void OnKillPlayer();
-    public OnKillPlayer onKillPlayer;
+    public delegate void OnTimeStepComplete();
+    public OnTimeStepComplete onTimeStepComplete;
 
     public List<EntityToPrefab> entityToPrefabMap = new List<EntityToPrefab>();
 
@@ -31,6 +31,16 @@ public class EntityManager : MonoBehaviour
         allEntities.Remove(entity);
     }
 
+    public void ClearAll()
+    {
+        foreach (BaseEntity entity in allEntities)
+        {
+            Destroy(entity.gameObject);
+        }
+
+        allEntities.Clear();
+    }
+
     public void StepTime()
     {
         Debug.Log("Time Stepped");
@@ -39,16 +49,7 @@ public class EntityManager : MonoBehaviour
             entity.StepTime();
         }
 
-        if (playerNeedsKilling)
-        {
-            onKillPlayer?.Invoke();
-            playerNeedsKilling = false;
-        }
-    }
-
-    public void RegisterPlayerNeedsKilling()
-    {
-        playerNeedsKilling = true;
+        onTimeStepComplete?.Invoke();
     }
 
     public GameObject GetPrefab(EntityType entityType)
