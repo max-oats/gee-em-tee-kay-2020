@@ -73,7 +73,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityToPrefabMap:
   - type: 0
+    prefab: {fileID: 149611163642630930, guid: 1bcc3e622c1134514b0efd198b29c0e7, type: 3}
+  - type: 1
+    prefab: {fileID: 14653465211172316, guid: 5004d20a3db9c4b5aa30d953df4a3387, type: 3}
+  - type: 2
+    prefab: {fileID: 7809365816724984596, guid: 6533187429f9b4bceb71646081ba8b41,
+      type: 3}
+  - type: 3
     prefab: {fileID: 2735891108412255887, guid: 99668e15f3536954e9c1e1b0d224871e,
+      type: 3}
+  - type: 4
+    prefab: {fileID: 3116451834418717313, guid: f02c79c6202004c64becf95a4f54ba87,
+      type: 3}
+  - type: 5
+    prefab: {fileID: 1469037591489445471, guid: 7b03f701fd4804870ab3f81a6161467d,
+      type: 3}
+  - type: 6
+    prefab: {fileID: 8639300084964588442, guid: 227db5ed905a64affb1ac476157702b1,
       type: 3}
 --- !u!1001 &4552346191946073548
 PrefabInstance:
@@ -82,11 +98,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4552346193748896444}
     m_Modifications:
-    - target: {fileID: 8098484556636279251, guid: 5d89632d3f075a64e8c92fbe68969755,
-        type: 3}
-      propertyPath: m_Name
-      value: InputMapper
-      objectReference: {fileID: 0}
     - target: {fileID: 1779429632729657099, guid: 5d89632d3f075a64e8c92fbe68969755,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -141,6 +152,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098484556636279251, guid: 5d89632d3f075a64e8c92fbe68969755,
+        type: 3}
+      propertyPath: m_Name
+      value: InputMapper
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d89632d3f075a64e8c92fbe68969755, type: 3}
