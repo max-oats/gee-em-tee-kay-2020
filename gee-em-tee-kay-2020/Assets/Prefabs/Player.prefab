@@ -51,6 +51,7 @@ MonoBehaviour:
     isAngular: 1
   moveTime: 0.4
   facing: 0
+  canMove: 1
 --- !u!114 &8598060628564890224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +70,7 @@ MonoBehaviour:
   debugColourNormal: {r: 0.26864696, g: 1, b: 0, a: 1}
   maxEggsLaidAtOnce: 1
   lifeSpanRange: {x: 15, y: 15}
+  beardRenderer: {fileID: 7742378348410441192}
 --- !u!1 &2755199535823553528
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +438,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2735891108412255884}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_Name
+      value: BaseFriend
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
     - target: {fileID: -4216859302048453862, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -491,20 +503,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_Name
-      value: BaseFriend
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
     - target: {fileID: -7604734486540440110, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 589cd2724cf8b1f4d9914433e43ad3e7, type: 3}
@@ -517,6 +529,12 @@ Transform:
 --- !u!4 &7323618214878346930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7656658909375732263, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1144861263026513045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7742378348410441192 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
     type: 3}
   m_PrefabInstance: {fileID: 1144861263026513045}
   m_PrefabAsset: {fileID: 0}

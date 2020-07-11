@@ -12,6 +12,8 @@ public class PlayerEntity : BaseEntity
     private int maxEggsLaidAtOnce = 1;
     [SerializeField]
     private Vector2Int lifeSpanRange;
+    [SerializeField]
+    private SkinnedMeshRenderer beardRenderer;
 
     private int currentTimeStepsTillDeath = 0;
     private bool holdingWater = false;
@@ -93,6 +95,7 @@ public class PlayerEntity : BaseEntity
     {
         currentTimeStepsTillDeath--;
         animator.SetFloat("Age", (float)(lifespan-currentTimeStepsTillDeath)/(float)lifespan);
+        beardRenderer.SetBlendShapeWeight(0, ((float)(currentTimeStepsTillDeath)/(float)lifespan)*100f);
         if (currentTimeStepsTillDeath == 0)
         {
             Game.entities.onTimeStepComplete += Die;
@@ -113,6 +116,7 @@ public class PlayerEntity : BaseEntity
         currentTimeStepsTillDeath = lifespan;
 
         animator = GetComponentInChildren<Animator>();
+        beardRenderer.SetBlendShapeWeight(0, ((float)(currentTimeStepsTillDeath)/(float)lifespan)*100f);
     }
 
     void Update()
