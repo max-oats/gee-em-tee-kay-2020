@@ -7,11 +7,6 @@ public class WorldTile : MonoBehaviour
 
     private BaseEntity inhabitant = null;
 
-    void Awake()
-    {
-        UpdateColor();
-    }
-
     public bool TriggerInteract(InteractParams interactParams)
     {
         if (inhabitant)
@@ -29,10 +24,9 @@ public class WorldTile : MonoBehaviour
     public void SetInhabitant(BaseEntity newInhabitant)
     {
         inhabitant = newInhabitant;
-        UpdateColor();
     }
 
-    void UpdateColor()
+    void Update()
     {
         if (inhabitant)
         {
