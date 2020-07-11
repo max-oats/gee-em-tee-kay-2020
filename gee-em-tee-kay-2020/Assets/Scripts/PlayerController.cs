@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
 
     public delegate void OnInteractWith(int x, int y);
     public OnInteractWith onInteractWith;
+    
+    public delegate void OnInteractInPlace();
+    public OnInteractInPlace onInteractInPlace;
 
     [SerializeField, Socks.Field(category="Lifespan")]
     public int startingAge;
@@ -45,6 +48,15 @@ public class PlayerController : MonoBehaviour
         {
             TryMove(Direction.West);
         }
+        else if (Game.input.GetButtonDown("Action.Interact"))
+        {
+            InteractInPlace();
+        }
+    }
+
+    void InteractInPlace()
+    {
+        onInteractInPlace?.Invoke();
     }
 
     bool TryMove(Direction dir)
