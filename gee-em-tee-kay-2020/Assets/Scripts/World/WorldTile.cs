@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class WorldTile : MonoBehaviour
 {
-    public int x;
-    public int z;
+    public int x = 0;
+    public int z = 0;
 
     private BaseEntity inhabitant = null;
 

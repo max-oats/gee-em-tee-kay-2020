@@ -3,14 +3,14 @@ using UnityEngine;
 public class WorldGenerator : MonoBehaviour
 {
     [SerializeField, Socks.Field(category="Map")]
-    private int sideLengthInTiles;
+    private int sideLengthInTiles = 0;
     [SerializeField, Socks.Field(category="Map")]
-    private Vector2 treeTopLeftCornerLocation;
+    private Vector2 treeTopLeftCornerLocation = new Vector2();
 
     [SerializeField, Socks.Field(category="Tiles")]
-    private int tileSideLengthInUnits;
+    private int tileSideLengthInUnits = 0;
     [SerializeField, Socks.Field(category="Tiles")]
-    private GameObject tilePrefab;
+    private GameObject tilePrefab = null;
 
     void Awake()
     {
