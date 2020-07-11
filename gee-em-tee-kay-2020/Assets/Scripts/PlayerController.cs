@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public OnMoveTo onMoveTo;
 
     public delegate void OnInteractWith(int x, int y);
-    public OnMoveTo onInteractWith;
+    public OnInteractWith onInteractWith;
 
     [SerializeField, Socks.Field(category="Lifespan")]
     public int startingAge;
