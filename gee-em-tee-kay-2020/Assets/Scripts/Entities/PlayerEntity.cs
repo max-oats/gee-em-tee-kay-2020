@@ -44,7 +44,7 @@ public class PlayerEntity : BaseEntity
     {
         // Trigger animation
         Game.entities.UnregisterEntity(heldAncestor);
-        Destroy(heldAncestor);
+        Destroy(heldAncestor.gameObject);
         heldAncestor = null;
     }
 
@@ -92,8 +92,8 @@ public class PlayerEntity : BaseEntity
         animator.SetFloat("Age", (float)(lifespan-currentTimeStepsTillDeath)/(float)lifespan);
         if (currentTimeStepsTillDeath == 0)
         {
-            Debug.Log("Dead");
-            // Die
+            Game.entities.RegisterPlayerNeedsKilling();
+            Game.entities.onKillPlayer = Die;
         }
     }
 
@@ -134,5 +134,40 @@ public class PlayerEntity : BaseEntity
         interactParams.tileY = y;
 
         return Game.worldMap.InteractWith(x, y, interactParams);
+    }
+
+    void Die()
+    {
+        // Trigger animation
+        // Then
+            // Unregister entity from entities
+            Game.entities.UnregisterEntity(this);
+
+            // Drop held ancestor next to us
+            if (heldAncestor)
+            {
+                if (Game.worldMap.FindAvailableNeighbourTo(posX, posY) is Vector2Int tilePosition)
+                {
+                    Game.worldMap.SetInhabitant(tilePosition.x, tilePosition.y, heldAncestor);
+                }
+                else
+                {
+                    // Just destroy the ancestor
+                    Game.entities.UnregisterEntity(heldAncestor);
+                    Destroy(heldAncestor.gameObject);
+                }
+                heldAncestor = null;
+            }
+
+            // Remove ourselves from square
+            Game.worldMap.SetInhabitant(posX, posY, null);
+
+            // Spawn new Ancestor where we are
+            Ancestor newAncestor = Game.worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(EntityType.Ancestor), posX, posY) as Ancestor;
+
+            // Reparent player model to ancestor
+
+            // Notify Lifecycle script that we need a new character
+            Game.lifeCycleManager.RegisterCharacterDeath(gameObject);
     }
 }

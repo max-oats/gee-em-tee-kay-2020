@@ -11,10 +11,15 @@ public class EntityToPrefab
 
 public class EntityManager : MonoBehaviour
 {
+    public delegate void OnKillPlayer();
+    public OnKillPlayer onKillPlayer;
+
     public List<EntityToPrefab> entityToPrefabMap = new List<EntityToPrefab>();
 
     [SerializeField]
     private List<BaseEntity> allEntities = new List<BaseEntity>();
+
+    private bool playerNeedsKilling = false;
 
     public void RegisterNewEntity(BaseEntity newEntity)
     {
@@ -33,6 +38,17 @@ public class EntityManager : MonoBehaviour
         {
             entity.StepTime();
         }
+
+        if (playerNeedsKilling)
+        {
+            onKillPlayer?.Invoke();
+            playerNeedsKilling = false;
+        }
+    }
+
+    public void RegisterPlayerNeedsKilling()
+    {
+        playerNeedsKilling = true;
     }
 
     public GameObject GetPrefab(EntityType entityType)

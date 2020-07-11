@@ -51,4 +51,34 @@ public class WorldMap : MonoBehaviour
         Game.entities.RegisterNewEntity(entity);
         return entity;
     }
+
+    public Vector2Int? FindAvailableNeighbourTo(int posX, int posY)
+    {
+        int x = posX-1, y = posY;
+        if (IsValidLocation(x,y) && !HasInhabitantAt(x,y))
+        {
+            return new Vector2Int(x,y);
+        }
+
+        x = posX+1;
+        if (IsValidLocation(x,y) && !HasInhabitantAt(x,y))
+        {
+            return new Vector2Int(x,y);
+        }
+
+        x = posX;
+        y = posY-1;
+        if (IsValidLocation(x,y) && !HasInhabitantAt(x,y))
+        {
+            return new Vector2Int(x,y);
+        }
+
+        y = posY+1;
+        if (IsValidLocation(x,y) && !HasInhabitantAt(x,y))
+        {
+            return new Vector2Int(x,y);
+        }
+
+        return null;
+    }
 }
