@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6233974292108102560}
   - component: {fileID: -3427799891497427996}
   - component: {fileID: 6129287782720838600}
+  - component: {fileID: 4682970120243286438}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -136,6 +137,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814b3ac301a4f40da89ab591148397f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4682970120243286438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552346193748896445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef23eb3ff06840aca1e824e63326c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTypes: 01000000
+  spawnsPerTimeStep:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 9
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10
+      value: 3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 11
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 40
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &4552346191946073548
 PrefabInstance:
   m_ObjectHideFlags: 0
