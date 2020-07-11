@@ -23,20 +23,29 @@ public class EnemyManager : MonoBehaviour
         int numSpawns = Mathf.RoundToInt(spawnsPerTimeStep.Evaluate(currentTimeStep));
         if (numSpawns > 0)
         {
-            SpawnWaveOf(numSpawns);
+            // Randomly pick if we're on positive or negative edge
+            int other = Random.value > 0.5 ? 0 : mapSideLengthInTiles-1;
+            // Randomly pick position along that edge
+            int position = Random.Range(0,mapSideLengthInTiles);
+            // Randomly pick whether the edge is horizontal or vertical
+            int x,y;
+            if (Random.value > 0.5)
+            {
+                x = position;
+                y = other;
+            }
+            else
+            {
+                x = other;
+                y = position;
+            }
+
+            SpawnWave(numSpawns, x, y);
         }
     }
 
-    void SpawnWaveOf(int numSpawns)
+    void SpawnWave(int numSpawns, int x, int y)
     {
-        // Randomly pick horizontal or vertical side
-        //
-        // Randomly pick positive or negative of that
-        //
-        // Randomly pick position along that
-        int position = Random.Range(0,mapSideLengthInTiles);
-
-        // Set that as centre of spawning
-        Debug.LogFormat("Spawning {0} enemies", numSpawns);
+        
     }
 }
