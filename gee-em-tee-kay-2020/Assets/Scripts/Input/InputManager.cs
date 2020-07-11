@@ -9,7 +9,7 @@ public enum InputType
     Movement = 1,
     Actions = 2,
     Camera = 3,
-    UI = 5,
+    UI = 4,
 }
 
 public class InputManager : MonoBehaviour
