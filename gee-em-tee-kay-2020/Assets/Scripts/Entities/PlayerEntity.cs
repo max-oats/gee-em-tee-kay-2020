@@ -150,6 +150,9 @@ public class PlayerEntity : BaseEntity
         // Trigger animation
 
         playerController.FaceDirection(Direction.South);
+        animator.CrossFadeInFixedTime("Walk", 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        animator.CrossFadeInFixedTime("Idle", 0.1f);
 
         yield return new WaitForSeconds(0.5f);
 
