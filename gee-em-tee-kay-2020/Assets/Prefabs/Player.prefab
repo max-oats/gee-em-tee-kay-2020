@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3503dcabe0f552438ca0da0608813e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSmoother:
+    smoothTime: 0.1
+    initialDesired: 0
+    isAngular: 1
+  moveTime: 0.4
   startingAge: 18
   lifeSpanRange: {x: 80, y: 100}
   facing: 0
