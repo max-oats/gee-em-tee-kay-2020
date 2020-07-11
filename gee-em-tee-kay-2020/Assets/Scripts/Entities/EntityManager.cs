@@ -14,10 +14,12 @@ public class EntityManager : MonoBehaviour
     public delegate void OnTimeStepComplete(int currentStep);
     public OnTimeStepComplete onTimeStepComplete;
 
+    [SerializeField, Socks.Field(category="Entities")]
     public List<EntityToPrefab> entityToPrefabMap = new List<EntityToPrefab>();
 
-    [SerializeField]
+    [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private List<BaseEntity> allEntities = new List<BaseEntity>();
+
     [SerializeField]
     private int timeStepToBeat = 0;
 
