@@ -11,4 +11,9 @@ public class WorldTree : BaseEntity
             // Water tree
         }
     }
+
+    public override void StepTime()
+    {
+        // Lose health
+    }
 }
