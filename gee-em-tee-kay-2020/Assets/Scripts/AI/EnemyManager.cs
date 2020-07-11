@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField]
-    private EntityType[] enemyTypes;
+    private EntityType[] enemyTypes = {};
     [SerializeField]
     private AnimationCurve spawnsPerTimeStep = null;
 
@@ -43,6 +43,14 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnWave(int numSpawns, int x, int y)
     {
+        for (int i = 0; i < numSpawns; i++)
+        {
+            SpawnEnemy(enemyTypes[Random.Range(0,enemyTypes.Length)], x, y);
+        }
+    }
 
+    void SpawnEnemy(EntityType enemyType, int x, int y)
+    {
+        BaseEnemy enemy = Game.worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(enemyType), x, y) as BaseEnemy;
     }
 }
