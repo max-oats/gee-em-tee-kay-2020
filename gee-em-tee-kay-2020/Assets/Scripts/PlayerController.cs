@@ -22,9 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool canMove = true;
 
     private Animator animator;
-
-    private int x, y;
-    private int age;
+    private PlayerEntity entity;
 
     public void MoveAside()
     {
@@ -52,6 +50,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        entity = GetComponentInChildren<PlayerEntity>();
     }
 
     void Update()
@@ -90,7 +89,8 @@ public class PlayerController : MonoBehaviour
 
     void InteractInPlace()
     {
-        if (onInteractWith?.Invoke(x, y) ?? false)
+        Vector2Int currentPosition = entity.GetPosition();
+        if (onInteractWith?.Invoke(currentPosition.x, currentPosition.y) ?? false)
         {
             Game.entities.StepTime();
         }
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         FaceDirection(dir);
 
-        finalPosition = new Vector2Int(x,y);
+        finalPosition = entity.GetPosition();
 
         if (dir == Direction.North)
         {
@@ -181,14 +181,12 @@ public class PlayerController : MonoBehaviour
 
     void MoveToValidLocation(int newX, int newY)
     {
-        Game.worldMap.SetInhabitant(x,y, null);
+        Vector2Int currentPosition = entity.GetPosition();
+        Game.worldMap.SetInhabitant(currentPosition.x,currentPosition.y, null);
 
-        x = newX;
-        y = newY;
+        StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(newX, newY)));
 
-        StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(x, y)));
-
-        Game.worldMap.SetInhabitant(x,y, GetComponentInChildren<PlayerEntity>());
+        Game.worldMap.SetInhabitant(newX,newY, GetComponentInChildren<PlayerEntity>());
     }
 
     bool CanMoveToValidLocation(int x, int y)
