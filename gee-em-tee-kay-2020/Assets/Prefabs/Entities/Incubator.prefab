@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColor: {r: 0.6386528, g: 0, b: 1, a: 1}
+  debugColorWithEggs: {r: 1, g: 0, b: 0.81786346, a: 1}
+  debugColorWhenWatered: {r: 0.33189106, g: 0, b: 1, a: 1}
