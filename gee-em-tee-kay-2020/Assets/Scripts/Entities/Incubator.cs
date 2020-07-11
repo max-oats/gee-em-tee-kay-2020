@@ -1,22 +1,24 @@
 public class Incubator : BaseEntity
 {
-    private bool isFertilised = false;
+    private int numEggs = 0;
 
     public override void TriggerInteract(InteractParams interactParams)
     {
-        if (isFertilised)
+        if (numEggs > 0)
         {
             if (interactParams.holdingWater)
             {
                 // Water plant
+                interactParams.interactingCharacter.UseWater();
             }
         }
         else
         {
-            if (interactParams.canLayEgg)
+            if (interactParams.eggsToLay > 0)
             {
                 // Lay egg
-                isFertilised = true;
+                numEggs = interactParams.eggsToLay;
+                interactParams.interactingCharacter.LayEggs();
             }
         }
     }
