@@ -41,7 +41,6 @@ public class EntityManager : MonoBehaviour
 
     public void StepTime()
     {
-        Debug.Log("Time Stepped");
         foreach (BaseEntity entity in allEntities)
         {
             entity.StepTime();
