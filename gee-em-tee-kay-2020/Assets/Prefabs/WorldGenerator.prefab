@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6515bcbafc6d84b89b54993d15b6ad01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideLengthInTiles: 6
+  sideLengthInTiles: 32
   treeTopLeftCornerLocation: {x: 2, y: 2}
   playerInitialPosition: {x: 0, y: 0}
   tileSideLengthInUnits: 2
