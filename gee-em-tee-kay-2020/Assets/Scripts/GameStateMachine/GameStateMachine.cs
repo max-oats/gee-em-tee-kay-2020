@@ -6,6 +6,7 @@ public class GameStateMachine : MonoBehaviour
 
     private GameState_Playing gameState_Playing;
     private GameState_GameOver gameState_GameOver;
+    private GameState_GameWon gameState_GameWon;
 
     public void StartGame()
     {
@@ -15,6 +16,11 @@ public class GameStateMachine : MonoBehaviour
     public void GameOver()
     {
         TransitionToState(gameState_GameOver);
+    }
+
+    public void WinGame()
+    {
+        TransitionToState(gameState_GameWon);
     }
 
     void TransitionToState(BaseGameState newGameState)
@@ -32,10 +38,8 @@ public class GameStateMachine : MonoBehaviour
     void Awake()
     {
         gameState_Playing = new GameState_Playing();
-        gameState_Playing.Init();
-
         gameState_GameOver = new GameState_GameOver();
-        gameState_GameOver.Init();
+        gameState_GameWon = new GameState_GameWon();
 
         // Open to main menu?
         StartGame();

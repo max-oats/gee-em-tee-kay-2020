@@ -2,6 +2,11 @@ using UnityEngine;
 
 abstract class BaseGameState
 {
+    public BaseGameState()
+    {
+        Init();
+    }
+
     public virtual void Init() {}
     public abstract void EnterState();
     public abstract void LeaveState();
@@ -45,5 +50,20 @@ class GameState_GameOver : BaseGameState
     public override void LeaveState()
     {
         // hide sad graphic
+    }
+}
+
+class GameState_GameWon : BaseGameState
+{
+    public override void EnterState()
+    {
+        // Meteor impact or whatever
+        // Bring up black screen and happy graphic
+        Debug.Log("You win!");
+    }
+
+    public override void LeaveState()
+    {
+        // hide happy graphic
     }
 }

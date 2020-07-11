@@ -11,13 +11,17 @@ public class EntityToPrefab
 
 public class EntityManager : MonoBehaviour
 {
-    public delegate void OnTimeStepComplete();
+    public delegate void OnTimeStepComplete(int currentStep);
     public OnTimeStepComplete onTimeStepComplete;
 
     public List<EntityToPrefab> entityToPrefabMap = new List<EntityToPrefab>();
 
     [SerializeField]
     private List<BaseEntity> allEntities = new List<BaseEntity>();
+    [SerializeField]
+    private int timeStepToBeat = 0;
+
+    private int currentTimeStep = 0;
 
     public void RegisterNewEntity(BaseEntity newEntity)
     {
@@ -46,7 +50,15 @@ public class EntityManager : MonoBehaviour
             entity.StepTime();
         }
 
-        onTimeStepComplete?.Invoke();
+        currentTimeStep++;
+        if (currentTimeStep < timeStepToBeat)
+        {
+            onTimeStepComplete?.Invoke(currentTimeStep);
+        }
+        else
+        {
+            Game.gameStateMachine.WinGame();
+        }
     }
 
     public GameObject GetPrefab(EntityType entityType)

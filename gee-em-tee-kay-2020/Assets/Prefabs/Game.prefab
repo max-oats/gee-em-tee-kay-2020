@@ -99,6 +99,7 @@ MonoBehaviour:
     prefab: {fileID: 8639300084964588442, guid: 227db5ed905a64affb1ac476157702b1,
       type: 3}
   allEntities: []
+  timeStepToBeat: 400
 --- !u!114 &6233974292108102560
 MonoBehaviour:
   m_ObjectHideFlags: 0

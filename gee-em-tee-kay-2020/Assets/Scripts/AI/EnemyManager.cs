@@ -7,7 +7,6 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private AnimationCurve spawnsPerTimeStep = null;
 
-    private int currentTimeStep = 0;
     private int mapSideLengthInTiles = 0;
 
     void Awake()
@@ -16,10 +15,8 @@ public class EnemyManager : MonoBehaviour
         mapSideLengthInTiles = GameObject.Find("World").GetComponent<WorldGenerator>().GetSideLengthInTiles();
     }
 
-    void StepTime()
+    void StepTime(int currentTimeStep)
     {
-        currentTimeStep++;
-
         int numSpawns = Mathf.RoundToInt(spawnsPerTimeStep.Evaluate(currentTimeStep));
         if (numSpawns > 0)
         {
@@ -46,6 +43,6 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnWave(int numSpawns, int x, int y)
     {
-        
+
     }
 }

@@ -58,7 +58,7 @@ public class WorldTree : BaseEntity
         }
     }
 
-    void Die()
+    void Die(int timeStep)
     {
         Game.gameStateMachine.GameOver();
         Game.entities.onTimeStepComplete -= Die;

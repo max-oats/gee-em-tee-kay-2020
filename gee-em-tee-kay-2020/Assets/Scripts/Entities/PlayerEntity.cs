@@ -102,7 +102,7 @@ public class PlayerEntity : BaseEntity
         }
     }
 
-    void Die()
+    void Die(int timeStep)
     {
         StartCoroutine(Death());
         Game.entities.onTimeStepComplete -= Die;
