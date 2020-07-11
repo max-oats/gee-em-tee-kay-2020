@@ -29,9 +29,20 @@ public class WorldTile : MonoBehaviour
 
             MaterialPropertyBlock block = new MaterialPropertyBlock();
             block.SetColor("_Color", color);
-            MeshRenderer debugRenderer = go.GetComponentInChildren<MeshRenderer>();
-            debugRenderer.SetPropertyBlock(block);
+            MeshRenderer meshRenderer = go.GetComponentInChildren<MeshRenderer>();
+            meshRenderer.SetPropertyBlock(block);
         }
+    }
+
+    public void SetMaterial(Material material)
+    {
+        MeshRenderer debugRenderer = GetComponentInChildren<MeshRenderer>();
+        debugRenderer.material = material;
+    }
+
+    public void SetHeight(float height)
+    {
+        transform.position = new Vector3(transform.position.x, height, transform.position.z);
     }
 
     void SetColour()

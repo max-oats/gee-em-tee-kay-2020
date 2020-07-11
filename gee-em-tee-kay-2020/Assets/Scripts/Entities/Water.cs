@@ -1,5 +1,9 @@
+using UnityEngine;
+
 public class Water : BaseEntity
 {
+    public Material waterMaterial;
+
     public override bool TriggerInteract(InteractParams interactParams)
     {
         if (!interactParams.holdingWater && !interactParams.heldAncestor)
@@ -14,6 +18,7 @@ public class Water : BaseEntity
     {
         base.SetTile(inTile);
 
-        // Change the tile mesh here!
+        inTile.SetMaterial(waterMaterial);
+        inTile.SetHeight(-0.1f);
     }
 }
