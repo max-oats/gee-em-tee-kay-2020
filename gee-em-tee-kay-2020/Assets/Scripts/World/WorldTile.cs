@@ -40,7 +40,9 @@ public class WorldTile : MonoBehaviour
 
     public void SetDebugColour(Color inDebugColour)
     {
-        SpriteRenderer debugRenderer = GetComponentInChildren<SpriteRenderer>();
-        debugRenderer.color = inDebugColour;
+        MeshRenderer debugRenderer = GetComponentInChildren<MeshRenderer>();
+        MaterialPropertyBlock block = new MaterialPropertyBlock();
+        block.SetColor("_Color", inDebugColour);
+        debugRenderer.SetPropertyBlock(block);
     }
 }

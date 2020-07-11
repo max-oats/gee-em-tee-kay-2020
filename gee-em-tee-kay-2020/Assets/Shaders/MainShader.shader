@@ -6,7 +6,7 @@
 Shader "Laundry/MainShader" {
     Properties {
         _MainTex ("MainTex", 2D) = "white" {}
-        _Color ("Color", Color) = (0.6603774,0.6603774,0.6603774,1)
+        [PerRendererData]_Color ("Color", Color) = (0.6603774,0.6603774,0.6603774,1)
         _Mask ("Mask", 2D) = "white" {}
         _Normal ("Normal", 2D) = "bump" {}
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
