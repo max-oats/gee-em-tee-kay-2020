@@ -16,12 +16,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Socks.Field(category="Movement")]
     public float moveTime = 0.4f;
 
-    [SerializeField, Socks.Field(category="Lifespan")]
-    public int startingAge;
-
-    [SerializeField, Socks.Field(category="Lifespan")]
-    public Vector2 lifeSpanRange;
-
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     public Direction facing;
 
@@ -193,7 +187,7 @@ public class PlayerController : MonoBehaviour
         y = newY;
 
         StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(x, y)));
-        
+
         Game.worldMap.SetInhabitant(x,y, GetComponentInChildren<PlayerEntity>());
     }
 
@@ -214,7 +208,7 @@ public class PlayerController : MonoBehaviour
 
             yield return null;
         }
-        
+
         animator.CrossFadeInFixedTime("Idle", 0.1f);
 
         canMove = true;
