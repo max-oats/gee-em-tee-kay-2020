@@ -191,7 +191,6 @@ public class PlayerController : MonoBehaviour
 
     bool CanMoveToValidLocation(int x, int y)
     {
-        Debug.LogFormat("has inhabitant at {0}, {1}: {2}", x, y, Game.worldMap.HasInhabitantAt(x,y));
         return !Game.worldMap.HasInhabitantAt(x,y);
     }
 
