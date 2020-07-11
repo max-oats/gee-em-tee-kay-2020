@@ -13,7 +13,7 @@ public class PlayerEntity : BaseEntity
     [SerializeField]
     private Vector2Int lifeSpanRange;
     [SerializeField]
-    private SkinnedMeshRenderer beardRenderer;
+    private SkinnedMeshRenderer beardRenderer = null;
 
     private int currentTimeStepsTillDeath = 0;
     private bool holdingWater = false;
