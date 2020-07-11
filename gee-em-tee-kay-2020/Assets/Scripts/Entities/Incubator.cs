@@ -30,6 +30,32 @@ public class Incubator : BaseEntity
         return false;
     }
 
+    public void UseEgg()
+    {
+        numEggs--;
+    }
+
+    public bool CanSpawnNewPlayerAt(ref Vector2Int spawnPosition)
+    {
+        if (numEggs == 0 || !sufficientlyWatered)
+        {
+            return false;
+        }
+
+        if (Game.worldMap.FindAvailableNeighbourTo(posX, posY) is Vector2Int neighbourPosition)
+        {
+            spawnPosition = neighbourPosition;
+            return true;
+        }
+
+        return false;
+    }
+
+    void Awake()
+    {
+        Game.lifeCycleManager.RegisterIncubator(this);
+    }
+
     void Update()
     {
         if (numEggs > 0)

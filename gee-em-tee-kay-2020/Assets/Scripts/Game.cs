@@ -9,6 +9,7 @@ public class Game : MonoBehaviour
     public static InputManager input = null;
     public static EntityManager entities = null;
     public static WorldMap worldMap = null;
+    public static LifeCycleManager lifeCycleManager = null;
 
     public static Game instance = null;
     public static float gravity = -80f;
@@ -24,6 +25,7 @@ public class Game : MonoBehaviour
             input = GetComponent<InputManager>();
             entities = GetComponent<EntityManager>();
             worldMap = GetComponent<WorldMap>();
+            lifeCycleManager = GetComponent<LifeCycleManager>();
         }
         else
         {

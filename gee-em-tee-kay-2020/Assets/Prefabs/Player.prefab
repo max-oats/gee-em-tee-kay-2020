@@ -68,7 +68,7 @@ MonoBehaviour:
   debugColourWithAncestor: {r: 1, g: 0.7911098, b: 0.4764151, a: 1}
   debugColourNormal: {r: 0.26864696, g: 1, b: 0, a: 1}
   maxEggsLaidAtOnce: 1
-  lifeSpanRange: {x: 6, y: 10}
+  lifeSpanRange: {x: 15, y: 15}
 --- !u!1 &2755199535823553528
 GameObject:
   m_ObjectHideFlags: 0
