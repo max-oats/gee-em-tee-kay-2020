@@ -1,4 +1,4 @@
-public class WaterTower : BaseTower
+public class Tower_Water : BaseTower
 {
     public override void StepTime()
     {

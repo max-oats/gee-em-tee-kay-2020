@@ -1,4 +1,4 @@
-public class Enemy : BaseEntity
+public class BaseEnemy : BaseEntity
 {
     public override bool TriggerInteract(InteractParams interactParams)
     {

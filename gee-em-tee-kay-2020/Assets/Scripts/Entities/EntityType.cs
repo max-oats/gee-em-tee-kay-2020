@@ -1,7 +1,7 @@
 public enum EntityType
 {
     Ancestor,
-    Enemy,
+    Enemy_WeakMelee,
     Incubator,
     Player,
     Tower_Water,
