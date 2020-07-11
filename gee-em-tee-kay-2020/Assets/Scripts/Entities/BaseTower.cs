@@ -4,9 +4,4 @@ public class BaseTower : BaseEntity
     {
         // Repair (requires water?)
     }
-
-    public override void StepTime()
-    {
-        // Do the shooting and such
-    }
 }
