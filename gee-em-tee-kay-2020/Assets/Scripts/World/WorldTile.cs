@@ -7,12 +7,13 @@ public class WorldTile : MonoBehaviour
 
     private BaseEntity inhabitant = null;
 
-    public void TriggerInteract(InteractParams interactParams)
+    public bool TriggerInteract(InteractParams interactParams)
     {
         if (inhabitant)
         {
-            inhabitant.TriggerInteract(interactParams);
+            return inhabitant.TriggerInteract(interactParams);
         }
+        return false;
     }
 
     public bool HasInhabitant()
