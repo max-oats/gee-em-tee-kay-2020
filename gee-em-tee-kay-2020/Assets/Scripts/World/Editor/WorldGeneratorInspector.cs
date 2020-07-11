@@ -21,7 +21,7 @@ public class WorldGeneratorInspector : Editor
 
         if (GUILayout.Button("Generate world..."))
         {
-            worldGen.GenerateWorld(worldGen.worldTreePrefab);
+            worldGen.GenerateWorld(FindObjectOfType<EntityManager>().GetPrefab(EntityType.WorldTree));
         }
 
         Socks.EditorUtils.DrawFields(serializedObject, categories, false);

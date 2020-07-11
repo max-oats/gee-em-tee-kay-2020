@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     public delegate void OnMoveTo(int x, int y);
     public OnMoveTo onMoveTo;
-    
+
     public delegate void OnInteractWith(int x, int y);
     public OnMoveTo onInteractWith;
 
     [SerializeField, Socks.Field(category="Lifespan")]
     public int startingAge;
-    
+
     [SerializeField, Socks.Field(category="Lifespan")]
     public Vector2 lifeSpanRange;
 
@@ -91,16 +91,17 @@ public class PlayerController : MonoBehaviour
 
     void MoveTo(int newX, int newY)
     {
+        Game.worldMap.SetInhabitant(x,y, null);
+
         x = newX;
         y = newY;
 
-        //transform.position == Game.map.GetTilePos(x, y)?
+        transform.position = Game.worldMap.GetTilePos(x, y);
+        Game.worldMap.SetInhabitant(x,y, GetComponentInChildren<PlayerEntity>());
     }
 
     bool CanMoveTo(int x, int y)
     {
-        // if (Game.map.CanMoveTo?)
-        // stub
-        return true;
+        return Game.worldMap.IsValidLocation(x,y) && !Game.worldMap.HasInhabitantAt(x,y);
     }
 }

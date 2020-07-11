@@ -8,27 +8,22 @@ public class WorldGenerator : MonoBehaviour
     private int sideLengthInTiles = 0;
     [SerializeField, Socks.Field(category="Map")]
     private Vector2 treeTopLeftCornerLocation = new Vector2();
+    [SerializeField, Socks.Field(category="Map")]
+    private Vector2 playerInitialPosition = new Vector2();
 
     [SerializeField, Socks.Field(category="Tiles")]
     private int tileSideLengthInUnits = 0;
     [SerializeField, Socks.Field(category="Tiles")]
     private GameObject tilePrefab = null;
 
-    [SerializeField, Socks.Field(category="Debug")]
-    public GameObject worldTreePrefab = null;
-
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private WorldTree worldTree = null;
-
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private List<WorldTile> worldTiles = new List<WorldTile>();
 
     void Awake()
     {
-        Debug.Log("Testing generation");
-
-        if (!worldTree)
-            GenerateWorld(worldTreePrefab);
+        GenerateWorld(Game.entities.GetPrefab(EntityType.WorldTree));
     }
 
     public void ClearWorldTiles()
@@ -86,7 +81,7 @@ public class WorldGenerator : MonoBehaviour
         {
             worldMap = FindObjectOfType<WorldMap>();
         }
-        
+
         if (worldMap)
         {
             worldMap.tileGrid = new WorldTile[sideLengthInTiles,sideLengthInTiles];
@@ -126,6 +121,21 @@ public class WorldGenerator : MonoBehaviour
                         worldTile.SetInhabitant(worldTree);
                         worldTree.SetTile(worldTile);
                     }
+                }
+
+                if (i == playerInitialPosition.x && j == playerInitialPosition.y)
+                {
+                    GameObject playerPrefab = Game.entities.GetPrefab(EntityType.Player);
+                    GameObject player = Instantiate
+                    (
+                        playerPrefab,
+                        new Vector3(x, 0f, z),
+                        Quaternion.identity,
+                        transform
+                    ) as GameObject;
+                    PlayerEntity playerEntity = player.GetComponent<PlayerEntity>();
+                    worldTile.SetInhabitant(playerEntity);
+                    playerEntity.SetTile(worldTile);
                 }
             }
         }

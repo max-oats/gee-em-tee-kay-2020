@@ -19,6 +19,11 @@ public class WorldTile : MonoBehaviour
         }
     }
 
+    public bool HasInhabitant()
+    {
+        return inhabitant != null;
+    }
+
     public void SetInhabitant(BaseEntity newInhabitant)
     {
         inhabitant = newInhabitant;
