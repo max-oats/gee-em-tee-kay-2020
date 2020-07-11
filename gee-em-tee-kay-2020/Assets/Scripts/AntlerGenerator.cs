@@ -58,6 +58,14 @@ public class AntlerGenerator : ProcMeshGenBase
     [Socks.Field(category="Mesh")]
     public GameObject rightMesh;
 
+    void Awake()
+    {
+        if (leftMesh.GetComponent<MeshFilter>().sharedMesh == null)
+        {
+            BeginMeshGen();
+        }
+    }
+
     void Reset()
     {
         BeginMeshGen();
