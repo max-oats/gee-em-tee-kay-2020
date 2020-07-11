@@ -25,16 +25,26 @@ public class WorldMap : MonoBehaviour
 
     public void SetInhabitant(int x, int y, BaseEntity newInhabitant)
     {
-        tileGrid[x,y].SetInhabitant(newInhabitant);
+        SetInhabitant(tileGrid[x,y], newInhabitant);
+    }
+
+    public void SetInhabitant(WorldTile tile, BaseEntity newInhabitant)
+    {
+        tile.SetInhabitant(newInhabitant);
         if (newInhabitant)
         {
-            newInhabitant.SetPosition(x, y);
+            newInhabitant.SetTile(tile);
         }
     }
 
     public bool InteractWith(int x, int y, InteractParams interactParams)
     {
         return tileGrid[x,y].TriggerInteract(interactParams);
+    }
+
+    public BaseEntity CreateEntityAtLocation(GameObject entityPrefab, WorldTile inTile)
+    {
+        return CreateEntityAtLocation(entityPrefab, inTile.x, inTile.z);
     }
 
     public BaseEntity CreateEntityAtLocation(GameObject entityPrefab, int tileX, int tileY)
@@ -52,8 +62,10 @@ public class WorldMap : MonoBehaviour
         return entity;
     }
 
-    public Vector2Int? FindAvailableNeighbourTo(int posX, int posY)
+    public Vector2Int? FindAvailableNeighbourTo(WorldTile inTile)
     {
+        int posX = inTile.x, posY = inTile.z;
+
         int x = posX-1, y = posY;
         if (IsValidLocation(x,y) && !HasInhabitantAt(x,y))
         {

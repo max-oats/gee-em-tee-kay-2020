@@ -9,4 +9,11 @@ public class Water : BaseEntity
         }
         return false;
     }
+
+    public override void SetTile(WorldTile inTile)
+    {
+        base.SetTile(inTile);
+
+        // Change the tile mesh here!
+    }
 }

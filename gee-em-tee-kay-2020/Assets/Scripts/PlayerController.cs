@@ -181,8 +181,7 @@ public class PlayerController : MonoBehaviour
 
     void MoveToValidLocation(int newX, int newY)
     {
-        Vector2Int currentPosition = entity.GetPosition();
-        Game.worldMap.SetInhabitant(currentPosition.x,currentPosition.y, null);
+        Game.worldMap.SetInhabitant(entity.GetTile(), null);
 
         StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(newX, newY)));
 

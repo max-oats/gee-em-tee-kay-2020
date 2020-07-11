@@ -182,7 +182,7 @@ public class PlayerEntity : BaseEntity
         // Drop held ancestor next to us
         if (heldAncestor)
         {
-            if (Game.worldMap.FindAvailableNeighbourTo(posX, posY) is Vector2Int tilePosition)
+            if (Game.worldMap.FindAvailableNeighbourTo(currentWorldTile) is Vector2Int tilePosition)
             {
                 Game.worldMap.SetInhabitant(tilePosition.x, tilePosition.y, heldAncestor);
             }
@@ -196,10 +196,10 @@ public class PlayerEntity : BaseEntity
         }
 
         // Remove ourselves from square
-        Game.worldMap.SetInhabitant(posX, posY, null);
+        Game.worldMap.SetInhabitant(currentWorldTile, null);
 
         // Spawn new Ancestor where we are
-        Ancestor newAncestor = Game.worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(EntityType.Ancestor), posX, posY) as Ancestor;
+        Ancestor newAncestor = Game.worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(EntityType.Ancestor), currentWorldTile) as Ancestor;
 
         // Reparent player model to ancestor
 

@@ -14,26 +14,29 @@ public abstract class BaseEntity : MonoBehaviour
 {
     public Color debugColor;
 
-    protected int posX;
-    protected int posY;
+    protected WorldTile currentWorldTile;
 
     // Return true if the interaction succeeded
     public abstract bool TriggerInteract(InteractParams interactParams);
     public virtual void StepTime() {}
 
-    public void SetPosition(int x, int y)
+    public virtual void SetTile(WorldTile inTile)
     {
-        posX = x;
-        posY = y;
+        currentWorldTile = inTile;
+    }
+
+    public WorldTile GetTile()
+    {
+        return currentWorldTile;
     }
 
     public Vector2Int GetPosition()
     {
-        return new Vector2Int(posX, posY);
+        return new Vector2Int(currentWorldTile.x, currentWorldTile.z);
     }
 
     protected void RemoveFromMap()
     {
-        Game.worldMap.SetInhabitant(posX, posY, null);
+        Game.worldMap.SetInhabitant(currentWorldTile, null);
     }
 }
