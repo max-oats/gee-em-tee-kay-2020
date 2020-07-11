@@ -30,6 +30,11 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private List<WorldTile> worldTiles = new List<WorldTile>();
 
+    public int GetSideLengthInTiles()
+    {
+        return sideLengthInTiles;
+    }
+
     public void ClearWorldTiles()
     {
         if (!Application.isPlaying)
@@ -106,7 +111,7 @@ public class WorldGenerator : MonoBehaviour
                 if (i == 0 || i == sideLengthInTiles - 1 || j == 0 || j == sideLengthInTiles - 1)
                 {
                     worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(EntityType.Hedge), i,j);
-                    continue; 
+                    continue;
                 }
 
                 if (i == treeTopLeftCornerLocation.x || i == treeTopLeftCornerLocation.x + 1)
