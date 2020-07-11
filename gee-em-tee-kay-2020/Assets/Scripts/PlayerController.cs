@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     public delegate bool OnInteractWith(int x, int y);
     public OnInteractWith onInteractWith;
 
+    [SerializeField, Socks.Field(category="Movement")]
+    public Smoother rotationSmoother;
+
+    [SerializeField, Socks.Field(category="Movement")]
+    public float moveTime = 0.4f;
+
     [SerializeField, Socks.Field(category="Lifespan")]
     public int startingAge;
 
@@ -18,6 +24,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     public Direction facing;
+
+    private bool canMove = true;
+
+    private Animator animator;
 
     private int x, y;
     private int age;
@@ -47,11 +57,16 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        // stub
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         if (Game.input.GetButtonDown("Movement.North"))
         {
             PlayerMove(Direction.North);
@@ -74,6 +89,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void LateUpdate()
+    {
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, rotationSmoother.Smooth(), transform.eulerAngles.z);
+    }
+
     void InteractInPlace()
     {
         if (onInteractWith?.Invoke(x, y) ?? false)
@@ -86,19 +106,19 @@ public class PlayerController : MonoBehaviour
     {
         if (dir == Direction.North)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0f, transform.eulerAngles.z);
+            rotationSmoother.SetDesiredValue(0f);
         }
         else if (dir == Direction.East)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90f, transform.eulerAngles.z);
+            rotationSmoother.SetDesiredValue(90f);
         }
         else if (dir == Direction.South)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180f, transform.eulerAngles.z);
+            rotationSmoother.SetDesiredValue(180f);
         }
         else
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 270f, transform.eulerAngles.z);
+            rotationSmoother.SetDesiredValue(270f);
         }
 
         facing = dir;
@@ -172,12 +192,31 @@ public class PlayerController : MonoBehaviour
         x = newX;
         y = newY;
 
-        transform.position = Game.worldMap.GetTilePos(x, y);
+        StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(x, y)));
+        
         Game.worldMap.SetInhabitant(x,y, GetComponentInChildren<PlayerEntity>());
     }
 
     bool CanMoveToValidLocation(int x, int y)
     {
         return !Game.worldMap.HasInhabitantAt(x,y);
+    }
+
+    IEnumerator MoveCoroutine(Vector3 oldPos, Vector3 newPos)
+    {
+        canMove = false;
+        animator.CrossFadeInFixedTime("Walk", 0.1f);
+        float timeCounter = 0f;
+        while (timeCounter < moveTime)
+        {
+            timeCounter += Time.deltaTime;
+            transform.position = Vector3.Lerp(oldPos, newPos, timeCounter/moveTime);
+
+            yield return null;
+        }
+        
+        animator.CrossFadeInFixedTime("Idle", 0.1f);
+
+        canMove = true;
     }
 }
