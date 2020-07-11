@@ -36,3 +36,5 @@ sysinfo.txt
 *.unitypackage
 gee-em-tee-kay-2020/Assets/ShaderForge.meta
 gee-em-tee-kay-2020/Assets/ShaderForge/
+gee-em-tee-kay-2020/ProjectSettings/
+gee-em-tee-kay-2020/ProjectSettings/*
