@@ -29,6 +29,18 @@ public class WorldTile : MonoBehaviour
         inhabitant = newInhabitant;
     }
 
+    void Update()
+    {
+        if (inhabitant)
+        {
+            SetDebugColour(inhabitant.debugColor);
+        }
+        else
+        {
+            SetDebugColour(Color.white);
+        }
+    }
+
     public void SetDebugColour(Color inDebugColour)
     {
         SpriteRenderer debugRenderer = GetComponentInChildren<SpriteRenderer>();

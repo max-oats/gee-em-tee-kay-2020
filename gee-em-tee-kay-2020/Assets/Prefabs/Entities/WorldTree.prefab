@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColor: {r: 0, g: 0.6226415, b: 0.08939484, a: 1}
+  debugColourWhenPlanted: {r: 0.46226418, g: 0.36730516, b: 0.17225882, a: 1}
+  debugColourWhenWatered: {r: 0.19517623, g: 0.9622642, b: 0.7180172, a: 1}

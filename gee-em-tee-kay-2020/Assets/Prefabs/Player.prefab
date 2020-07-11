@@ -123,6 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColor: {r: 0.26864696, g: 1, b: 0, a: 1}
+  debugColourWithWater: {r: 0, g: 0.8113208, b: 0.75900155, a: 1}
+  debugColourNormal: {r: 0.26864696, g: 1, b: 0, a: 1}
 --- !u!1001 &1144861263026513045
 PrefabInstance:
   m_ObjectHideFlags: 0

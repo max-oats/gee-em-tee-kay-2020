@@ -18,6 +18,8 @@ public class WorldGenerator : MonoBehaviour
 
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private WorldTree worldTree = null;
+    [SerializeField, Socks.Field(category="Debug")]
+    private Vector2 debugWaterInitialPosition = new Vector2();
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private List<WorldTile> worldTiles = new List<WorldTile>();
 
@@ -119,7 +121,6 @@ public class WorldGenerator : MonoBehaviour
                     if (j == treeTopLeftCornerLocation.y || j == treeTopLeftCornerLocation.y + 1)
                     {
                         worldTile.SetInhabitant(worldTree);
-                        worldTree.SetTile(worldTile);
                     }
                 }
 
@@ -135,7 +136,19 @@ public class WorldGenerator : MonoBehaviour
                     ) as GameObject;
                     PlayerEntity playerEntity = player.GetComponent<PlayerEntity>();
                     worldTile.SetInhabitant(playerEntity);
-                    playerEntity.SetTile(worldTile);
+                }
+                else if (i == debugWaterInitialPosition.x && j == debugWaterInitialPosition.y)
+                {
+                    GameObject waterPrefab = Game.entities.GetPrefab(EntityType.Water);
+                    GameObject water = Instantiate
+                    (
+                        waterPrefab,
+                        new Vector3(x, 0f, z),
+                        Quaternion.identity,
+                        transform
+                    ) as GameObject;
+                    Water waterEntity = water.GetComponent<Water>();
+                    worldTile.SetInhabitant(waterEntity);
                 }
             }
         }

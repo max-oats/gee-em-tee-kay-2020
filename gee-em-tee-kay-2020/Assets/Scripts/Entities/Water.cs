@@ -4,7 +4,7 @@ public class Water : BaseEntity
     {
         if (!interactParams.holdingWater && !interactParams.holdingAncestor)
         {
-            // Gather water
+            interactParams.interactingCharacter.GatherWater();
         }
     }
 }
