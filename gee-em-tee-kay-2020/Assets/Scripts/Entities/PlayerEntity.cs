@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class PlayerEntity : BaseEntity
 {
+    public int maxEggsLaidAtOnce = 1;
+
     private bool holdingWater = false;
     private bool holdingAncestor = false;
-    private bool canLayEgg = false;
+    private int eggsToLay = 0;
 
     public Color debugColourWithWater;
     public Color debugColourWithAncestor;
@@ -34,6 +36,12 @@ public class PlayerEntity : BaseEntity
     {
         // Trigger animation
         holdingWater = true;
+    }
+
+    public void LayEggs()
+    {
+        // Trigger animation
+        eggsToLay = 0;
     }
 
     public override void StepTime()
@@ -68,7 +76,7 @@ public class PlayerEntity : BaseEntity
         InteractParams interactParams = new InteractParams();
         interactParams.holdingWater = holdingWater;
         interactParams.holdingAncestor = holdingAncestor;
-        interactParams.canLayEgg = canLayEgg;
+        interactParams.eggsToLay = eggsToLay;
         interactParams.interactingCharacter = this;
 
         Game.worldMap.InteractWith(x, y, interactParams);

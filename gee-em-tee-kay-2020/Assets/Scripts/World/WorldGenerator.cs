@@ -2,6 +2,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
+public class DebugEntitySpawnPosition
+{
+    public EntityType type;
+    public Vector2 position;
+}
+
 public class WorldGenerator : MonoBehaviour
 {
     [SerializeField, Socks.Field(category="Map")]
@@ -19,9 +26,7 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private WorldTree worldTree = null;
     [SerializeField, Socks.Field(category="Debug")]
-    private Vector2 debugWaterInitialPosition = new Vector2();
-    [SerializeField, Socks.Field(category="Debug")]
-    private Vector2 debugAncestorInitialPosition = new Vector2();
+    private List<DebugEntitySpawnPosition> debugEntitySpawnPositionMap = new List<DebugEntitySpawnPosition>();
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private List<WorldTile> worldTiles = new List<WorldTile>();
 
@@ -128,44 +133,30 @@ public class WorldGenerator : MonoBehaviour
 
                 if (i == playerInitialPosition.x && j == playerInitialPosition.y)
                 {
-                    GameObject playerPrefab = Game.entities.GetPrefab(EntityType.Player);
-                    GameObject player = Instantiate
-                    (
-                        playerPrefab,
-                        new Vector3(x, 0f, z),
-                        Quaternion.identity,
-                        transform
-                    ) as GameObject;
-                    PlayerEntity playerEntity = player.GetComponent<PlayerEntity>();
-                    worldMap.SetInhabitant(i, j, playerEntity);
+                    CreateEntityAtLocation(Game.entities.GetPrefab(EntityType.Player), i, j, x, z);
                 }
-                else if (i == debugWaterInitialPosition.x && j == debugWaterInitialPosition.y)
+
+                foreach (DebugEntitySpawnPosition debugSpawn in debugEntitySpawnPositionMap)
                 {
-                    GameObject waterPrefab = Game.entities.GetPrefab(EntityType.Water);
-                    GameObject water = Instantiate
-                    (
-                        waterPrefab,
-                        new Vector3(x, 0f, z),
-                        Quaternion.identity,
-                        transform
-                    ) as GameObject;
-                    Water waterEntity = water.GetComponent<Water>();
-                    worldMap.SetInhabitant(i, j, waterEntity);
-                }
-                else if (i == debugAncestorInitialPosition.x && j == debugAncestorInitialPosition.y)
-                {
-                    GameObject ancestorPrefab = Game.entities.GetPrefab(EntityType.Ancestor);
-                    GameObject ancestor = Instantiate
-                    (
-                        ancestorPrefab,
-                        new Vector3(x, 0f, z),
-                        Quaternion.identity,
-                        transform
-                    ) as GameObject;
-                    Ancestor ancestorEntity = ancestor.GetComponent<Ancestor>();
-                    worldMap.SetInhabitant(i, j, ancestorEntity);
+                    if (debugSpawn.position.x == i && debugSpawn.position.y == j)
+                    {
+                        CreateEntityAtLocation(Game.entities.GetPrefab(debugSpawn.type), i, j, x, z);
+                    }
                 }
             }
         }
+    }
+
+    void CreateEntityAtLocation(GameObject entityPrefab, int tileX, int tileY, int gamePosX, int gamePosZ)
+    {
+        GameObject newObject = Instantiate
+        (
+            entityPrefab,
+            new Vector3(gamePosX, 0f, gamePosZ),
+            Quaternion.identity,
+            transform
+        ) as GameObject;
+        BaseEntity entity = newObject.GetComponent<BaseEntity>();
+        Game.worldMap.SetInhabitant(tileX, tileY, entity);
     }
 }

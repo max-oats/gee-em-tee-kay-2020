@@ -50,6 +50,11 @@ MonoBehaviour:
   tilePrefab: {fileID: 5487711467938342039, guid: b7a90f2d469a5449e82ae8bfbbe1e868,
     type: 3}
   worldTree: {fileID: 0}
-  debugWaterInitialPosition: {x: 3, y: 0}
-  debugAncestorInitialPosition: {x: 0, y: 3}
+  debugEntitySpawnPositionMap:
+  - type: 0
+    position: {x: 0, y: 3}
+  - type: 4
+    position: {x: 3, y: 0}
+  - type: 2
+    position: {x: 5, y: 0}
   worldTiles: []
