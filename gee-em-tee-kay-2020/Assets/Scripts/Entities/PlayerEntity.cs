@@ -13,7 +13,7 @@ public class PlayerEntity : BaseEntity
     [SerializeField]
     private Vector2Int lifeSpanRange;
     [SerializeField]
-    private SkinnedMeshRenderer beardRenderer;
+    private SkinnedMeshRenderer beardRenderer = null;
 
     private int currentTimeStepsTillDeath = 0;
     private bool holdingWater = false;
@@ -163,7 +163,18 @@ public class PlayerEntity : BaseEntity
 
         animator.CrossFadeInFixedTime("Death", 0.1f);
 
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.5f);
+
+        float timeCounter = 0f;
+        float beardBlanketBlendTime = 0.5f;
+        while (timeCounter < beardBlanketBlendTime)
+        {
+            timeCounter += Time.deltaTime;
+            beardRenderer.SetBlendShapeWeight(1, ((float)(timeCounter)/(float)beardBlanketBlendTime)*100f);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
 
         // Unregister entity from entities
         Game.entities.UnregisterEntity(this);

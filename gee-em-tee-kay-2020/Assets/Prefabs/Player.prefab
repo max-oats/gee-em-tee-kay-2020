@@ -511,12 +511,17 @@ PrefabInstance:
     - target: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[0]
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[1]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 589cd2724cf8b1f4d9914433e43ad3e7, type: 3}
