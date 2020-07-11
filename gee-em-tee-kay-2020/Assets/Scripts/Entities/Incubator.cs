@@ -1,6 +1,12 @@
+using UnityEngine;
+
 public class Incubator : BaseEntity
 {
+    public Color debugColorWithEggs;
+    public Color debugColorWhenWatered;
+
     private int numEggs = 0;
+    private bool sufficientlyWatered = false;
 
     public override void TriggerInteract(InteractParams interactParams)
     {
@@ -9,6 +15,7 @@ public class Incubator : BaseEntity
             if (interactParams.holdingWater)
             {
                 // Water plant
+                sufficientlyWatered = true;
                 interactParams.interactingCharacter.UseWater();
             }
         }
@@ -19,6 +26,21 @@ public class Incubator : BaseEntity
                 // Lay egg
                 numEggs = interactParams.eggsToLay;
                 interactParams.interactingCharacter.LayEggs();
+            }
+        }
+    }
+
+    void Update()
+    {
+        if (numEggs > 0)
+        {
+            if (sufficientlyWatered)
+            {
+                debugColor = debugColorWhenWatered;
+            }
+            else
+            {
+                debugColor = debugColorWithEggs;
             }
         }
     }

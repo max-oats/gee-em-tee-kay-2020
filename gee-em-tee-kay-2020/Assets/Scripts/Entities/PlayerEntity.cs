@@ -12,11 +12,23 @@ public class PlayerEntity : BaseEntity
     public Color debugColourWithAncestor;
     public Color debugColourNormal;
 
-    public override void TriggerInteract(InteractParams interactParams) {}
+    public override void TriggerInteract(InteractParams interactParams)
+    {
+        if (holdingAncestor)
+        {
+            Debug.Log("spawning tower");
+            // plant Ancestor, spawn tower
+        }
+        else
+        {
+            // Interacting with yourself is relaxing
+            Relax();
+        }
+    }
 
     public void GatherAncestor()
     {
-        // Trigger Ancestor
+        // Trigger animation
         holdingAncestor = true;
     }
 
@@ -42,6 +54,13 @@ public class PlayerEntity : BaseEntity
     {
         // Trigger animation
         eggsToLay = 0;
+    }
+
+    public void Relax()
+    {
+        // Trigger animation
+        eggsToLay++;
+        eggsToLay = Mathf.Min(eggsToLay, maxEggsLaidAtOnce);
     }
 
     public override void StepTime()

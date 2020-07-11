@@ -13,10 +13,6 @@ public class WorldTile : MonoBehaviour
         {
             inhabitant.TriggerInteract(interactParams);
         }
-        else if (interactParams.holdingAncestor)
-        {
-            // plant Ancestor, spawn tower
-        }
     }
 
     public bool HasInhabitant()
