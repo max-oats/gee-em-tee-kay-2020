@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         if (dir == Direction.North)
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0f, transform.eulerAngles.z);
-            newY--;
+            newY++;
         }
         else if (dir == Direction.East)
         {
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         else if (dir == Direction.South)
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180f, transform.eulerAngles.z);
-            newY++;
+            newY--;
         }
         else
         {
