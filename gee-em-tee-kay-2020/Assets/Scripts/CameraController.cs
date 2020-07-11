@@ -10,6 +10,11 @@ public class CameraController : MonoBehaviour
     [SerializeField, Socks.Field(category="Position")]
     public Transform transformToFollow;
 
+    public void Follow(Transform newTransform)
+    {
+        transformToFollow = newTransform;
+    }
+
     void LateUpdate()
     {
         if (transformToFollow != null)
@@ -20,7 +25,7 @@ public class CameraController : MonoBehaviour
         else
         {
             PlayerController player = GameObject.FindObjectOfType<PlayerController>();
-            
+
             if (player != null)
                 transformToFollow = player.transform;
         }
