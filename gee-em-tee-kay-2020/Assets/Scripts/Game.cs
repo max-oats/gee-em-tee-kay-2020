@@ -7,6 +7,7 @@ public class Game : MonoBehaviour
 {
     public new static CameraController camera = null;
     public static InputManager input = null;
+    public static EntityManager entities = null;
 
     public static Game instance = null;
     public static float gravity = -80f;
@@ -20,6 +21,7 @@ public class Game : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             input = GetComponent<InputManager>();
+            entities = GetComponent<EntityManager>();
         }
         else
         {
