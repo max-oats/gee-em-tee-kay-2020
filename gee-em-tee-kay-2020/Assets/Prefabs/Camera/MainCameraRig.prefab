@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &464874041
 Transform:
   m_ObjectHideFlags: 0
@@ -503,9 +503,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 25
+  field of view: 20
   orthographic: 0
-  orthographic size: 32
+  orthographic size: 13.9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -568,6 +568,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a473228a5108947ba5316653938a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionSmoother:
+    smoothTime: 0.1
+    initialDesired: {x: 0, y: 0, z: 0}
+  transformToFollow: {fileID: 0}
 --- !u!81 &6146962931286633334
 AudioListener:
   m_ObjectHideFlags: 0
@@ -633,9 +637,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 25
+  field of view: 20
   orthographic: 0
-  orthographic size: 32
+  orthographic size: 13.9
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2158,7 +2158,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.204e-42, y: 1.02e-43, z: 4.3973473e+21, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1.1754944e-38, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -4073,44 +4073,6 @@ PrefabInstance:
     - target: {fileID: 4188061355304034191, guid: 14d6169983b6a904e87070a3d667960c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4188061355648022863, guid: 14d6169983b6a904e87070a3d667960c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3962969530389461508, guid: 14d6169983b6a904e87070a3d667960c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1627662190, guid: 14d6169983b6a904e87070a3d667960c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912761171632959386, guid: 14d6169983b6a904e87070a3d667960c,
-        type: 3}
-      propertyPath: orthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912761171632959386, guid: 14d6169983b6a904e87070a3d667960c,
-        type: 3}
-      propertyPath: orthographic size
-      value: 13.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4188061355648022865, guid: 14d6169983b6a904e87070a3d667960c,
-        type: 3}
-      propertyPath: orthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4188061355648022865, guid: 14d6169983b6a904e87070a3d667960c,
-        type: 3}
-      propertyPath: orthographic size
-      value: 13.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 464874040, guid: 14d6169983b6a904e87070a3d667960c, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
