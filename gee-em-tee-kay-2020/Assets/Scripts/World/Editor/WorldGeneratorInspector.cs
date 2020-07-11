@@ -6,14 +6,24 @@ using System.Collections.Generic;
 [CustomEditor(typeof(WorldGenerator))]
 public class WorldGeneratorInspector : Editor
 {
+    WorldGenerator worldGen = null;
     List<Socks.PropertyCategory> categories = new List<Socks.PropertyCategory>();
     void OnEnable()
     {
+        worldGen = target as WorldGenerator;
+
         categories = Socks.EditorUtils.GetFields(typeof(WorldGenerator), serializedObject);
     }
 
     public override void OnInspectorGUI()
     {
-        Socks.EditorUtils.DrawFields(serializedObject, categories);
+        Socks.EditorUtils.DrawScriptName(serializedObject);
+
+        if (GUILayout.Button("Generate world..."))
+        {
+            worldGen.GenerateWorld(worldGen.worldTreePrefab);
+        }
+
+        Socks.EditorUtils.DrawFields(serializedObject, categories, false);
     }
 }
