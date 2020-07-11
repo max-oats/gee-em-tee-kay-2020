@@ -19,8 +19,6 @@ public class EntityManager : MonoBehaviour
     [SerializeField]
     private List<BaseEntity> allEntities = new List<BaseEntity>();
 
-    private bool playerNeedsKilling = false;
-
     public void RegisterNewEntity(BaseEntity newEntity)
     {
         allEntities.Add(newEntity);
