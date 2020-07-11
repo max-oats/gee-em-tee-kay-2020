@@ -15,6 +15,9 @@ public class PlayerEntity : BaseEntity
     private bool holdingWater = false;
     private Ancestor heldAncestor = null;
     private int eggsToLay = 0;
+    private int lifespan = 0;
+
+    private Animator animator;
 
     public override bool TriggerInteract(InteractParams interactParams)
     {
@@ -86,6 +89,7 @@ public class PlayerEntity : BaseEntity
     public override void StepTime()
     {
         currentTimeStepsTillDeath--;
+        animator.SetFloat("Age", (float)(lifespan-currentTimeStepsTillDeath)/(float)lifespan);
         if (currentTimeStepsTillDeath == 0)
         {
             Debug.Log("Dead");
@@ -97,7 +101,10 @@ public class PlayerEntity : BaseEntity
     {
         PlayerController playerController = GetComponentInChildren<PlayerController>();
         playerController.onInteractWith += InteractWith;
-        currentTimeStepsTillDeath = Random.Range(lifeSpanRange.x, lifeSpanRange.y + 1);
+        lifespan = Random.Range(lifeSpanRange.x, lifeSpanRange.y + 1);
+        currentTimeStepsTillDeath = lifespan;
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
