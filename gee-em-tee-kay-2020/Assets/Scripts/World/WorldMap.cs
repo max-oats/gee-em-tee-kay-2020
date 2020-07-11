@@ -26,6 +26,10 @@ public class WorldMap : MonoBehaviour
     public void SetInhabitant(int x, int y, BaseEntity newInhabitant)
     {
         tileGrid[x,y].SetInhabitant(newInhabitant);
+        if (newInhabitant)
+        {
+            newInhabitant.SetPosition(x, y);
+        }
     }
 
     public void InteractWith(int x, int y, InteractParams interactParams)

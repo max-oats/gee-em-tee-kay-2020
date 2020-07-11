@@ -20,6 +20,8 @@ public class WorldGenerator : MonoBehaviour
     private WorldTree worldTree = null;
     [SerializeField, Socks.Field(category="Debug")]
     private Vector2 debugWaterInitialPosition = new Vector2();
+    [SerializeField, Socks.Field(category="Debug")]
+    private Vector2 debugAncestorInitialPosition = new Vector2();
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private List<WorldTile> worldTiles = new List<WorldTile>();
 
@@ -120,7 +122,7 @@ public class WorldGenerator : MonoBehaviour
                 {
                     if (j == treeTopLeftCornerLocation.y || j == treeTopLeftCornerLocation.y + 1)
                     {
-                        worldTile.SetInhabitant(worldTree);
+                        worldMap.SetInhabitant(i, j, worldTree);
                     }
                 }
 
@@ -135,7 +137,7 @@ public class WorldGenerator : MonoBehaviour
                         transform
                     ) as GameObject;
                     PlayerEntity playerEntity = player.GetComponent<PlayerEntity>();
-                    worldTile.SetInhabitant(playerEntity);
+                    worldMap.SetInhabitant(i, j, playerEntity);
                 }
                 else if (i == debugWaterInitialPosition.x && j == debugWaterInitialPosition.y)
                 {
@@ -148,7 +150,20 @@ public class WorldGenerator : MonoBehaviour
                         transform
                     ) as GameObject;
                     Water waterEntity = water.GetComponent<Water>();
-                    worldTile.SetInhabitant(waterEntity);
+                    worldMap.SetInhabitant(i, j, waterEntity);
+                }
+                else if (i == debugAncestorInitialPosition.x && j == debugAncestorInitialPosition.y)
+                {
+                    GameObject ancestorPrefab = Game.entities.GetPrefab(EntityType.Ancestor);
+                    GameObject ancestor = Instantiate
+                    (
+                        ancestorPrefab,
+                        new Vector3(x, 0f, z),
+                        Quaternion.identity,
+                        transform
+                    ) as GameObject;
+                    Ancestor ancestorEntity = ancestor.GetComponent<Ancestor>();
+                    worldMap.SetInhabitant(i, j, ancestorEntity);
                 }
             }
         }

@@ -75,21 +75,30 @@ public class PlayerController : MonoBehaviour
 
         facing = dir;
 
-        bool success = CanMoveTo(newX, newY);
-        if (success)
+        bool success = false;
+        if (IsValidLocation(newX, newY))
         {
-            MoveTo(newX, newY);
-            onMoveTo?.Invoke(newX, newY);
-        }
-        else
-        {
-            onInteractWith?.Invoke(newX, newY);
+            if (CanMoveToValidLocation(newX, newY))
+            {
+                success = true;
+                MoveToValidLocation(newX, newY);
+                onMoveTo?.Invoke(newX, newY);
+            }
+            else
+            {
+                onInteractWith?.Invoke(newX, newY);
+            }
         }
 
         return success;
     }
 
-    void MoveTo(int newX, int newY)
+    bool IsValidLocation(int x, int y)
+    {
+        return Game.worldMap.IsValidLocation(x,y);
+    }
+
+    void MoveToValidLocation(int newX, int newY)
     {
         Game.worldMap.SetInhabitant(x,y, null);
 
@@ -100,8 +109,8 @@ public class PlayerController : MonoBehaviour
         Game.worldMap.SetInhabitant(x,y, GetComponentInChildren<PlayerEntity>());
     }
 
-    bool CanMoveTo(int x, int y)
+    bool CanMoveToValidLocation(int x, int y)
     {
-        return Game.worldMap.IsValidLocation(x,y) && !Game.worldMap.HasInhabitantAt(x,y);
+        return !Game.worldMap.HasInhabitantAt(x,y);
     }
 }

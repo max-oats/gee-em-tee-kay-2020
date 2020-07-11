@@ -4,7 +4,8 @@ public class Ancestor : BaseEntity
     {
         if (!interactParams.holdingWater && !interactParams.holdingAncestor)
         {
-            // Pick up Ancestor corpse
+            interactParams.interactingCharacter.GatherAncestor();
+            RemoveFromMap();
         }
     }
 }

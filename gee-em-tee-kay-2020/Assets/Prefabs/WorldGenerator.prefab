@@ -51,4 +51,5 @@ MonoBehaviour:
     type: 3}
   worldTree: {fileID: 0}
   debugWaterInitialPosition: {x: 3, y: 0}
+  debugAncestorInitialPosition: {x: 0, y: 3}
   worldTiles: []
