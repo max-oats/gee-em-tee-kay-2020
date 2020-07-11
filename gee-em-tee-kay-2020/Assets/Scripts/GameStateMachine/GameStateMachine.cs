@@ -32,6 +32,12 @@ public class GameStateMachine : MonoBehaviour
     void Awake()
     {
         gameState_Playing = new GameState_Playing();
+        gameState_Playing.Init();
+
         gameState_GameOver = new GameState_GameOver();
+        gameState_GameOver.Init();
+
+        // Open to main menu?
+        StartGame();
     }
 }

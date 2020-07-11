@@ -30,11 +30,6 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     private List<WorldTile> worldTiles = new List<WorldTile>();
 
-    void Awake()
-    {
-        GenerateWorld(Game.entities.GetPrefab(EntityType.WorldTree));
-    }
-
     public void ClearWorldTiles()
     {
         if (!Application.isPlaying)

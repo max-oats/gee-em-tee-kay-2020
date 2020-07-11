@@ -95,14 +95,14 @@ public class PlayerEntity : BaseEntity
         animator.SetFloat("Age", (float)(lifespan-currentTimeStepsTillDeath)/(float)lifespan);
         if (currentTimeStepsTillDeath == 0)
         {
-            Game.entities.RegisterPlayerNeedsKilling();
-            Game.entities.onKillPlayer = Die;
+            Game.entities.onTimeStepComplete += Die;
         }
     }
 
     void Die()
     {
         StartCoroutine(Death());
+        Game.entities.onTimeStepComplete -= Die;
     }
 
     void Awake()

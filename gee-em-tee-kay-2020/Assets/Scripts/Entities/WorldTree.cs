@@ -54,7 +54,13 @@ public class WorldTree : BaseEntity
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Game Over, tree out of health");
+            Game.entities.onTimeStepComplete += Die;
         }
+    }
+
+    void Die()
+    {
+        Game.gameStateMachine.GameOver();
+        Game.entities.onTimeStepComplete -= Die;
     }
 }
