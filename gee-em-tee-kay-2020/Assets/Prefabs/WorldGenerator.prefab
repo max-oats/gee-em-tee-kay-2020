@@ -53,8 +53,8 @@ MonoBehaviour:
   debugEntitySpawnPositionMap:
   - type: 0
     position: {x: 1, y: 3}
-  - type: 5
+  - type: 6
     position: {x: 3, y: 1}
-  - type: 2
+  - type: 3
     position: {x: 5, y: 1}
   worldTiles: []
