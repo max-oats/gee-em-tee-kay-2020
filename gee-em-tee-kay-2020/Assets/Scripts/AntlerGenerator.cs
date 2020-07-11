@@ -113,7 +113,7 @@ public class AntlerGenerator : ProcMeshGenBase
 
                 Vector3 distBetweenNewNodeAndParent = pos - position;
                 BezierPoint p0 = new BezierPoint(position, new Vector3(dist.x, 0f, dist.z));
-                BezierPoint p1 = new BezierPoint(pos, new Vector3(0f, dist.y, 0f));
+                BezierPoint p1 = new BezierPoint(pos, new Vector3(Random.Range(-0.1f, 0.1f), dist.y, Random.Range(-0.1f, 0.1f)));
                 BezierSpline spline = new BezierSpline();
                 spline.Clear();
                 spline.SetPoints(new List<BezierPoint>{p0, p1});
