@@ -12,7 +12,7 @@ public class PlayerEntity : BaseEntity
     public Color debugColourWithAncestor;
     public Color debugColourNormal;
 
-    public override void TriggerInteract(InteractParams interactParams)
+    public override bool TriggerInteract(InteractParams interactParams)
     {
         if (heldAncestor)
         {
@@ -23,6 +23,8 @@ public class PlayerEntity : BaseEntity
             // Interacting with yourself is relaxing
             Relax();
         }
+
+        return true;
     }
 
     public void GatherAncestor(Ancestor inAncestor)
@@ -104,7 +106,7 @@ public class PlayerEntity : BaseEntity
         }
     }
 
-    void InteractWith(int x, int y)
+    bool InteractWith(int x, int y)
     {
         InteractParams interactParams = new InteractParams();
         interactParams.holdingWater = holdingWater;
@@ -114,6 +116,6 @@ public class PlayerEntity : BaseEntity
         interactParams.tileX = x;
         interactParams.tileY = y;
 
-        Game.worldMap.InteractWith(x, y, interactParams);
+        return Game.worldMap.InteractWith(x, y, interactParams);
     }
 }

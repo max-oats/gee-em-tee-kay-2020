@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public delegate void OnMoveTo(int x, int y);
     public OnMoveTo onMoveTo;
 
-    public delegate void OnInteractWith(int x, int y);
+    public delegate bool OnInteractWith(int x, int y);
     public OnInteractWith onInteractWith;
 
     [SerializeField, Socks.Field(category="Lifespan")]
@@ -24,23 +24,24 @@ public class PlayerController : MonoBehaviour
 
     public void MoveAside()
     {
-        if (TryMove(Direction.North, false))
+        Vector2Int throwawayPosition;
+        if (TryMove(Direction.North, false, out throwawayPosition))
         {
             FaceDirection(Direction.South);
             return;
         }
-        if (TryMove(Direction.East, false))
+        if (TryMove(Direction.East, false, out throwawayPosition))
         {
             FaceDirection(Direction.West);
             return;
         }
-        if (TryMove(Direction.South, false))
+        if (TryMove(Direction.South, false, out throwawayPosition))
         {
             FaceDirection(Direction.North);
             return;
         }
-        
-        TryMove(Direction.West, false);
+
+        TryMove(Direction.West, false, out throwawayPosition);
         FaceDirection(Direction.East);
     }
 
@@ -53,19 +54,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Game.input.GetButtonDown("Movement.North"))
         {
-            TryMove(Direction.North);
+            PlayerMove(Direction.North);
         }
         else if (Game.input.GetButtonDown("Movement.East"))
         {
-            TryMove(Direction.East);
+            PlayerMove(Direction.East);
         }
         else if (Game.input.GetButtonDown("Movement.South"))
         {
-            TryMove(Direction.South);
+            PlayerMove(Direction.South);
         }
         else if (Game.input.GetButtonDown("Movement.West"))
         {
-            TryMove(Direction.West);
+            PlayerMove(Direction.West);
         }
         else if (Game.input.GetButtonDown("Action.Interact"))
         {
@@ -75,7 +76,10 @@ public class PlayerController : MonoBehaviour
 
     void InteractInPlace()
     {
-        onInteractWith?.Invoke(x, y);
+        if (onInteractWith?.Invoke(x, y) ?? false)
+        {
+            Game.entities.StepTime();
+        }
     }
 
     void FaceDirection(Direction dir)
@@ -100,42 +104,56 @@ public class PlayerController : MonoBehaviour
         facing = dir;
     }
 
-    bool TryMove(Direction dir, bool canInteract = true)
+    // Player intiated move. Will fire onMoveTo callback if successful
+    // Will try to interact otherwise
+    void PlayerMove(Direction dir)
+    {
+        Vector2Int positionMovedTo;
+        if (TryMove(dir, true, out positionMovedTo))
+        {
+            onMoveTo?.Invoke(positionMovedTo.x, positionMovedTo.y);
+            Game.entities.StepTime();
+        }
+    }
+
+    // Attempts to move somewhere. If we fail and are allowed to interact, do so
+    bool TryMove(Direction dir, bool canInteract, out Vector2Int finalPosition)
     {
         FaceDirection(dir);
 
-        int newX = x;
-        int newY = y;
+        finalPosition = new Vector2Int(x,y);
 
         if (dir == Direction.North)
         {
-            newY++;
+            finalPosition.y++;
         }
         else if (dir == Direction.East)
         {
-            newX++;
+            finalPosition.x++;
         }
         else if (dir == Direction.South)
         {
-            newY--;
+            finalPosition.y--;
         }
         else
         {
-            newX--;
+            finalPosition.x--;
         }
 
         bool success = false;
-        if (IsValidLocation(newX, newY))
+        if (IsValidLocation(finalPosition.x, finalPosition.y))
         {
-            if (CanMoveToValidLocation(newX, newY))
+            if (CanMoveToValidLocation(finalPosition.x, finalPosition.y))
             {
                 success = true;
-                MoveToValidLocation(newX, newY);
-                onMoveTo?.Invoke(newX, newY);
+                MoveToValidLocation(finalPosition.x, finalPosition.y);
             }
             else if (canInteract)
             {
-                onInteractWith?.Invoke(newX, newY);
+                if (onInteractWith?.Invoke(finalPosition.x, finalPosition.y) ?? false)
+                {
+                    Game.entities.StepTime();
+                }
             }
         }
 

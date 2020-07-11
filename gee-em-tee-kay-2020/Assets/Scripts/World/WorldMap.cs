@@ -32,9 +32,9 @@ public class WorldMap : MonoBehaviour
         }
     }
 
-    public void InteractWith(int x, int y, InteractParams interactParams)
+    public bool InteractWith(int x, int y, InteractParams interactParams)
     {
-        tileGrid[x,y].TriggerInteract(interactParams);
+        return tileGrid[x,y].TriggerInteract(interactParams);
     }
 
     public BaseEntity CreateEntityAtLocation(GameObject entityPrefab, int tileX, int tileY)

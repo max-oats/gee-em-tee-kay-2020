@@ -8,7 +8,7 @@ public class Incubator : BaseEntity
     private int numEggs = 0;
     private bool sufficientlyWatered = false;
 
-    public override void TriggerInteract(InteractParams interactParams)
+    public override bool TriggerInteract(InteractParams interactParams)
     {
         if (numEggs > 0)
         {
@@ -17,17 +17,17 @@ public class Incubator : BaseEntity
                 // Water plant
                 sufficientlyWatered = true;
                 interactParams.interactingCharacter.UseWater();
+                return true;
             }
         }
-        else
+        else if (interactParams.eggsToLay > 0)
         {
-            if (interactParams.eggsToLay > 0)
-            {
-                // Lay egg
-                numEggs = interactParams.eggsToLay;
-                interactParams.interactingCharacter.LayEggs();
-            }
+            // Lay egg
+            numEggs = interactParams.eggsToLay;
+            interactParams.interactingCharacter.LayEggs();
+            return true;
         }
+        return false;
     }
 
     void Update()
