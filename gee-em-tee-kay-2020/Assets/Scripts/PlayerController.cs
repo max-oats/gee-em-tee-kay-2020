@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Socks.Field(category="Debug", readOnly=true)]
     public Direction facing;
 
-    private bool canMove = true;
+    [SerializeField, Socks.Field(category="Debug", readOnly=true)]
+    public bool canMove = true;
 
     private Animator animator;
     private PlayerEntity entity;
@@ -96,7 +97,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FaceDirection(Direction dir)
+    public void FaceDirection(Direction dir)
     {
         if (dir == Direction.North)
         {
@@ -126,7 +127,6 @@ public class PlayerController : MonoBehaviour
         if (TryMove(dir, true, out positionMovedTo))
         {
             onMoveTo?.Invoke(positionMovedTo.x, positionMovedTo.y);
-            Game.entities.StepTime();
         }
     }
 
@@ -194,6 +194,11 @@ public class PlayerController : MonoBehaviour
         return !Game.worldMap.HasInhabitantAt(x,y);
     }
 
+    void OnDeath()
+    {
+        canMove = false;
+    }
+
     IEnumerator MoveCoroutine(Vector3 oldPos, Vector3 newPos)
     {
         canMove = false;
@@ -210,5 +215,6 @@ public class PlayerController : MonoBehaviour
         animator.CrossFadeInFixedTime("Idle", 0.1f);
 
         canMove = true;
+        Game.entities.StepTime();
     }
 }
