@@ -62,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugColor: {r: 0.26864696, g: 1, b: 0, a: 1}
   debugColourWithWater: {r: 0, g: 0.8113208, b: 0.75900155, a: 1}
+  debugColourWithAncestor: {r: 0, g: 0, b: 0, a: 0}
   debugColourNormal: {r: 0.26864696, g: 1, b: 0, a: 1}
 --- !u!1 &2755199535823553528
 GameObject:
@@ -238,30 +239,40 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: c5184a7ca30302a459226fc4162fcd85, type: 2}
   tree:
     ids:
-    - e15bbadb-f59b-4c7c-a27d-7aaa4543912e
-    - 14f58405-3cef-443e-ac31-8a62f737b20e
-    - c3e7722e-6c7e-4c09-ae33-0acc8f7921b5
-    - 6ca7588e-cb55-41cf-8b22-7802cfa7e548
-    - 6165bffa-8757-4eaf-bb7f-823ac801ffda
+    - b17a5463-a0cb-4e4e-a0d7-507cd6b93468
+    - 8ea29d24-0a2c-4011-b697-143dbd0c04d7
+    - b1c7a3b3-6643-4e5f-9e01-d52c085f2849
+    - fa581ac7-ef5e-4a64-bb98-59acc6636f0a
+    - c7e6d73f-6ca9-4e47-8119-d1b9dac21da3
+    - 52d3718d-038c-4646-81f5-bd464018114a
+    - 5693eb70-39a1-45b3-bbc1-723c9afd572a
     nodes:
-    - id: e15bbadb-f59b-4c7c-a27d-7aaa4543912e
+    - id: b17a5463-a0cb-4e4e-a0d7-507cd6b93468
       position: {x: 0, y: 0, z: 0}
       outputs:
-      - 14f58405-3cef-443e-ac31-8a62f737b20e
-      - 6ca7588e-cb55-41cf-8b22-7802cfa7e548
-    - id: 14f58405-3cef-443e-ac31-8a62f737b20e
-      position: {x: 0.5, y: 0, z: 0}
+      - 8ea29d24-0a2c-4011-b697-143dbd0c04d7
+      - fa581ac7-ef5e-4a64-bb98-59acc6636f0a
+    - id: 8ea29d24-0a2c-4011-b697-143dbd0c04d7
+      position: {x: 0.48984337, y: 0.5720977, z: 0}
       outputs:
-      - c3e7722e-6c7e-4c09-ae33-0acc8f7921b5
-    - id: c3e7722e-6c7e-4c09-ae33-0acc8f7921b5
-      position: {x: 0.97, y: 0, z: 0}
+      - b1c7a3b3-6643-4e5f-9e01-d52c085f2849
+    - id: b1c7a3b3-6643-4e5f-9e01-d52c085f2849
+      position: {x: 0.8559743, y: 0.92662114, z: 0}
       outputs: []
-    - id: 6ca7588e-cb55-41cf-8b22-7802cfa7e548
-      position: {x: 0.5, y: 0, z: 0}
+    - id: fa581ac7-ef5e-4a64-bb98-59acc6636f0a
+      position: {x: 0.46594328, y: 0.4451117, z: 0}
       outputs:
-      - 6165bffa-8757-4eaf-bb7f-823ac801ffda
-    - id: 6165bffa-8757-4eaf-bb7f-823ac801ffda
-      position: {x: 0.97, y: 0, z: 0}
+      - c7e6d73f-6ca9-4e47-8119-d1b9dac21da3
+    - id: c7e6d73f-6ca9-4e47-8119-d1b9dac21da3
+      position: {x: 0.84441495, y: 0.85310674, z: 0}
+      outputs:
+      - 52d3718d-038c-4646-81f5-bd464018114a
+    - id: 52d3718d-038c-4646-81f5-bd464018114a
+      position: {x: 1.1358073, y: 1.2412156, z: 0}
+      outputs:
+      - 5693eb70-39a1-45b3-bbc1-723c9afd572a
+    - id: 5693eb70-39a1-45b3-bbc1-723c9afd572a
+      position: {x: 1.3145697, y: 1.4570752, z: 0}
       outputs: []
   meshFilter: {fileID: 5531551606787565442}
   meshRenderer: {fileID: 7292179091433818610}
@@ -285,7 +296,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 0.1
+    m_ConstantMax: 0.07
   sizeReduction: 0.1
   distanceFromParent:
     m_Mode: 0
@@ -304,7 +315,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_ConstantMin: 0
     m_ConstantMax: 0.5
-  distanceReduction: 0.03
+  distanceReduction: 0.1
   heightFromParent:
     m_Mode: 0
     m_CurveMultiplier: 0
@@ -321,7 +332,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 0
+    m_ConstantMax: 0.7
   heightReduction: 0.1
   lengthSegments: 10
   radialSegments: 10

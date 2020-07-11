@@ -86,22 +86,26 @@ public class AntlerGenerator : ProcMeshGenBase
             float t = (float)i/(float)numberOf;
             if ((initialChanceOfGrowth - (depth*growthChanceReduction)) > Random.Range(0f, 1f))
             {
-                /** Attach new node to tree*/
-                string newNodeID = tree.AttachNewNode(rootNodeID);
-
                 float distMagnitude = distanceFromParent.Evaluate(t, Random.value) - (depth * distanceReduction);
+
                 Vector3 dist = new Vector3(distMagnitude, 0f, 0f);
+                if (depth > 0)
+                {
+                    if (Random.value > 0.7f)
+                        dist = new Vector3(-distMagnitude, 0f, 0f);
+                }
 
                 Vector3 heightDir = Vector3.up;
                 float heightMagnitude = Mathf.Clamp((heightFromParent.Evaluate(t, Random.value) - (depth * heightReduction)), 0f, 1000f);
                 Vector3 height = heightDir * heightMagnitude;
 
-                tree.Get(newNodeID).position += dist; 
-                tree.Get(newNodeID).position += height;
+                Vector3 pos = position;
+                pos += dist; 
+                pos += height;
 
-                Vector3 distBetweenNewNodeAndParent = tree.Get(newNodeID).position - tree.Get(rootNodeID).position;
-                BezierPoint p0 = new BezierPoint(tree.Get(rootNodeID).position, new Vector3(dist.x, 0f, dist.z)*0.75f);
-                BezierPoint p1 = new BezierPoint(tree.Get(newNodeID).position+Vector3.up, new Vector3(0f, dist.y, 0f)*0.75f);
+                Vector3 distBetweenNewNodeAndParent = pos - position;
+                BezierPoint p0 = new BezierPoint(position, new Vector3(dist.x, 0f, dist.z));
+                BezierPoint p1 = new BezierPoint(pos, new Vector3(0f, dist.y, 0f));
                 BezierSpline spline = new BezierSpline();
                 spline.Clear();
                 spline.SetPoints(new List<BezierPoint>{p0, p1});
@@ -117,16 +121,13 @@ public class AntlerGenerator : ProcMeshGenBase
                 /** Build tube */
                 vertices = MeshUtils.BuildCylinderAlongBezier(builder, builder.GetSubmesh(material), cylinder);
 
-                foreach (ProcMesh.Submesh submesh in subMeshes.FindAll(x => x.startPoint == SubmeshStartPoints.AllOverVertices))
-                {
-                    for (int j = 0; j < vertices.Length; ++j)
-                    {
-                        GenerateSubMesh(submesh, builder, newNodeID, vertices[j].index, Quaternion.FromToRotation(Vector3.up, vertices[j].normal), submeshDepth+1);
-                    }
-                }
+                /** Attach new node to tree*/
+                string newNodeID = tree.AttachNewNode(rootNodeID);
 
+                Vector3 newPos = spline.GetPointFromTAlongSpline(Random.Range(0.3f, 0.8f));
+                tree.Get(newNodeID).position = newPos;
                 /** Generate next node */
-                GenerateNode(builder, newNodeID, position, rotation, depth+1, submeshDepth);
+                GenerateNode(builder, newNodeID, newPos, rotation, depth+1, submeshDepth);
             }
         }
     }
