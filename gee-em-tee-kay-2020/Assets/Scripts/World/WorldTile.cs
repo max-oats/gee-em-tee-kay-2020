@@ -3,7 +3,7 @@ using UnityEngine;
 public class WorldTile : MonoBehaviour
 {
     public int x;
-    public int y;
+    public int z;
 
     private BaseEntity inhabitant = null;
 
@@ -22,6 +22,5 @@ public class WorldTile : MonoBehaviour
     public void SetInhabitant(BaseEntity newInhabitant)
     {
         inhabitant = newInhabitant;
-        inhabitant.gameObject.transform.position = transform.position;
     }
 }
