@@ -56,7 +56,7 @@ public class WorldGenerator : MonoBehaviour
             if (worldTree)
                 Destroy(worldTree.gameObject);
         }
-        
+
         worldTree = null;
         worldTiles.Clear();
     }
@@ -75,6 +75,21 @@ public class WorldGenerator : MonoBehaviour
                 transform
             ) as GameObject;
             worldTree = worldTreeObject.GetComponent<WorldTree>();
+        }
+
+        WorldMap worldMap = null;
+        if (Game.worldMap)
+        {
+            worldMap = Game.worldMap;
+        }
+        else
+        {
+            worldMap = FindObjectOfType<WorldMap>();
+        }
+        
+        if (worldMap)
+        {
+            worldMap.tileGrid = new WorldTile[sideLengthInTiles,sideLengthInTiles];
         }
 
         for (int i = 0; i < sideLengthInTiles; i++)
@@ -96,6 +111,11 @@ public class WorldGenerator : MonoBehaviour
                 worldTiles.Add(worldTile);
                 worldTile.x = i;
                 worldTile.z = j;
+
+                if (worldMap)
+                {
+                    worldMap.tileGrid[i,j] = worldTile;
+                }
 
                 newTile.transform.localScale = new Vector3(tileSideLengthInUnits,1f,tileSideLengthInUnits);
 

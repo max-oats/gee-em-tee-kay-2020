@@ -8,6 +8,7 @@ public class Game : MonoBehaviour
     public new static CameraController camera = null;
     public static InputManager input = null;
     public static EntityManager entities = null;
+    public static WorldMap worldMap = null;
 
     public static Game instance = null;
     public static float gravity = -80f;
@@ -22,6 +23,7 @@ public class Game : MonoBehaviour
 
             input = GetComponent<InputManager>();
             entities = GetComponent<EntityManager>();
+            worldMap = GetComponent<WorldMap>();
         }
         else
         {
