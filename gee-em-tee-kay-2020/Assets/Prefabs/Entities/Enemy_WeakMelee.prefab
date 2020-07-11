@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2636627904747657029}
   - component: {fileID: 229800020254028105}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_WeakMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 14653465211172316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db8300beacfd4b279e1edbc5e9fc6d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f5cf5e6e39974d779f7631385e77a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debugColor: {r: 1, g: 0, b: 0, a: 1}
