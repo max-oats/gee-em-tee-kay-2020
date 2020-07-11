@@ -9,5 +9,12 @@ public class InteractParams
 
 public abstract class BaseEntity : MonoBehaviour
 {
+    public Color debugColor;
+
     public abstract void TriggerInteract(InteractParams interactParams);
+
+    public void SetTile(WorldTile inTile)
+    {
+        inTile.SetDebugColour(debugColor);
+    }
 }

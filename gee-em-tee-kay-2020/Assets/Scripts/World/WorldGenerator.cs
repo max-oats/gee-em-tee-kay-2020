@@ -12,10 +12,13 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField, Socks.Field(category="Tiles")]
     private GameObject tilePrefab = null;
 
+    [SerializeField, Socks.Field(category="Debug")]
+    private GameObject worldTreePrefab = null;
+
     void Awake()
     {
         Debug.Log("Testing generation");
-        GenerateWorld(null);
+        GenerateWorld(worldTreePrefab);
     }
 
     void GenerateWorld(GameObject worldTreePrefab)
@@ -51,11 +54,14 @@ public class WorldGenerator : MonoBehaviour
                 worldTile.x = i;
                 worldTile.z = j;
 
+                newTile.transform.localScale = new Vector3(tileSideLengthInUnits,1f,tileSideLengthInUnits);
+
                 if (i == treeTopLeftCornerLocation.x || i == treeTopLeftCornerLocation.x + 1)
                 {
                     if (j == treeTopLeftCornerLocation.y || j == treeTopLeftCornerLocation.y + 1)
                     {
                         worldTile.SetInhabitant(worldTree);
+                        worldTree.SetTile(worldTile);
                     }
                 }
             }
