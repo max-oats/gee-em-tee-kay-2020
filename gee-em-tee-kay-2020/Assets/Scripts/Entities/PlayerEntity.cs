@@ -34,6 +34,8 @@ public class PlayerEntity : BaseEntity
     public void BuryAncestor()
     {
         // Trigger animation
+        Game.entities.UnregisterEntity(heldAncestor);
+        Destroy(heldAncestor);
         heldAncestor = null;
     }
 

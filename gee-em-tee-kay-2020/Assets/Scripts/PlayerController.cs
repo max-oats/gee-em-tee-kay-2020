@@ -26,17 +26,22 @@ public class PlayerController : MonoBehaviour
     {
         if (TryMove(Direction.North, false))
         {
+            FaceDirection(Direction.South);
             return;
         }
         if (TryMove(Direction.East, false))
         {
+            FaceDirection(Direction.West);
             return;
         }
         if (TryMove(Direction.South, false))
         {
+            FaceDirection(Direction.North);
             return;
         }
+        
         TryMove(Direction.West, false);
+        FaceDirection(Direction.East);
     }
 
     void Awake()
@@ -73,33 +78,51 @@ public class PlayerController : MonoBehaviour
         onInteractWith?.Invoke(x, y);
     }
 
+    void FaceDirection(Direction dir)
+    {
+        if (dir == Direction.North)
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0f, transform.eulerAngles.z);
+        }
+        else if (dir == Direction.East)
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90f, transform.eulerAngles.z);
+        }
+        else if (dir == Direction.South)
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180f, transform.eulerAngles.z);
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 270f, transform.eulerAngles.z);
+        }
+
+        facing = dir;
+    }
+
     bool TryMove(Direction dir, bool canInteract = true)
     {
+        FaceDirection(dir);
+
         int newX = x;
         int newY = y;
 
         if (dir == Direction.North)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0f, transform.eulerAngles.z);
             newY++;
         }
         else if (dir == Direction.East)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90f, transform.eulerAngles.z);
             newX++;
         }
         else if (dir == Direction.South)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180f, transform.eulerAngles.z);
             newY--;
         }
         else
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 270f, transform.eulerAngles.z);
             newX--;
         }
-
-        facing = dir;
 
         bool success = false;
         if (IsValidLocation(newX, newY))

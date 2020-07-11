@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class DebugEntitySpawnPosition
 {
     public EntityType type;
-    public Vector2 position;
+    public Vector2Int position;
 }
 
 public class WorldGenerator : MonoBehaviour
@@ -14,9 +14,9 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField, Socks.Field(category="Map")]
     private int sideLengthInTiles = 0;
     [SerializeField, Socks.Field(category="Map")]
-    private Vector2 treeTopLeftCornerLocation = new Vector2();
+    private Vector2Int treeTopLeftCornerLocation = new Vector2Int();
     [SerializeField, Socks.Field(category="Map")]
-    private Vector2 playerInitialPosition = new Vector2();
+    private Vector2Int playerInitialPosition = new Vector2Int();
 
     [SerializeField, Socks.Field(category="Tiles")]
     private int tileSideLengthInUnits = 0;
@@ -69,18 +69,6 @@ public class WorldGenerator : MonoBehaviour
     {
         ClearWorldTiles();
 
-        if (worldTreePrefab)
-        {
-            GameObject worldTreeObject = Instantiate
-            (
-                worldTreePrefab,
-                new Vector3(0f, 0f, 0f),
-                Quaternion.identity,
-                transform
-            ) as GameObject;
-            worldTree = worldTreeObject.GetComponent<WorldTree>();
-        }
-
         WorldMap worldMap = null;
         if (Game.worldMap)
         {
@@ -91,10 +79,7 @@ public class WorldGenerator : MonoBehaviour
             worldMap = FindObjectOfType<WorldMap>();
         }
 
-        if (worldMap)
-        {
-            worldMap.tileGrid = new WorldTile[sideLengthInTiles,sideLengthInTiles];
-        }
+        worldMap.tileGrid = new WorldTile[sideLengthInTiles,sideLengthInTiles];
 
         for (int i = 0; i < sideLengthInTiles; i++)
         {
@@ -127,6 +112,13 @@ public class WorldGenerator : MonoBehaviour
                 {
                     if (j == treeTopLeftCornerLocation.y || j == treeTopLeftCornerLocation.y + 1)
                     {
+                        if (i == treeTopLeftCornerLocation.x && j == treeTopLeftCornerLocation.y)
+                        {
+                            if (worldTreePrefab)
+                            {
+                                worldTree = worldMap.CreateEntityAtLocation(worldTreePrefab, treeTopLeftCornerLocation.x, treeTopLeftCornerLocation.y) as WorldTree;
+                            }
+                        }
                         worldMap.SetInhabitant(i, j, worldTree);
                     }
                 }

@@ -13,7 +13,26 @@ public class EntityManager : MonoBehaviour
 {
     public List<EntityToPrefab> entityToPrefabMap = new List<EntityToPrefab>();
 
-    // @robin: list of entities in world too?
+    [SerializeField]
+    private List<BaseEntity> allEntities = new List<BaseEntity>();
+
+    public void RegisterNewEntity(BaseEntity newEntity)
+    {
+        allEntities.Add(newEntity);
+    }
+
+    public void UnregisterEntity(BaseEntity entity)
+    {
+        allEntities.Remove(entity);
+    }
+
+    public void StepTime()
+    {
+        foreach (BaseEntity entity in allEntities)
+        {
+            entity.StepTime();
+        }
+    }
 
     public GameObject GetPrefab(EntityType entityType)
     {
