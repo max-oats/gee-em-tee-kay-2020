@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Antler
-  m_Shader: {fileID: 4800000, guid: 12936e8951697bd41836c50fa986b639, type: 3}
+  m_Shader: {fileID: 4800000, guid: d6d0bea83458cfa43bfedadcb94548bc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

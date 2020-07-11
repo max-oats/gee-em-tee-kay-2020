@@ -43,8 +43,20 @@ public class AntlerGenerator : ProcMeshGenBase
     [Socks.Field(category="Quality")]
     public int radialSegments = 10;
 
+    [Socks.Field(category="Positioning")]
+    public bool showPosition = false;
+
+    [Socks.Field(category="Positioning")]
+    public Vector3 position;
+
     [Socks.Field(category="Debug")]
     public bool visualizeTree;
+
+    [Socks.Field(category="Mesh")]
+    public GameObject leftMesh;
+    
+    [Socks.Field(category="Mesh")]
+    public GameObject rightMesh;
 
     void Reset()
     {
@@ -57,20 +69,15 @@ public class AntlerGenerator : ProcMeshGenBase
         base.BeginMeshGen();
 
         //Debug.LogFormat("Creating a new procmesh. No. of tree nodes: {0}", tree.nodes.Count);
-        meshFilter.sharedMesh = builder.CreateMesh();
-        meshRenderer.sharedMaterials = builder.materials.ToArray();
+        leftMesh.GetComponent<MeshFilter>().sharedMesh = builder.CreateMesh();
+        leftMesh.GetComponent<MeshRenderer>().sharedMaterials = builder.materials.ToArray();
+        
+        rightMesh.GetComponent<MeshFilter>().sharedMesh = builder.CreateMesh();
+        rightMesh.GetComponent<MeshRenderer>().sharedMaterials = builder.materials.ToArray();
     }
 
     public override void GenerateNode(MeshBuilder builder, string rootNodeID, Vector3 position, Quaternion rotation, int depth, int submeshDepth)
     {
-        if (depth == 0)
-        {
-            foreach (Submesh submesh in subMeshes.FindAll(x => x.startPoint == SubmeshStartPoints.RootOfNode))
-            {
-                GenerateSubMesh(submesh, builder, tree.GetBaseNode().id, position, rotation, submeshDepth+1);
-            }
-        }
-
         /** Grab the number of generations */
         float numberOf = Random.Range(Mathf.Clamp(minimumInitialGrowths - (depth), 0, 1000), maximumGrowths);
 
@@ -82,10 +89,8 @@ public class AntlerGenerator : ProcMeshGenBase
                 /** Attach new node to tree*/
                 string newNodeID = tree.AttachNewNode(rootNodeID);
 
-                Vector3 direction = Random.insideUnitCircle.normalized;
-                direction = new Vector3(direction.x, 0f, direction.y);
-                float distMagnitude = Mathf.Clamp((distanceFromParent.Evaluate(t, Random.value) - (depth * distanceReduction)), 0f, 1000f);
-                Vector3 dist = direction * distMagnitude;
+                float distMagnitude = distanceFromParent.Evaluate(t, Random.value) - (depth * distanceReduction);
+                Vector3 dist = new Vector3(distMagnitude, 0f, 0f);
 
                 Vector3 heightDir = Vector3.up;
                 float heightMagnitude = Mathf.Clamp((heightFromParent.Evaluate(t, Random.value) - (depth * heightReduction)), 0f, 1000f);
@@ -123,6 +128,15 @@ public class AntlerGenerator : ProcMeshGenBase
                 /** Generate next node */
                 GenerateNode(builder, newNodeID, position, rotation, depth+1, submeshDepth);
             }
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        if (showPosition)
+        {
+            Gizmos.DrawSphere(transform.position + position, 0.1f);
+            Gizmos.DrawSphere(transform.position + new Vector3(-position.x, position.y, position.z), 0.1f);
         }
     }
 
