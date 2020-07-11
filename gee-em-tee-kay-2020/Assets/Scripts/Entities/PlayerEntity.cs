@@ -7,9 +7,16 @@ public class PlayerEntity : BaseEntity
     private bool canLayEgg = false;
 
     public Color debugColourWithWater;
+    public Color debugColourWithAncestor;
     public Color debugColourNormal;
 
     public override void TriggerInteract(InteractParams interactParams) {}
+
+    public void GatherAncestor()
+    {
+        // Trigger Ancestor
+        holdingAncestor = true;
+    }
 
     public void BuryAncestor()
     {
@@ -45,6 +52,10 @@ public class PlayerEntity : BaseEntity
         if (holdingWater)
         {
             debugColor = debugColourWithWater;
+        }
+        else if (holdingAncestor)
+        {
+            debugColor = debugColourWithAncestor;
         }
         else
         {
