@@ -6,16 +6,30 @@ public abstract class BaseEntity : MonoBehaviour
     public Color debugColor;
 
     protected WorldTile currentWorldTile;
+    protected bool isActive = true;
 
     // Return true if the interaction succeeded
     public virtual void TriggerInteract(BaseInteractParams interactParams)
     {
         interactParams.interactingEntity.InteractionResult(new BaseInteractedWithParams(GetEntityType(), this));
-    
     }
     public virtual void InteractionResult(BaseInteractedWithParams interactedWithParams) {}
     public abstract EntityType GetEntityType();
     public virtual void StepTime() {}
+
+    public bool IsActive()
+    {
+        return isActive;
+    }
+
+    public void Kill()
+    {
+        isActive = false;
+        if (gameObject)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public virtual void SetTile(WorldTile inTile)
     {

@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public abstract class Bullet : BaseEntity
+public class Bullet : BaseEntity
 {
+    public static List<EntityType> obstacleTypes = new List<EntityType>();
+
     [SerializeField]
-    private List<EntityType> obstacleTypes = new List<EntityType>();
+    private List<EntityType> instanceObstacleTypes = new List<EntityType>();
 
     [System.NonSerialized]
     public Direction direction;
@@ -52,6 +54,7 @@ public abstract class Bullet : BaseEntity
         else
         {
             // Travel animation
+            gameObject.transform.position = Game.worldMap.GetTilePos(destination);
             Game.worldMap.AddInhabitant(destination, this);
         }
     }
@@ -61,5 +64,11 @@ public abstract class Bullet : BaseEntity
         // Trigger Animation
 
         RemoveFromMap();
+        Kill();
+    }
+
+    void Awake()
+    {
+        obstacleTypes = instanceObstacleTypes;
     }
 }

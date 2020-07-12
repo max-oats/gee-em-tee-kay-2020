@@ -46,6 +46,11 @@ public class Incubator : BaseEntity
                 interactParams.interactingEntity.InteractionResult(returnParams);
             }
         }
+        else
+        {
+            base.TriggerInteract(interactParams);
+        }
+
     }
 
     public override EntityType GetEntityType()
