@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public delegate void OnMoveTo(int x, int y);
     public OnMoveTo onMoveTo;
 
-    public delegate bool OnInteractWith(int x, int y);
+    public delegate void OnInteractWith(int x, int y);
     public OnInteractWith onInteractWith;
 
     [SerializeField, Socks.Field(category="Movement")]
@@ -91,10 +91,7 @@ public class PlayerController : MonoBehaviour
     void InteractInPlace()
     {
         Vector2Int currentPosition = entity.GetPosition();
-        if (onInteractWith?.Invoke(currentPosition.x, currentPosition.y) ?? false)
-        {
-            Game.entities.StepTime();
-        }
+        onInteractWith?.Invoke(currentPosition.x, currentPosition.y);
     }
 
     public void FaceDirection(Direction dir)
@@ -164,10 +161,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (canInteract)
             {
-                if (onInteractWith?.Invoke(finalPosition.x, finalPosition.y) ?? false)
-                {
-                    Game.entities.StepTime();
-                }
+                onInteractWith?.Invoke(finalPosition.x, finalPosition.y);
             }
         }
 

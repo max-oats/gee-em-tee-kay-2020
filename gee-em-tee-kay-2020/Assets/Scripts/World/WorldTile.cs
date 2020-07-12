@@ -59,15 +59,13 @@ public class WorldTile : MonoBehaviour
         debugRenderer.SetPropertyBlock(block);
     }
     
-    public bool TriggerInteract(InteractParams interactParams)
+    public void TriggerInteract(BaseInteractParams interactParams)
     {
-        bool interactionOccurred = false;
         List<BaseEntity> inhabitantsCopy = new List<BaseEntity>(inhabitants);
         foreach (BaseEntity inhabitant in inhabitantsCopy)
         {
-            interactionOccurred |= inhabitant.TriggerInteract(interactParams);
+            inhabitant.TriggerInteract(interactParams);
         }
-        return interactionOccurred;
     }
 
     public bool HasObstacle(List<EntityType> obstacleTypes)

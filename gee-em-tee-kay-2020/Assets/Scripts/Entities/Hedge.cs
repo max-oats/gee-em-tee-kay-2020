@@ -1,9 +1,7 @@
 public class Hedge : BaseEntity
 {
-    public override bool TriggerInteract(InteractParams interactParams)
-    {
-        return false;
-    }
+    public override void TriggerInteract(BaseInteractParams interactParams)
+    {}
 
     public override EntityType GetEntityType()
     {

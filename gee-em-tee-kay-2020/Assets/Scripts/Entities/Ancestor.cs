@@ -8,15 +8,18 @@ public class Ancestor : BaseEntity
     [SerializeField]
     private List<EntityType> instanceObstacleTypes = new List<EntityType>();
 
-    public override bool TriggerInteract(InteractParams interactParams)
+    public override void TriggerInteract(BaseInteractParams interactParams)
     {
-        if (!interactParams.holdingWater && !interactParams.heldAncestor)
+        if (interactParams.interactingType == EntityType.Player)
         {
-            interactParams.interactingCharacter.GatherAncestor(this);
-            RemoveFromMap();
-            return true;
+            PlayerInteractParams playerParams = interactParams as PlayerInteractParams;
+            if (!playerParams.holdingWater && !playerParams.heldAncestor)
+            {
+                interactParams.interactingEntity.InteractionResult(new BaseInteractedWithParams(EntityType.Ancestor, this));
+                //interactParams.interactingCharacter.GatherAncestor(this);
+                RemoveFromMap();
+            }
         }
-        return false;
     }
 
     public override EntityType GetEntityType()

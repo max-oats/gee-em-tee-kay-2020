@@ -48,9 +48,9 @@ public class WorldMap : MonoBehaviour
         tile.RemoveInhabitant(inhabitant);
     }
 
-    public bool InteractWith(int x, int y, InteractParams interactParams)
+    public void InteractWith(int x, int y, BaseInteractParams interactParams)
     {
-        return tileGrid[x,y].TriggerInteract(interactParams);
+        tileGrid[x,y].TriggerInteract(interactParams);
     }
 
     public BaseEntity CreateEntityAtLocation(GameObject entityPrefab, WorldTile inTile)

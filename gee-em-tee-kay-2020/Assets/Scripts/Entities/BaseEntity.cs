@@ -1,16 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class InteractParams
-{
-    public int tileX = 0;
-    public int tileY = 0;
-    public bool holdingWater = false;
-    public Ancestor heldAncestor = null;
-    public int eggsToLay = 0;
-    public PlayerEntity interactingCharacter = null;
-}
-
 public abstract class BaseEntity : MonoBehaviour
 {
     public Color debugColor;
@@ -18,7 +8,8 @@ public abstract class BaseEntity : MonoBehaviour
     protected WorldTile currentWorldTile;
 
     // Return true if the interaction succeeded
-    public abstract bool TriggerInteract(InteractParams interactParams);
+    public abstract void TriggerInteract(BaseInteractParams interactParams);
+    public virtual void InteractionResult(BaseInteractedWithParams interactedWithParams) {}
     public abstract EntityType GetEntityType();
     public virtual void StepTime() {}
 

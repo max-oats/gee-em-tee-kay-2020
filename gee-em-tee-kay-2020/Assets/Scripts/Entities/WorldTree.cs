@@ -1,5 +1,14 @@
 using UnityEngine;
 
+public class WorldTreeInteractedWithParams : BaseInteractedWithParams
+{
+    public WorldTreeInteractedWithParams(WorldTree inTree) : base(EntityType.WorldTree, inTree)
+    {}
+
+    public bool buriedAncestor = false;
+    public bool watered = false;
+}
+
 public class WorldTree : BaseEntity
 {
     public int initialHealth = 0;
@@ -18,25 +27,35 @@ public class WorldTree : BaseEntity
         currentHealth = initialHealth;
     }
 
-    public override bool TriggerInteract(InteractParams interactParams)
+    public override void TriggerInteract(BaseInteractParams interactParams)
     {
-        if (interactParams.heldAncestor)
+        switch (interactParams.interactingType)
+        {
+            case EntityType.Player:
+                TriggerInteractByPlayer(interactParams as PlayerInteractParams);
+                break;
+        }
+    }
+
+    void TriggerInteractByPlayer(PlayerInteractParams playerParams)
+    {
+        WorldTreeInteractedWithParams resultParams = new WorldTreeInteractedWithParams(this);
+        if (playerParams.heldAncestor)
         {
             // Plant ancestor
             ModifyHealth(healthGainedByPlanting);
             debugColor = debugColourWhenPlanted;
-            interactParams.interactingCharacter.BuryAncestor();
-            return true;
+            resultParams.buriedAncestor = true;
+            playerParams.interactingEntity.InteractionResult(resultParams);
         }
-        else if (interactParams.holdingWater)
+        else if (playerParams.holdingWater)
         {
             // Water tree
             ModifyHealth(healthGainedByWatering);
             debugColor = debugColourWhenWatered;
-            interactParams.interactingCharacter.UseWater();
-            return true;
+            resultParams.watered = true;
+            playerParams.interactingEntity.InteractionResult(resultParams);
         }
-        return false;
     }
 
     public override EntityType GetEntityType()

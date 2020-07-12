@@ -4,14 +4,16 @@ public class Water : BaseEntity
 {
     public Material waterMaterial;
 
-    public override bool TriggerInteract(InteractParams interactParams)
+    public override void TriggerInteract(BaseInteractParams interactParams)
     {
-        if (!interactParams.holdingWater && !interactParams.heldAncestor)
+        if (interactParams.interactingType == EntityType.Player)
         {
-            interactParams.interactingCharacter.GatherWater();
-            return true;
+            PlayerInteractParams playerParams = interactParams as PlayerInteractParams;
+            if (!playerParams.holdingWater && !playerParams.heldAncestor)
+            {
+                interactParams.interactingEntity.InteractionResult(new BaseInteractedWithParams(EntityType.Water, this));
+            }
         }
-        return false;
     }
 
     public override EntityType GetEntityType()

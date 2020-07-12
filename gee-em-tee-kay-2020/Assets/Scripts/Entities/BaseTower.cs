@@ -1,8 +1,7 @@
 public abstract class BaseTower : BaseEntity
 {
-    public override bool TriggerInteract(InteractParams interactParams)
+    public override void TriggerInteract(BaseInteractParams interactParams)
     {
         // Repair (requires water?)
-        return false;
     }
 }

@@ -1,9 +1,8 @@
 public abstract class BaseEnemy : BaseEntity
 {
-    public override bool TriggerInteract(InteractParams interactParams)
+    public override void TriggerInteract(BaseInteractParams interactParams)
     {
         // Maybe should implement really weak attack?
-        return false;
     }
 
     public override void StepTime()

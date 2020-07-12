@@ -2,6 +2,16 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public class PlayerInteractParams : BaseInteractParams
+{
+    public PlayerInteractParams(PlayerEntity player) :  base(EntityType.Player, player)
+    { }
+
+    public bool holdingWater = false;
+    public Ancestor heldAncestor = null;
+    public int eggsToLay = 0;
+}
+
 public class PlayerEntity : BaseEntity
 {
     public static List<EntityType> obstacleTypes = new List<EntityType>();
@@ -28,74 +38,41 @@ public class PlayerEntity : BaseEntity
     private Animator animator;
     private PlayerController playerController;
 
-    public override bool TriggerInteract(InteractParams interactParams)
+    public override void TriggerInteract(BaseInteractParams interactParams)
     {
-        if (heldAncestor)
+        switch (interactParams.interactingType)
         {
-            SpawnTowerFrom(heldAncestor, interactParams.tileX, interactParams.tileY);
+            case EntityType.Player:
+            {
+                OnInteractWithSelf();
+                interactParams.interactingEntity.InteractionResult(new BaseInteractedWithParams(EntityType.Player, this));
+                break;
+            }
         }
-        else
-        {
-            // Interacting with yourself is relaxing
-            Relax();
-        }
+    }
 
-        return true;
+    public override void InteractionResult(BaseInteractedWithParams interactedWithParams) 
+    {
+        switch (interactedWithParams.typeInteractedWith)
+        {
+            case EntityType.Ancestor:
+                OnAncestorInteractedWith(interactedWithParams.entityInteractedWith as Ancestor);
+                break;
+            case EntityType.Incubator:
+                OnIncubatorInteractedWith(interactedWithParams as IncubatorInteractedWithParams);
+                break;
+            case EntityType.Water:
+                OnWaterInteractedWith();
+                break;
+            case EntityType.WorldTree:
+                OnWorldTreeInteractedWith(interactedWithParams as WorldTreeInteractedWithParams);
+                break;
+        }
     }
 
     public override EntityType GetEntityType()
     {
         return EntityType.Player;
-    }
-
-    public void GatherAncestor(Ancestor inAncestor)
-    {
-        // Trigger animation
-        heldAncestor = inAncestor;
-    }
-
-    public void BuryAncestor()
-    {
-        // Trigger animation
-        Game.entities.UnregisterEntity(heldAncestor);
-        heldAncestor = null;
-    }
-
-    public void SpawnTowerFrom(Ancestor ancestor, int tileX, int tileY)
-    {
-        BuryAncestor();
-
-        // Move out of square
-        playerController.MoveAside();
-
-        // Spawn tower
-        GameObject towerPrefabToSpawn = TowerTypeSelector.TowerToSpawnFromAncestor(ancestor);
-        Game.worldMap.CreateEntityAtLocation(towerPrefabToSpawn, tileX, tileY);
-    }
-
-    public void UseWater()
-    {
-        // Trigger animation
-        holdingWater = false;
-    }
-
-    public void GatherWater()
-    {
-        // Trigger animation
-        holdingWater = true;
-    }
-
-    public void LayEggs()
-    {
-        // Trigger animation
-        eggsToLay = 0;
-    }
-
-    public void Relax()
-    {
-        // Trigger animation
-        eggsToLay++;
-        eggsToLay = Mathf.Min(eggsToLay, maxEggsLaidAtOnce);
     }
 
     public override void StepTime()
@@ -107,6 +84,56 @@ public class PlayerEntity : BaseEntity
         {
             Game.entities.onTimeStepComplete += Die;
         }
+    }
+
+    void GatherAncestor(Ancestor inAncestor)
+    {
+        // Trigger animation
+        heldAncestor = inAncestor;
+    }
+
+    void BuryAncestor()
+    {
+        // Trigger animation
+        Game.entities.UnregisterEntity(heldAncestor);
+        heldAncestor = null;
+    }
+
+    void UseWater()
+    {
+        // Trigger animation
+        holdingWater = false;
+    }
+
+    void GatherWater()
+    {
+        // Trigger animation
+        holdingWater = true;
+    }
+
+    void LayEggs()
+    {
+        // Trigger animation
+        eggsToLay = 0;
+    }
+
+    void Relax()
+    {
+        // Trigger animation
+        eggsToLay++;
+        eggsToLay = Mathf.Min(eggsToLay, maxEggsLaidAtOnce);
+    }
+
+    void SpawnTowerFrom(Ancestor ancestor, int tileX, int tileY)
+    {
+        BuryAncestor();
+
+        // Move out of square
+        playerController.MoveAside();
+
+        // Spawn tower
+        GameObject towerPrefabToSpawn = TowerTypeSelector.TowerToSpawnFromAncestor(ancestor);
+        Game.worldMap.CreateEntityAtLocation(towerPrefabToSpawn, tileX, tileY);
     }
 
     void Die(int timeStep)
@@ -144,17 +171,70 @@ public class PlayerEntity : BaseEntity
         }
     }
 
-    bool InteractWith(int x, int y)
+    void InteractWith(int x, int y)
     {
-        InteractParams interactParams = new InteractParams();
+        PlayerInteractParams interactParams = new PlayerInteractParams(this);
         interactParams.holdingWater = holdingWater;
         interactParams.heldAncestor = heldAncestor;
         interactParams.eggsToLay = eggsToLay;
-        interactParams.interactingCharacter = this;
         interactParams.tileX = x;
         interactParams.tileY = y;
 
-        return Game.worldMap.InteractWith(x, y, interactParams);
+        Game.worldMap.InteractWith(x, y, interactParams);
+    }
+
+    void OnInteractWithSelf()
+    {
+        if (heldAncestor)
+        {
+            SpawnTowerFrom(heldAncestor, currentWorldTile.x, currentWorldTile.z);
+        }
+        else
+        {
+            // Interacting with yourself is relaxing
+            Relax();
+        }
+        Game.entities.StepTime();
+    }
+
+    void OnAncestorInteractedWith(Ancestor inAncestor)
+    {
+        GatherAncestor(inAncestor);
+        Game.entities.StepTime();
+    }
+
+    void OnIncubatorInteractedWith(IncubatorInteractedWithParams incubatorParams)
+    {
+        if (incubatorParams.watered)
+        {
+            UseWater();
+            Game.entities.StepTime();
+        }
+        else if (incubatorParams.fertilised)
+        {
+            LayEggs();
+            Game.entities.StepTime();
+        }
+    }
+
+    void OnWaterInteractedWith()
+    {
+        GatherWater();
+        Game.entities.StepTime();
+    }
+
+    void OnWorldTreeInteractedWith(WorldTreeInteractedWithParams worldTreeParams)
+    {
+        if (worldTreeParams.buriedAncestor)
+        {
+            BuryAncestor();
+            Game.entities.StepTime();
+        }
+        else if (worldTreeParams.watered)
+        {
+            UseWater();
+            Game.entities.StepTime();
+        }
     }
 
     IEnumerator Death()
