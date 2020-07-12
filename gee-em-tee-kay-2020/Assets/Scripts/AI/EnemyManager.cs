@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class EnemyManager : MonoBehaviour
     private EntityType[] enemyTypes = {};
     [SerializeField]
     private AnimationCurve spawnsPerTimeStep = null;
+    [SerializeField]
+    private EntityList enemyObstacleTypes = null;
 
     [SerializeField]
     private bool debugSpawn = false;
@@ -15,6 +18,9 @@ public class EnemyManager : MonoBehaviour
     private bool debugXIsEdge = false;
 
     private int mapSideLengthInTiles = 0;
+    private AStarPathFinder pathFinder = new AStarPathFinder();
+    private List<Vector2Int> possibleGoals = new List<Vector2Int>();
+    private List<Vector2Int> availableGoals = new List<Vector2Int>();
 
     void Awake()
     {
@@ -62,6 +68,10 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnWave(int numSpawns, int initialX, int initialY, bool xIsEdge)
     {
+        pathFinder.Init(new Vector2Int(mapSideLengthInTiles, mapSideLengthInTiles), null);
+
+        //TODO get obstacles
+
         for (int i = 0; i < numSpawns; i++)
         {
             int x = initialX, y = initialY;
@@ -93,12 +103,65 @@ public class EnemyManager : MonoBehaviour
                     y += y == 0 ? difference : -difference;
                 }
             }
-            SpawnEnemy(enemyTypes[Random.Range(0,enemyTypes.Length)], x, y);
+            SpawnEnemy(enemyTypes[Random.Range(0,enemyTypes.Length)], new Vector2Int(x, y), ChooseGoal());
         }
     }
 
-    void SpawnEnemy(EntityType enemyType, int x, int y)
+    void SpawnEnemy(EntityType enemyType, Vector2Int spawnPoint, Vector2Int goal)
     {
-        BaseEnemy enemy = Game.worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(enemyType), x, y) as BaseEnemy;
+        BaseEnemy enemy = Game.worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(enemyType), spawnPoint.x, spawnPoint.y) as BaseEnemy;
+        pathFinder.SetEndPoints(spawnPoint, goal);
+        List<Direction4> path = pathFinder.GetPath4();
+        if (path != null)
+        {
+            enemy.SetPath(path);
+        }
+    }
+
+    Vector2Int ChooseGoal()
+    {
+        if (possibleGoals.Count == 0)
+        {
+            GetPossibleGoals();
+        }
+
+        if (availableGoals.Count > 0)
+        {
+            Vector2Int goal = availableGoals[0];
+            availableGoals.RemoveAt(0);
+            return goal;
+        }
+
+        return Game.entities.GetCurrentPlayer().GetPosition();
+    }
+
+    void GetPossibleGoals()
+    {
+        Vector2Int treeTopLeft = GameObject.Find("World").GetComponent<WorldGenerator>().treeTopLeftCornerLocation;
+        Vector2Int currentPoint = treeTopLeft - new Vector2Int(1,1);
+
+        possibleGoals.Add(currentPoint);
+        for (int i = 0; i < 3; i++)
+        {
+            currentPoint += new Vector2Int(1,0);
+            possibleGoals.Add(currentPoint);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            currentPoint += new Vector2Int(0,1);
+            possibleGoals.Add(currentPoint);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            currentPoint += new Vector2Int(-1,0);
+            possibleGoals.Add(currentPoint);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            currentPoint += new Vector2Int(0,-1);
+            possibleGoals.Add(currentPoint);
+        }
+
+        availableGoals = new List<Vector2Int>(possibleGoals);
     }
 }

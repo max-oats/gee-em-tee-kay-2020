@@ -79,7 +79,8 @@ MonoBehaviour:
   - type: 0
     prefab: {fileID: 149611163642630930, guid: 1bcc3e622c1134514b0efd198b29c0e7, type: 3}
   - type: 1
-    prefab: {fileID: 14653465211172316, guid: 5004d20a3db9c4b5aa30d953df4a3387, type: 3}
+    prefab: {fileID: 5879730701521428320, guid: 5004d20a3db9c4b5aa30d953df4a3387,
+      type: 3}
   - type: 2
     prefab: {fileID: 2521162274213534067, guid: ac7457eb1896aea47846f304c51a4d82,
       type: 3}
@@ -179,7 +180,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 3
-      value: 7
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -234,6 +235,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  enemyObstacleTypes: {fileID: 11400000, guid: 4eaa0827884bcf2459f78175ceb5d22d, type: 2}
   debugSpawn: 1
   debugSpawnCentre: {x: 0, y: 0}
   debugXIsEdge: 1

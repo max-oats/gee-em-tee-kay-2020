@@ -12,10 +12,10 @@ public class AStarPathFinder
 
     // Creates a fresh map. 
     // Should only be called if we want obstacle locations to change
-    public void Init(Vector2Int size, Vector2Int goal)
+    public void Init(Vector2Int size, Vector2Int? goal)
     {
         map = new AStarMapNode[size.x, size.y];
-        goalLocation = goal;
+        goalLocation = goal ?? new Vector2Int();
 
         for (int i = 0; i < size.x; i++)
         {
@@ -185,6 +185,8 @@ public class AStarPathFinder
             if (FromDirection8(DirectionFromFirstToSecond(parent, current)) is Direction4 dir)
             {
                 path.Add(dir);
+                current = parent;
+                parent = current.GetParent();
             }
             else 
             {

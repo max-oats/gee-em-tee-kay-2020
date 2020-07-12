@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sideLengthInTiles: 32
-  treeTopLeftCornerLocation: {x: 3, y: 3}
+  treeTopLeftCornerLocation: {x: 7, y: 7}
   playerInitialPosition: {x: 1, y: 1}
   tileSideLengthInUnits: 2
   tilePrefab: {fileID: 5487711467938342039, guid: b7a90f2d469a5449e82ae8bfbbe1e868,

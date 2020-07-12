@@ -7,6 +7,11 @@ public class WorldMap : MonoBehaviour
     public int tileSize = 0;
     public Vector3 topLeftCornerLocation = new Vector3();
 
+    public Vector2Int GetSizeInTiles()
+    {
+        return new Vector2Int(tileGrid.GetLength(0), tileGrid.GetLength(1));
+    }
+
     public Vector3 GetTilePos(int x, int y)
     {
         return topLeftCornerLocation + new Vector3(x*tileSize, 0f, y*tileSize);
@@ -18,8 +23,7 @@ public class WorldMap : MonoBehaviour
 
     public bool IsValidLocation(int x, int y)
     {
-        // Only works with square map
-        bool isValid = (x >= 0 && x < tileGrid.GetLength(0) && y >= 0 && y < tileGrid.GetLength(0));
+        bool isValid = (x >= 0 && x < tileGrid.GetLength(0) && y >= 0 && y < tileGrid.GetLength(1));
         return isValid;
     }
 
