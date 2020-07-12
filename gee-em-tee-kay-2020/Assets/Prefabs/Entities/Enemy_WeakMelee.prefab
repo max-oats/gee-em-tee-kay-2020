@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColor: {r: 1, g: 0, b: 0, a: 1}
+  debugMarkerPrefab: {fileID: 2994700133856594314, guid: 4bff7c2397dfd497b97566f6aeb3ed0b,
+    type: 3}
 --- !u!1 &4764771964077528646
 GameObject:
   m_ObjectHideFlags: 0

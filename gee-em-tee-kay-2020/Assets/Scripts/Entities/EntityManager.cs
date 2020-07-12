@@ -30,6 +30,13 @@ public class EntityManager : MonoBehaviour
 
     private int currentTimeStep = 0;
 
+    private BaseEntity currentPlayer = null;
+
+    public BaseEntity GetCurrentPlayer()
+    {
+        return currentPlayer;
+    }
+
     public void RegisterNewEntity(BaseEntity newEntity)
     {
         allEntities.Add(newEntity);
@@ -38,6 +45,11 @@ public class EntityManager : MonoBehaviour
         if (entityUpdatePriority.Contains(newEntityType))
         {
             RegisterTickingEntity(newEntity);
+        }
+
+        if (newEntityType == EntityType.Player)
+        {
+            currentPlayer = newEntity;
         }
     }
 

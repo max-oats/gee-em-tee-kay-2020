@@ -14,7 +14,7 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField, Socks.Field(category="Map")]
     private int sideLengthInTiles = 0;
     [SerializeField, Socks.Field(category="Map")]
-    private Vector2Int treeTopLeftCornerLocation = new Vector2Int();
+    public Vector2Int treeTopLeftCornerLocation = new Vector2Int();
     [SerializeField, Socks.Field(category="Map")]
     private Vector2Int playerInitialPosition = new Vector2Int();
 

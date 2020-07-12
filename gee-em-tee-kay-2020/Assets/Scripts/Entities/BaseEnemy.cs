@@ -1,5 +1,12 @@
+using UnityEngine;
+using System.Collections.Generic;
+
 public abstract class BaseEnemy : BaseEntity
 {
+    [SerializeField]
+    private GameObject debugMarkerPrefab = null;
+
+    private List<Direction4> currentPath = new List<Direction4>();
     public override void TriggerInteract(BaseInteractParams interactParams)
     {
         // Maybe should implement really weak attack?
@@ -9,5 +16,39 @@ public abstract class BaseEnemy : BaseEntity
     public override void StepTime()
     {
         // Do the moving and such
+    }
+
+    public void SetPath(List<Direction4> inPath)
+    {
+        currentPath = new List<Direction4>(inPath);
+
+        // Add Debug
+        WorldTile currentTile = currentWorldTile;
+        AddDebugMarker(currentTile);
+        foreach (Direction4 dir in currentPath)
+        {
+            currentTile = GetNextTileInDirection(currentTile, dir);
+            AddDebugMarker(currentTile);
+        }
+    }
+
+    void AddDebugMarker(WorldTile tile)
+    {
+        GameObject.Instantiate(debugMarkerPrefab, Game.worldMap.GetTilePos(tile), Quaternion.identity);
+    }
+
+    WorldTile GetNextTileInDirection(WorldTile currentTile, Direction4 dir)
+    {
+        switch (dir)
+        {
+            case Direction4.North:
+                return Game.worldMap.GetTileInDirectionFrom(Direction.North, currentTile);
+            case Direction4.East:
+                return Game.worldMap.GetTileInDirectionFrom(Direction.East, currentTile);
+            case Direction4.South:
+                return Game.worldMap.GetTileInDirectionFrom(Direction.South, currentTile);
+            default:
+                return Game.worldMap.GetTileInDirectionFrom(Direction.West, currentTile);
+        }
     }
 }
