@@ -45,4 +45,12 @@ public class GameStateMachine : MonoBehaviour
         // Open to main menu?
         StartGame();
     }
+
+    void Update()
+    {
+        if (currentState)
+        {
+            currentState.Update();
+        }
+    }
 }
