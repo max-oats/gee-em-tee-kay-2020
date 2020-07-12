@@ -51,18 +51,26 @@ public class EntityManager : MonoBehaviour
     {
         foreach (BaseEntity entity in allEntities)
         {
-            Destroy(entity.gameObject);
+            if (entity)
+            {
+                entity.Kill();
+            }
         }
 
         allEntities.Clear();
+        tickingEntities.Clear();
     }
 
     public void StepTime()
     {
         Debug.Log("Step Time");
-        foreach (BaseEntity entity in tickingEntities)
+        List<BaseEntity> tickingEntitiesCopy = new List<BaseEntity>(tickingEntities);
+        foreach (BaseEntity entity in tickingEntitiesCopy)
         {
-            entity.StepTime();
+            if (entity != null && entity.IsActive() && entity.gameObject != null)
+            {
+                entity.StepTime();
+            }
         }
 
         currentTimeStep++;

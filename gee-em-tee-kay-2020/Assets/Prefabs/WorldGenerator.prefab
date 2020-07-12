@@ -59,6 +59,10 @@ MonoBehaviour:
     position: {x: 3, y: 1}
   - type: 3
     position: {x: 5, y: 1}
+  - type: 5
+    position: {x: 5, y: 5}
+  - type: 5
+    position: {x: 9, y: 5}
   worldTiles: []
 --- !u!1001 &379206042
 PrefabInstance:

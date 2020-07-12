@@ -11,6 +11,10 @@ public class WorldMap : MonoBehaviour
     {
         return topLeftCornerLocation + new Vector3(x*tileSize, 0f, y*tileSize);
     }
+    public Vector3 GetTilePos(WorldTile tile)
+    {
+        return GetTilePos(tile.x, tile.z);
+    }
 
     public bool IsValidLocation(int x, int y)
     {
