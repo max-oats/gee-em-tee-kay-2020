@@ -6,14 +6,14 @@ public class AStarPathFinder
     private AStarMapNode[,] map;
     private Vector2Int goalLocation;
 
+    private AStarMapNode_Terrain startNode;
     private List<AStarMapNode_Terrain> openNodes = new List<AStarMapNode_Terrain>();
     private List<AStarMapNode> closedNodes = new List<AStarMapNode>();
 
-    public void Init(Vector2Int size, Vector2Int start, Vector2Int goal)
+    // Creates a fresh map. 
+    // Should only be called if we want obstacle locations to change
+    public void Init(Vector2Int size, Vector2Int goal)
     {
-        openNodes.Clear();
-        closedNodes.Clear();
-
         map = new AStarMapNode[size.x, size.y];
         goalLocation = goal;
 
@@ -24,15 +24,42 @@ public class AStarPathFinder
                 map[i,j] = new AStarMapNode_Terrain(i, j, 10 * (int)Vector2Int.Distance(goalLocation, new Vector2Int(i,j)));
             }
         }
-
-        AStarMapNode_Terrain startNode = map[start.x, start.y] as AStarMapNode_Terrain;
-        startNode.SetIsStart();
-        openNodes.Add(startNode);
     }
 
+    // Registers that there is an obstacle at x,y
     public void PlaceObstacleAt(int x, int y)
     {
         map[x,y] = new AStarMapNode_Obstacle(x,y);
+    }
+
+    // Resets the map with obstacles for another go, but with different endpoints
+    public void SetEndPoints(Vector2Int? start, Vector2Int? goal)
+    {
+        openNodes.Clear();
+        closedNodes.Clear();
+
+        if (goal is Vector2Int newGoal)
+        {
+            goalLocation = newGoal;
+        }
+
+        for (int i = 0; i < map.GetLength(0); i++)
+        {
+            for (int j = 0; j < map.GetLength(1); j++)
+            {
+                if (!map[i,j].IsObstacle())
+                {
+                    map[i,j] = new AStarMapNode_Terrain(i, j, 10 * (int)Vector2Int.Distance(goalLocation, new Vector2Int(i,j)));
+                }
+            }
+        }
+
+        if (start is Vector2Int newStart)
+        {
+            startNode = map[newStart.x, newStart.y] as AStarMapNode_Terrain;
+            startNode.SetIsStart();
+        }
+        openNodes.Add(startNode);
     }
 
     public List<Direction4> GetPath4()
