@@ -27,9 +27,9 @@ public class AStarPathFinder
     }
 
     // Registers that there is an obstacle at x,y
-    public void PlaceObstacleAt(int x, int y)
+    public void PlaceObstacleAt(Vector2Int location)
     {
-        map[x,y] = new AStarMapNode_Obstacle(x,y);
+        map[location.x,location.y] = new AStarMapNode_Obstacle(location.x,location.y);
     }
 
     // Resets the map with obstacles for another go, but with different endpoints

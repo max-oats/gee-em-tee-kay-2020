@@ -150,4 +150,22 @@ public class WorldMap : MonoBehaviour
 
         return null;
     }
+
+    public List<Vector2Int> GetAllObstacleLocations(List<EntityType> obstacleTypes)
+    {
+        List<Vector2Int> obstaclePositions = new List<Vector2Int>();
+
+        for (int i = 0; i < tileGrid.GetLength(0); i++)
+        {
+            for (int j = 0; j < tileGrid.GetLength(1); j++)
+            {
+                if (HasObstacleAt(i,j, obstacleTypes))
+                {
+                    obstaclePositions.Add(new Vector2Int(i,j));
+                }
+            }
+        }
+
+        return obstaclePositions;
+    }
 }

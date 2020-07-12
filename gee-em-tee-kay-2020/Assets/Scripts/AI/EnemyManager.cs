@@ -70,7 +70,10 @@ public class EnemyManager : MonoBehaviour
     {
         pathFinder.Init(new Vector2Int(mapSideLengthInTiles, mapSideLengthInTiles), null);
 
-        //TODO get obstacles
+        foreach (Vector2Int obstaclePosition in Game.worldMap.GetAllObstacleLocations(enemyObstacleTypes.entities))
+        {
+            pathFinder.PlaceObstacleAt(obstaclePosition);
+        }
 
         for (int i = 0; i < numSpawns; i++)
         {
