@@ -54,7 +54,8 @@ public class Bullet : BaseEntity
         else
         {
             // Travel animation
-            gameObject.transform.position = Game.worldMap.GetTilePos(destination);
+            StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(destination)));
+            //FaceDirection(Socks.Utils.GetDirection(currentWorldTile, destination));
             Game.worldMap.AddInhabitant(destination, this);
         }
     }

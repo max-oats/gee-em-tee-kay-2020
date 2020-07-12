@@ -208,5 +208,25 @@ namespace Socks
             target.localScale = newScale;
             target.anchoredPosition = FP;
         }
+
+        public static Direction GetDirection(WorldTile one, WorldTile two)
+        {
+            if (one.x < two.x)
+            {
+                return Direction.East;
+            }
+            else if (one.x > two.x)
+            {
+                return Direction.West;
+            }
+            else if (one.z > two.z)
+            {
+                return Direction.South;
+            }
+            else
+            {
+                return Direction.North;
+            }
+        }
     }
 }

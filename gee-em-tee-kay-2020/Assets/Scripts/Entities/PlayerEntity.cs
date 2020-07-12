@@ -108,7 +108,7 @@ public class PlayerEntity : BaseEntity
     {
         StartCoroutine(SetLayerWeight(0f, 0.5f, 2, 0f));
         animator.CrossFadeInFixedTime("SpitWater", 0.1f);
-        GameObject go = Instantiate(waterSplash, transform.position, transform.rotation);
+        GameObject go = Instantiate(waterSplash, transform.position, Quaternion.Euler(0f, GetComponent<PlayerEntity>().rotationSmoother.GetDesiredValue(), 0f));
         Destroy(go, 5f);
         // Trigger animation
         holdingWater = false;
@@ -197,6 +197,13 @@ public class PlayerEntity : BaseEntity
             debugColor = debugColourNormal;
         }
     }
+
+    void LateUpdate()
+    {
+        UpdateRotation();
+    }
+
+    
 
     void InteractWith(int x, int y)
     {

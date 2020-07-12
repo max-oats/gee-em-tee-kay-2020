@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    void UpdateRotation()
     {
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, rotationSmoother.Smooth(), transform.eulerAngles.z);
     }
@@ -96,24 +96,7 @@ public class PlayerController : MonoBehaviour
 
     public void FaceDirection(Direction dir)
     {
-        if (dir == Direction.North)
-        {
-            rotationSmoother.SetDesiredValue(0f);
-        }
-        else if (dir == Direction.East)
-        {
-            rotationSmoother.SetDesiredValue(90f);
-        }
-        else if (dir == Direction.South)
-        {
-            rotationSmoother.SetDesiredValue(180f);
-        }
-        else
-        {
-            rotationSmoother.SetDesiredValue(270f);
-        }
-
-        facing = dir;
+        entity.FaceDirection(dir);
     }
 
     // Player intiated move. Will fire onMoveTo callback if successful
