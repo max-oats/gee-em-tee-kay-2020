@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private AnimationCurve spawnsPerTimeStep = null;
     [SerializeField]
-    private EntityList enemyObstacleTypes = null;
+    public EntityList enemyObstacleTypes = null;
 
     [SerializeField]
     private bool debugSpawn = false;
@@ -106,19 +106,41 @@ public class EnemyManager : MonoBehaviour
                     y += y == 0 ? difference : -difference;
                 }
             }
-            SpawnEnemy(enemyTypes[Random.Range(0,enemyTypes.Length)], new Vector2Int(x, y), ChooseGoal());
+            SpawnEnemy(enemyTypes[Random.Range(0,enemyTypes.Length)], new Vector2Int(x, y));
         }
     }
 
-    void SpawnEnemy(EntityType enemyType, Vector2Int spawnPoint, Vector2Int goal)
+    public void GetNewPathFor(BaseEnemy enemy, Vector2Int currentPosition)
     {
-        BaseEnemy enemy = Game.worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(enemyType), spawnPoint.x, spawnPoint.y) as BaseEnemy;
-        pathFinder.SetEndPoints(spawnPoint, goal);
+        // Do this once per step update
+        pathFinder.Init(new Vector2Int(mapSideLengthInTiles, mapSideLengthInTiles), ChooseGoal());
+
+        foreach (Vector2Int obstaclePosition in Game.worldMap.GetAllObstacleLocations(enemyObstacleTypes.entities))
+        {
+            if (obstaclePosition != currentPosition)
+            {
+                pathFinder.PlaceObstacleAt(obstaclePosition);
+            }
+        }
+
+        GetPathFor(enemy, currentPosition, null);
+    }
+
+    void GetPathFor(BaseEnemy enemy, Vector2Int currentPosition, Vector2Int? goal)
+    {
+        pathFinder.SetEndPoints(currentPosition, goal);
         List<Direction4> path = pathFinder.GetPath4();
         if (path != null)
         {
             enemy.SetPath(path);
         }
+    }
+
+    void SpawnEnemy(EntityType enemyType, Vector2Int spawnPoint)
+    {
+        BaseEnemy enemy = Game.worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(enemyType), spawnPoint.x, spawnPoint.y) as BaseEnemy;
+        enemy.SetManager(this);
+        GetPathFor(enemy, spawnPoint, ChooseGoal());
     }
 
     Vector2Int ChooseGoal()
@@ -128,11 +150,19 @@ public class EnemyManager : MonoBehaviour
             GetPossibleGoals();
         }
 
-        if (availableGoals.Count > 0)
+        if (availableGoals.Count == 0)
+        {
+            availableGoals = new List<Vector2Int>(possibleGoals);
+        }
+
+        while (availableGoals.Count > 0)
         {
             Vector2Int goal = availableGoals[0];
             availableGoals.RemoveAt(0);
-            return goal;
+            if (!Game.worldMap.HasObstacleAt(goal.x, goal.y, enemyObstacleTypes.entities))
+            {
+                return goal;
+            }
         }
 
         return Game.entities.GetCurrentPlayer().GetPosition();

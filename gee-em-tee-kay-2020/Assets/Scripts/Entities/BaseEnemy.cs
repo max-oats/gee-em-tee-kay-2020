@@ -1,34 +1,49 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+public class EnemyInteractParams : BaseInteractParams
+{
+    public EnemyInteractParams(EntityType enemyType, BaseEnemy enemy) : base(enemyType, enemy)
+    {}
+
+    public int damageDoneToWorldTree = 0;
+}
+
 public abstract class BaseEnemy : BaseEntity
 {
     [SerializeField]
     private GameObject debugMarkerPrefab = null;
+    [SerializeField]
+    private bool debugShowPath = false;
 
-    private List<Direction4> currentPath = new List<Direction4>();
+    protected EnemyManager myManager = null;
+
+    protected List<Direction4> currentPath = new List<Direction4>();
+
     public override void TriggerInteract(BaseInteractParams interactParams)
     {
         // Maybe should implement really weak attack?
         base.TriggerInteract(interactParams);    
     }
 
-    public override void StepTime()
+    public void SetManager(EnemyManager inManager)
     {
-        // Do the moving and such
+        myManager = inManager;
     }
-
     public void SetPath(List<Direction4> inPath)
     {
         currentPath = new List<Direction4>(inPath);
 
         // Add Debug
-        WorldTile currentTile = currentWorldTile;
-        AddDebugMarker(currentTile);
-        foreach (Direction4 dir in currentPath)
+        if (debugMarkerPrefab != null && debugShowPath)
         {
-            currentTile = GetNextTileInDirection(currentTile, dir);
+            WorldTile currentTile = currentWorldTile;
             AddDebugMarker(currentTile);
+            foreach (Direction4 dir in currentPath)
+            {
+                currentTile = GetNextTileInDirection(currentTile, dir);
+                AddDebugMarker(currentTile);
+            }
         }
     }
 
@@ -37,7 +52,7 @@ public abstract class BaseEnemy : BaseEntity
         GameObject.Instantiate(debugMarkerPrefab, Game.worldMap.GetTilePos(tile), Quaternion.identity);
     }
 
-    WorldTile GetNextTileInDirection(WorldTile currentTile, Direction4 dir)
+    protected WorldTile GetNextTileInDirection(WorldTile currentTile, Direction4 dir)
     {
         switch (dir)
         {

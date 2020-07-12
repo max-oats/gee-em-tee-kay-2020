@@ -37,6 +37,9 @@ public class WorldTree : BaseEntity
             case EntityType.Player:
                 TriggerInteractByPlayer(interactParams as PlayerInteractParams);
                 break;
+            case EntityType.Enemy_WeakMelee:
+                TriggerInteractByEnemy(interactParams as EnemyInteractParams);
+                break;
         }
     }
 
@@ -61,6 +64,12 @@ public class WorldTree : BaseEntity
             playerParams.interactingEntity.InteractionResult(resultParams);
             juicer.Squash(0.6f, 0.3f);
         }
+    }
+
+    void TriggerInteractByEnemy(EnemyInteractParams enemyParams)
+    {
+        Debug.Log("Tree attacked by enemy!");
+        ModifyHealth(-enemyParams.damageDoneToWorldTree);
     }
 
     public override EntityType GetEntityType()

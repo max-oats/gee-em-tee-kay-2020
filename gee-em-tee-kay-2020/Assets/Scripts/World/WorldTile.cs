@@ -84,6 +84,19 @@ public class WorldTile : MonoBehaviour
         return false;
     }
 
+    public bool HasInhabitantOfType(EntityType type)
+    {
+        foreach (BaseEntity inhabitant in inhabitants)
+        {
+            if (inhabitant.GetEntityType() == type)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void AddInhabitant(BaseEntity newInhabitant)
     {
         inhabitants.Add(newInhabitant);

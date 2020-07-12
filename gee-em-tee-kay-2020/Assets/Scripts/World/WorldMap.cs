@@ -119,6 +119,28 @@ public class WorldMap : MonoBehaviour
         return tileGrid[x,y];
     }
 
+    public WorldTile FindEntityInNeighbours(EntityType entity, WorldTile location)
+    {
+        for (int i = -1; i <=1; i++)
+        {
+            for (int j = -1; j<=1; j++)
+            {
+                if (i==0 && j==0)
+                {
+                    continue;
+                }
+
+                WorldTile thisTile = tileGrid[location.x+i, location.z+j];
+                if (thisTile.HasInhabitantOfType(entity))
+                {
+                    return thisTile;
+                }
+            }
+        }
+
+        return null;
+    }
+
     public Vector2Int? FindAvailableNeighbourTo(WorldTile inTile, List<EntityType> obstacleTypes)
     {
         int posX = inTile.x, posY = inTile.z;
