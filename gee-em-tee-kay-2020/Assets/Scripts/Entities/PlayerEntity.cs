@@ -79,7 +79,7 @@ public class PlayerEntity : BaseEntity
         currentTimeStepsTillDeath--;
         animator.SetFloat("Age", (float)(lifespan-currentTimeStepsTillDeath)/(float)lifespan);
         beardRenderer.SetBlendShapeWeight(0, ((float)(currentTimeStepsTillDeath)/(float)lifespan)*100f);
-        eyeRenderer.SetBlendShapeWeight(0, ((float)(currentTimeStepsTillDeath)/(float)lifespan)*100f);
+        eyeRenderer.SetBlendShapeWeight(0, ((float)(lifespan-currentTimeStepsTillDeath)/(float)lifespan)*100f);
         if (currentTimeStepsTillDeath == 0)
         {
             Game.entities.onTimeStepComplete += Die;
