@@ -201,6 +201,14 @@ MonoBehaviour:
   positionSmoother:
     smoothTime: 0.1
     initialDesired: {x: 0, y: 0, z: 0}
+  zoomSmoother:
+    smoothTime: 0
+    initialDesired: 0
+    isAngular: 0
+  screenShakeSmoother:
+    smoothTime: 0.2
+    initialDesired: 0
+    isAngular: 0
   transformToFollow: {fileID: 0}
 --- !u!81 &6146962931286633334
 AudioListener:

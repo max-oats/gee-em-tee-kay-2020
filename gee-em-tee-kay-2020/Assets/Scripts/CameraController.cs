@@ -35,6 +35,12 @@ public class CameraController : MonoBehaviour
         }
         
         UpdateScreenShake();
+        UpdateZoom();
+    }
+
+    void UpdateZoom()
+    {
+        /** stub */
     }
 
     /** Update screenshake */
