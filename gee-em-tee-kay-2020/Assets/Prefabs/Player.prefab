@@ -71,6 +71,7 @@ MonoBehaviour:
   maxEggsLaidAtOnce: 1
   lifeSpanRange: {x: 15, y: 15}
   beardRenderer: {fileID: 7742378348410441192}
+  eyeRenderer: {fileID: 3543781366786910194}
   instanceObstacleTypes: 00000000010000000200000003000000050000000600000007000000
 --- !u!1 &2755199535823553528
 GameObject:
@@ -247,45 +248,30 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: c5184a7ca30302a459226fc4162fcd85, type: 2}
   tree:
     ids:
-    - d8baf1f6-2a8e-4567-84fa-3261112ab743
-    - da9c204f-f6ed-4ae9-8d15-fcc4feffaf03
-    - 50ae80b3-67de-4517-a765-5d7ba70fe8a2
-    - 2145db87-f9b3-421e-b836-283cc260bddb
-    - 6cad9cfb-d2c8-4657-ac69-5bc891d35027
-    - 1ff477fb-f342-401d-8a56-40074af2ea33
-    - 32cc504c-47eb-4d30-afa4-335320096385
-    - 9a245634-7759-46da-bcf0-cb5323b6a9a0
+    - d505d136-9f8a-4d16-80cf-c22d1c66e7fa
+    - b7de8bc5-782b-4489-95e7-f070825843b7
+    - 3987dbcb-d71a-4d29-9742-1e4b59e4fff4
+    - b39ba12a-af10-40c8-ab5a-adf4d2f4d82b
+    - 0fdf26f1-a6db-4c09-8381-dfa817d75398
     nodes:
-    - id: d8baf1f6-2a8e-4567-84fa-3261112ab743
+    - id: d505d136-9f8a-4d16-80cf-c22d1c66e7fa
       position: {x: 0, y: 0, z: 0}
       outputs:
-      - da9c204f-f6ed-4ae9-8d15-fcc4feffaf03
-      - 1ff477fb-f342-401d-8a56-40074af2ea33
-    - id: da9c204f-f6ed-4ae9-8d15-fcc4feffaf03
-      position: {x: 0.44815683, y: 0.42914346, z: -0.3126285}
+      - b7de8bc5-782b-4489-95e7-f070825843b7
+      - b39ba12a-af10-40c8-ab5a-adf4d2f4d82b
+    - id: b7de8bc5-782b-4489-95e7-f070825843b7
+      position: {x: 0.46460152, y: 0.2792693, z: 0.11469831}
       outputs:
-      - 50ae80b3-67de-4517-a765-5d7ba70fe8a2
-    - id: 50ae80b3-67de-4517-a765-5d7ba70fe8a2
-      position: {x: 0.78711796, y: 0.7686455, z: -0.6334082}
-      outputs:
-      - 2145db87-f9b3-421e-b836-283cc260bddb
-    - id: 2145db87-f9b3-421e-b836-283cc260bddb
-      position: {x: 1.1102777, y: 1.1800872, z: -0.78993285}
-      outputs:
-      - 6cad9cfb-d2c8-4657-ac69-5bc891d35027
-    - id: 6cad9cfb-d2c8-4657-ac69-5bc891d35027
-      position: {x: 1.2687328, y: 1.4488109, z: -1.0522501}
+      - 3987dbcb-d71a-4d29-9742-1e4b59e4fff4
+    - id: 3987dbcb-d71a-4d29-9742-1e4b59e4fff4
+      position: {x: 0.098022014, y: 0.4578727, z: 0.27967888}
       outputs: []
-    - id: 1ff477fb-f342-401d-8a56-40074af2ea33
-      position: {x: 0.38544232, y: 0.20818958, z: -0.4362457}
+    - id: b39ba12a-af10-40c8-ab5a-adf4d2f4d82b
+      position: {x: 0.4457265, y: 0.09977758, z: 0.21460305}
       outputs:
-      - 32cc504c-47eb-4d30-afa4-335320096385
-    - id: 32cc504c-47eb-4d30-afa4-335320096385
-      position: {x: 0.75469875, y: 0.48505205, z: -0.8338865}
-      outputs:
-      - 9a245634-7759-46da-bcf0-cb5323b6a9a0
-    - id: 9a245634-7759-46da-bcf0-cb5323b6a9a0
-      position: {x: 0.56284356, y: 0.61292994, z: -1.2974753}
+      - 0fdf26f1-a6db-4c09-8381-dfa817d75398
+    - id: 0fdf26f1-a6db-4c09-8381-dfa817d75398
+      position: {x: 0.10390026, y: 0.14456287, z: 0.4870947}
       outputs: []
   meshFilter: {fileID: 5531551606787565442}
   meshRenderer: {fileID: 7292179091433818610}
@@ -294,8 +280,8 @@ MonoBehaviour:
   maximumGrowths: 2
   minimumInitialGrowths: 2
   radius:
-    m_Mode: 0
-    m_CurveMultiplier: 0
+    m_Mode: 1
+    m_CurveMultiplier: 1
     m_CurveMin:
       serializedVersion: 2
       m_Curve: []
@@ -304,12 +290,30 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_CurveMax:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.12
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0.08
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 0.07
+    m_ConstantMax: 0.1
   sizeReduction: 0.1
   distanceFromParent:
     m_Mode: 0
@@ -444,6 +448,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseFriend
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
     - target: {fileID: -4216859302048453862, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -499,6 +508,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7604734486540440110, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
@@ -514,21 +538,27 @@ PrefabInstance:
       propertyPath: m_BlendShapeWeights.Array.data[1]
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
-    - target: {fileID: -7604734486540440110, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    - target: {fileID: 4841510307475149496, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977681582445729333, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 589cd2724cf8b1f4d9914433e43ad3e7, type: 3}
 --- !u!4 &5375584427450912655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1144861263026513045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3543781366786910194 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
     type: 3}
   m_PrefabInstance: {fileID: 1144861263026513045}
   m_PrefabAsset: {fileID: 0}
