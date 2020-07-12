@@ -21,7 +21,12 @@ public class WorldMap : MonoBehaviour
 
     public bool HasObstacleAt(int x, int y, List<EntityType> obstacleTypes)
     {
-        return tileGrid[x,y].HasObstacle(obstacleTypes);
+        return HasObstacleAt(tileGrid[x,y], obstacleTypes);
+    }
+
+    public bool HasObstacleAt(WorldTile inTile, List<EntityType> obstacleTypes)
+    {
+        return inTile.HasObstacle(obstacleTypes);
     }
 
     public void AddInhabitant(int x, int y, BaseEntity newInhabitant)
@@ -50,7 +55,12 @@ public class WorldMap : MonoBehaviour
 
     public void InteractWith(int x, int y, BaseInteractParams interactParams)
     {
-        tileGrid[x,y].TriggerInteract(interactParams);
+        InteractWith(tileGrid[x,y], interactParams);
+    }
+
+    public void InteractWith(WorldTile inTile, BaseInteractParams interactParams)
+    {
+        inTile.TriggerInteract(interactParams);
     }
 
     public BaseEntity CreateEntityAtLocation(GameObject entityPrefab, WorldTile inTile)
@@ -71,6 +81,34 @@ public class WorldMap : MonoBehaviour
         AddInhabitant(tileX, tileY, entity);
         Game.entities.RegisterNewEntity(entity);
         return entity;
+    }
+
+    public WorldTile GetTileInDirectionFrom(Direction dir, WorldTile inTile)
+    {
+        int x = inTile.x, y = inTile.z;
+        if (dir == Direction.North)
+        {
+            y++;
+        }
+        else if (dir == Direction.East)
+        {
+            x++;
+        }
+        else if (dir == Direction.South)
+        {
+            y--;
+        }
+        else
+        {
+            x--;
+        }
+
+        if (!IsValidLocation(x, y))
+        {
+            return null;
+        }
+
+        return tileGrid[x,y];
     }
 
     public Vector2Int? FindAvailableNeighbourTo(WorldTile inTile, List<EntityType> obstacleTypes)

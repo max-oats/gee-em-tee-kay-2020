@@ -27,24 +27,24 @@ public class PlayerController : MonoBehaviour
 
     public void MoveAside()
     {
-        Vector2Int throwawayPosition;
-        if (TryMove(Direction.North, false, out throwawayPosition))
+        Vector2Int throwawayPosition = new Vector2Int();
+        if (TryMove(Direction.North, false, ref throwawayPosition))
         {
             FaceDirection(Direction.South);
             return;
         }
-        if (TryMove(Direction.East, false, out throwawayPosition))
+        if (TryMove(Direction.East, false, ref throwawayPosition))
         {
             FaceDirection(Direction.West);
             return;
         }
-        if (TryMove(Direction.South, false, out throwawayPosition))
+        if (TryMove(Direction.South, false, ref throwawayPosition))
         {
             FaceDirection(Direction.North);
             return;
         }
 
-        TryMove(Direction.West, false, out throwawayPosition);
+        TryMove(Direction.West, false, ref throwawayPosition);
         FaceDirection(Direction.East);
     }
 
@@ -120,52 +120,33 @@ public class PlayerController : MonoBehaviour
     // Will try to interact otherwise
     void PlayerMove(Direction dir)
     {
-        Vector2Int positionMovedTo;
-        if (TryMove(dir, true, out positionMovedTo))
+        Vector2Int positionMovedTo = new Vector2Int();
+        if (TryMove(dir, true, ref positionMovedTo))
         {
             onMoveTo?.Invoke(positionMovedTo.x, positionMovedTo.y);
         }
     }
 
     // Attempts to move somewhere. If we fail and are allowed to interact, do so
-    bool TryMove(Direction dir, bool canInteract, out Vector2Int finalPosition)
+    bool TryMove(Direction dir, bool canInteract, ref Vector2Int finalPosition)
     {
         FaceDirection(dir);
 
-        finalPosition = entity.GetPosition();
-
-        if (dir == Direction.North)
+        if (Game.worldMap.GetTileInDirectionFrom(dir, entity.GetTile()) is WorldTile destination)
         {
-            finalPosition.y++;
-        }
-        else if (dir == Direction.East)
-        {
-            finalPosition.x++;
-        }
-        else if (dir == Direction.South)
-        {
-            finalPosition.y--;
-        }
-        else
-        {
-            finalPosition.x--;
-        }
-
-        bool success = false;
-        if (IsValidLocation(finalPosition.x, finalPosition.y))
-        {
-            if (CanMoveToValidLocation(finalPosition.x, finalPosition.y))
+            if (CanMoveToValidLocation(destination.x, destination.z))
             {
-                success = true;
-                MoveToValidLocation(finalPosition.x, finalPosition.y);
+                MoveToValidLocation(destination.x, destination.z);
+                finalPosition = new Vector2Int(destination.x, destination.z);
+                return true;
             }
             else if (canInteract)
             {
-                onInteractWith?.Invoke(finalPosition.x, finalPosition.y);
+                onInteractWith?.Invoke(destination.x, destination.z);
             }
         }
-
-        return success;
+        
+        return false;
     }
 
     bool IsValidLocation(int x, int y)

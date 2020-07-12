@@ -40,15 +40,12 @@ public class PlayerEntity : BaseEntity
 
     public override void TriggerInteract(BaseInteractParams interactParams)
     {
-        switch (interactParams.interactingType)
+        if (interactParams.interactingType == EntityType.Player)
         {
-            case EntityType.Player:
-            {
-                OnInteractWithSelf();
-                interactParams.interactingEntity.InteractionResult(new BaseInteractedWithParams(EntityType.Player, this));
-                break;
-            }
+            OnInteractWithSelf();
         }
+
+        base.TriggerInteract(interactParams);
     }
 
     public override void InteractionResult(BaseInteractedWithParams interactedWithParams) 
@@ -188,13 +185,14 @@ public class PlayerEntity : BaseEntity
         if (heldAncestor)
         {
             SpawnTowerFrom(heldAncestor, currentWorldTile.x, currentWorldTile.z);
+            // Time step handled by move as part of placement
         }
         else
         {
             // Interacting with yourself is relaxing
             Relax();
+            Game.entities.StepTime();
         }
-        Game.entities.StepTime();
     }
 
     void OnAncestorInteractedWith(Ancestor inAncestor)

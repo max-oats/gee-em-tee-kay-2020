@@ -8,7 +8,11 @@ public abstract class BaseEntity : MonoBehaviour
     protected WorldTile currentWorldTile;
 
     // Return true if the interaction succeeded
-    public abstract void TriggerInteract(BaseInteractParams interactParams);
+    public virtual void TriggerInteract(BaseInteractParams interactParams)
+    {
+        interactParams.interactingEntity.InteractionResult(new BaseInteractedWithParams(GetEntityType(), this));
+    
+    }
     public virtual void InteractionResult(BaseInteractedWithParams interactedWithParams) {}
     public abstract EntityType GetEntityType();
     public virtual void StepTime() {}

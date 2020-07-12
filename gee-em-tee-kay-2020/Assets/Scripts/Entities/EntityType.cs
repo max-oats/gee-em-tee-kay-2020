@@ -1,6 +1,7 @@
 public enum EntityType
 {
     Ancestor = 0,
+    Bullet = 8,
     Enemy_WeakMelee = 1,
     Hedge = 2,
     Incubator = 3,
@@ -8,5 +9,5 @@ public enum EntityType
     Tower_Water = 5,
     Water = 6,
     WorldTree = 7,
-    MAX = 8,
+    MAX = 9,
 }

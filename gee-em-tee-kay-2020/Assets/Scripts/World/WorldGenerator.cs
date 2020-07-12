@@ -125,7 +125,10 @@ public class WorldGenerator : MonoBehaviour
                                 worldTree = worldMap.CreateEntityAtLocation(worldTreePrefab, i, j) as WorldTree;
                             }
                         }
-                        worldMap.AddInhabitant(i, j, worldTree);
+                        else
+                        {
+                            worldMap.AddInhabitant(i, j, worldTree);
+                        }
                     }
                 }
 
