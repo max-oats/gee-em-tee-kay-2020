@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5078c6630029ee4badcc0fd02248a84, type: 3}
   m_Name: EnemyObstacles
   m_EditorClassIdentifier: 
-  entities: 
+  entities: 00000000010000000300000004000000050000000600000007000000
