@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColor: {r: 1, g: 0.5370561, b: 0, a: 1}
+  particleDeath: {fileID: 9130418498363963850, guid: 129be0306c5234946948d0dc9aeb4c28,
+    type: 3}
   instanceObstacleTypes: 0000000001000000020000000300000004000000050000000600000007000000
