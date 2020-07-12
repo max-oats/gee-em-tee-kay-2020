@@ -72,6 +72,9 @@ MonoBehaviour:
   lifeSpanRange: {x: 2000, y: 2000}
   beardRenderer: {fileID: 7742378348410441192}
   eyeRenderer: {fileID: 3543781366786910194}
+  water: {fileID: 3764507754802813105}
+  waterSplash: {fileID: 9130418498363963850, guid: 689d18d617a4d4847be1e9909e87f8cb,
+    type: 3}
   instanceObstacleTypes: 00000000010000000200000003000000050000000600000007000000
 --- !u!1 &2755199535823553528
 GameObject:
@@ -448,16 +451,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseFriend
       objectReference: {fileID: 0}
-    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
-      propertyPath: m_BlendShapeWeights.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_BlendShapeWeights.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
     - target: {fileID: -4216859302048453862, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -513,6 +511,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7604734486540440110, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
@@ -528,25 +541,20 @@ PrefabInstance:
       propertyPath: m_BlendShapeWeights.Array.data[1]
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
-    - target: {fileID: 2977681582445729333, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    - target: {fileID: 4841510307475149496, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4841510307475149496, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    - target: {fileID: 2977681582445729333, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: -7604734486540440110, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    - target: {fileID: -4909650803386123228, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 589cd2724cf8b1f4d9914433e43ad3e7, type: 3}
@@ -571,6 +579,12 @@ Transform:
 --- !u!137 &7742378348410441192 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1144861263026513045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3764507754802813105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4909650803386123228, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
     type: 3}
   m_PrefabInstance: {fileID: 1144861263026513045}
   m_PrefabAsset: {fileID: 0}
