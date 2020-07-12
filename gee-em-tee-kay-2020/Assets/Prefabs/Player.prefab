@@ -68,8 +68,8 @@ MonoBehaviour:
   debugColourWithWater: {r: 0, g: 0.8113208, b: 0.75900155, a: 0}
   debugColourWithAncestor: {r: 1, g: 0.7911098, b: 0.4764151, a: 0}
   debugColourNormal: {r: 0.26864696, g: 1, b: 0, a: 0}
-  maxEggsLaidAtOnce: 1
-  lifeSpanRange: {x: 20, y: 20}
+  maxEggsLaidAtOnce: 3
+  lifeSpanRange: {x: 10, y: 15}
   beardRenderer: {fileID: 7742378348410441192}
   eyeRenderer: {fileID: 3543781366786910194}
   water: {fileID: 3764507754802813105}
