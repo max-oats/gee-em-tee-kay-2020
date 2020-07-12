@@ -47,7 +47,7 @@ public class Incubator : BaseEntity
             return false;
         }
 
-        if (Game.worldMap.FindAvailableNeighbourTo(currentWorldTile) is Vector2Int neighbourPosition)
+        if (Game.worldMap.FindAvailableNeighbourTo(currentWorldTile, PlayerEntity.obstacleTypes) is Vector2Int neighbourPosition)
         {
             spawnPosition = neighbourPosition;
             return true;

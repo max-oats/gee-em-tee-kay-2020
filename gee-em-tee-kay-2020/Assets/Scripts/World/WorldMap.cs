@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class WorldMap : MonoBehaviour
 {
@@ -18,9 +19,9 @@ public class WorldMap : MonoBehaviour
         return isValid;
     }
 
-    public bool HasInhabitantAt(int x, int y)
+    public bool HasObstacleAt(int x, int y, List<EntityType> obstacleTypes)
     {
-        return tileGrid[x,y].HasInhabitant();
+        return tileGrid[x,y].HasObstacle(obstacleTypes);
     }
 
     public void AddInhabitant(int x, int y, BaseEntity newInhabitant)
@@ -72,31 +73,31 @@ public class WorldMap : MonoBehaviour
         return entity;
     }
 
-    public Vector2Int? FindAvailableNeighbourTo(WorldTile inTile)
+    public Vector2Int? FindAvailableNeighbourTo(WorldTile inTile, List<EntityType> obstacleTypes)
     {
         int posX = inTile.x, posY = inTile.z;
 
         int x = posX-1, y = posY;
-        if (IsValidLocation(x,y) && !HasInhabitantAt(x,y))
+        if (IsValidLocation(x,y) && !HasObstacleAt(x,y, obstacleTypes))
         {
             return new Vector2Int(x,y);
         }
 
         x = posX+1;
-        if (IsValidLocation(x,y) && !HasInhabitantAt(x,y))
+        if (IsValidLocation(x,y) && !HasObstacleAt(x,y, obstacleTypes))
         {
             return new Vector2Int(x,y);
         }
 
         x = posX;
         y = posY-1;
-        if (IsValidLocation(x,y) && !HasInhabitantAt(x,y))
+        if (IsValidLocation(x,y) && !HasObstacleAt(x,y, obstacleTypes))
         {
             return new Vector2Int(x,y);
         }
 
         y = posY+1;
-        if (IsValidLocation(x,y) && !HasInhabitantAt(x,y))
+        if (IsValidLocation(x,y) && !HasObstacleAt(x,y, obstacleTypes))
         {
             return new Vector2Int(x,y);
         }

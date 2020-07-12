@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
     bool CanMoveToValidLocation(int x, int y)
     {
         // @TODO check for obstacles for player
-        return !Game.worldMap.HasInhabitantAt(x,y);
+        return !Game.worldMap.HasObstacleAt(x,y, PlayerEntity.obstacleTypes);
     }
 
     void OnDeath()

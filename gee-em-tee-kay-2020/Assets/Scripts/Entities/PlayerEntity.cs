@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class PlayerEntity : BaseEntity
 {
+    public static List<EntityType> obstacleTypes = new List<EntityType>();
     public Color debugColourWithWater;
     public Color debugColourWithAncestor;
     public Color debugColourNormal;
@@ -14,6 +15,8 @@ public class PlayerEntity : BaseEntity
     private Vector2Int lifeSpanRange;
     [SerializeField]
     private SkinnedMeshRenderer beardRenderer = null;
+    [SerializeField]
+    private List<EntityType> instanceObstacleTypes = new List<EntityType>();
 
     private int currentTimeStepsTillDeath = 0;
     private bool holdingWater = false;
@@ -121,6 +124,8 @@ public class PlayerEntity : BaseEntity
 
         animator = GetComponentInChildren<Animator>();
         beardRenderer.SetBlendShapeWeight(0, ((float)(currentTimeStepsTillDeath)/(float)lifespan)*100f);
+
+        obstacleTypes = instanceObstacleTypes;
     }
 
     void Update()
@@ -187,7 +192,7 @@ public class PlayerEntity : BaseEntity
         if (heldAncestor)
         {
             // @TODO Check for collisions for Ancestor
-            if (Game.worldMap.FindAvailableNeighbourTo(currentWorldTile) is Vector2Int tilePosition)
+            if (Game.worldMap.FindAvailableNeighbourTo(currentWorldTile, Ancestor.obstacleTypes) is Vector2Int tilePosition)
             {
                 Game.worldMap.AddInhabitant(tilePosition.x, tilePosition.y, heldAncestor);
             }

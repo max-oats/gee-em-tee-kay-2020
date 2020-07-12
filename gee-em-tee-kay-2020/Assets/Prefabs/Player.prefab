@@ -71,6 +71,7 @@ MonoBehaviour:
   maxEggsLaidAtOnce: 1
   lifeSpanRange: {x: 15, y: 15}
   beardRenderer: {fileID: 7742378348410441192}
+  instanceObstacleTypes: 00000000010000000200000003000000050000000600000007000000
 --- !u!1 &2755199535823553528
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,11 +444,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseFriend
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
     - target: {fileID: -4216859302048453862, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -503,11 +499,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7604734486540440110, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
@@ -522,6 +513,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[1]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
+    - target: {fileID: -7604734486540440110, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 589cd2724cf8b1f4d9914433e43ad3e7, type: 3}

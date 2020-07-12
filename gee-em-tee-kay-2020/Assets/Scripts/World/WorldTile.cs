@@ -70,9 +70,16 @@ public class WorldTile : MonoBehaviour
         return interactionOccurred;
     }
 
-    public bool HasInhabitant()
+    public bool HasObstacle(List<EntityType> obstacleTypes)
     {
-        return inhabitants.Count > 0;
+        foreach (BaseEntity inhabitant in inhabitants)
+        {
+            if (obstacleTypes.Contains(inhabitant.GetEntityType()))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void AddInhabitant(BaseEntity newInhabitant)

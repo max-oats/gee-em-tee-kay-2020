@@ -1,6 +1,12 @@
+using UnityEngine;
+using System.Collections.Generic;
+
 public class Ancestor : BaseEntity
 {
-    public int myProperty = 7;
+    public static List<EntityType> obstacleTypes = new List<EntityType>();
+
+    [SerializeField]
+    private List<EntityType> instanceObstacleTypes = new List<EntityType>();
 
     public override bool TriggerInteract(InteractParams interactParams)
     {
@@ -16,5 +22,10 @@ public class Ancestor : BaseEntity
     public override EntityType GetEntityType()
     {
         return EntityType.Ancestor;
+    }
+
+    void Awake()
+    {
+        obstacleTypes = instanceObstacleTypes;
     }
 }
