@@ -64,12 +64,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539c68b60f477447a917d0f55f35ccee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugColor: {r: 0.26864696, g: 1, b: 0, a: 1}
-  debugColourWithWater: {r: 0, g: 0.8113208, b: 0.75900155, a: 1}
-  debugColourWithAncestor: {r: 1, g: 0.7911098, b: 0.4764151, a: 1}
-  debugColourNormal: {r: 0.26864696, g: 1, b: 0, a: 1}
+  debugColor: {r: 0.26864696, g: 1, b: 0, a: 0}
+  debugColourWithWater: {r: 0, g: 0.8113208, b: 0.75900155, a: 0}
+  debugColourWithAncestor: {r: 1, g: 0.7911098, b: 0.4764151, a: 0}
+  debugColourNormal: {r: 0.26864696, g: 1, b: 0, a: 0}
   maxEggsLaidAtOnce: 1
-  lifeSpanRange: {x: 2000, y: 2000}
+  lifeSpanRange: {x: 20, y: 20}
   beardRenderer: {fileID: 7742378348410441192}
   eyeRenderer: {fileID: 3543781366786910194}
   water: {fileID: 3764507754802813105}
@@ -451,11 +451,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseFriend
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,21 +516,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7604734486540440110, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_BlendShapeWeights.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525368997058151271, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
-        type: 3}
-      propertyPath: m_BlendShapeWeights.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7246618727014394237, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
@@ -541,15 +531,25 @@ PrefabInstance:
       propertyPath: m_BlendShapeWeights.Array.data[1]
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4841510307475149496, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    - target: {fileID: -6057140222963153312, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc28e07077e11fb4598e0e5997a99863, type: 2}
+    - target: {fileID: 2977681582445729333, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2977681582445729333, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+    - target: {fileID: 4841510307475149496, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7604734486540440110, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4909650803386123228, guid: 589cd2724cf8b1f4d9914433e43ad3e7,
         type: 3}

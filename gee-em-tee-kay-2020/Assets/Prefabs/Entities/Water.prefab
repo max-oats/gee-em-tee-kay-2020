@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e8b0c185b00443d860c86d7b87e5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugColor: {r: 0, g: 0.16466069, b: 1, a: 1}
+  debugColor: {r: 0, g: 0.16466069, b: 1, a: 0}
   waterMaterial: {fileID: 2100000, guid: 962f3743bea4ac148b5d7957d9af06b7, type: 2}

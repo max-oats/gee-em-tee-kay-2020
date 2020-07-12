@@ -121,13 +121,7 @@ public class WorldTile : MonoBehaviour
 
     public void SetDebugColour(Color inDebugColour)
     {
-        float alpha = 0.5f;
-        if (inDebugColour == Color.white)
-        {
-            alpha = 0f;
-        }
-
         SpriteRenderer debugRenderer = GetComponentInChildren<SpriteRenderer>();
-        debugRenderer.color = new Color(inDebugColour.r, inDebugColour.g, inDebugColour.b, alpha);
+        debugRenderer.color = inDebugColour;
     }
 }

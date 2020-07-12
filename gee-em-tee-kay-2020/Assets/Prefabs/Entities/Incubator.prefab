@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b13da0dc84d4b2bb1e9ef733801d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugColor: {r: 0.6386528, g: 0, b: 1, a: 1}
+  debugColor: {r: 0.6386528, g: 0, b: 1, a: 0}
   debugColorWithEggs: {r: 1, g: 0, b: 0.81786346, a: 1}
   debugColorWhenWatered: {r: 0.33189106, g: 0, b: 1, a: 1}
 --- !u!114 &3240462127356084310
