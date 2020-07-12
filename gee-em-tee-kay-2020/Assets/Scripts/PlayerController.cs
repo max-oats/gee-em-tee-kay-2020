@@ -181,15 +181,16 @@ public class PlayerController : MonoBehaviour
 
     void MoveToValidLocation(int newX, int newY)
     {
-        Game.worldMap.SetInhabitant(entity.GetTile(), null);
+        Game.worldMap.RemoveInhabitant(entity.GetTile(), entity);
 
         StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(newX, newY)));
 
-        Game.worldMap.SetInhabitant(newX,newY, GetComponentInChildren<PlayerEntity>());
+        Game.worldMap.AddInhabitant(newX,newY, entity);
     }
 
     bool CanMoveToValidLocation(int x, int y)
     {
+        // @TODO check for obstacles for player
         return !Game.worldMap.HasInhabitantAt(x,y);
     }
 

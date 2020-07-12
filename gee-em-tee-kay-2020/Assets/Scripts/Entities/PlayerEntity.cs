@@ -55,7 +55,6 @@ public class PlayerEntity : BaseEntity
     {
         // Trigger animation
         Game.entities.UnregisterEntity(heldAncestor);
-        Destroy(heldAncestor.gameObject);
         heldAncestor = null;
     }
 
@@ -187,9 +186,10 @@ public class PlayerEntity : BaseEntity
         // Drop held ancestor next to us
         if (heldAncestor)
         {
+            // @TODO Check for collisions for Ancestor
             if (Game.worldMap.FindAvailableNeighbourTo(currentWorldTile) is Vector2Int tilePosition)
             {
-                Game.worldMap.SetInhabitant(tilePosition.x, tilePosition.y, heldAncestor);
+                Game.worldMap.AddInhabitant(tilePosition.x, tilePosition.y, heldAncestor);
             }
             else
             {
@@ -201,7 +201,7 @@ public class PlayerEntity : BaseEntity
         }
 
         // Remove ourselves from square
-        Game.worldMap.SetInhabitant(currentWorldTile, null);
+        Game.worldMap.RemoveInhabitant(currentWorldTile, this);
 
         // Spawn new Ancestor where we are
         Ancestor newAncestor = Game.worldMap.CreateEntityAtLocation(Game.entities.GetPrefab(EntityType.Ancestor), currentWorldTile) as Ancestor;

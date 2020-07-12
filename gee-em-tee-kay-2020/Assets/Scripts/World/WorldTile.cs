@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class WorldTile : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class WorldTile : MonoBehaviour
 
     private Color color;
 
-    private BaseEntity inhabitant = null;
+    private List<BaseEntity> inhabitants = new List<BaseEntity>();
 
     void Awake()
     {
@@ -59,28 +61,35 @@ public class WorldTile : MonoBehaviour
     
     public bool TriggerInteract(InteractParams interactParams)
     {
-        if (inhabitant)
+        bool interactionOccurred = false;
+        List<BaseEntity> inhabitantsCopy = new List<BaseEntity>(inhabitants);
+        foreach (BaseEntity inhabitant in inhabitantsCopy)
         {
-            return inhabitant.TriggerInteract(interactParams);
+            interactionOccurred |= inhabitant.TriggerInteract(interactParams);
         }
-        return false;
+        return interactionOccurred;
     }
 
     public bool HasInhabitant()
     {
-        return inhabitant != null;
+        return inhabitants.Count > 0;
     }
 
-    public void SetInhabitant(BaseEntity newInhabitant)
+    public void AddInhabitant(BaseEntity newInhabitant)
     {
-        inhabitant = newInhabitant;
+        inhabitants.Add(newInhabitant);
+    }
+
+    public void RemoveInhabitant(BaseEntity inhabitant)
+    {
+        inhabitants.Remove(inhabitant);
     }
 
     void Update()
     {
-        if (inhabitant)
+        if (inhabitants.Count > 0)
         {
-            SetDebugColour(inhabitant.debugColor);
+            SetDebugColour(inhabitants[0].debugColor);
         }
         else
         {
