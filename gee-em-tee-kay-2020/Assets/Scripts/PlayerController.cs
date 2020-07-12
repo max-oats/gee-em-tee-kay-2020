@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
         return Game.worldMap.IsValidLocation(x,y);
     }
 
-    void MoveToValidLocation(int newX, int newY)
+    public void MoveToValidLocation(int newX, int newY)
     {
         Game.worldMap.RemoveInhabitant(entity.GetTile(), entity);
 
