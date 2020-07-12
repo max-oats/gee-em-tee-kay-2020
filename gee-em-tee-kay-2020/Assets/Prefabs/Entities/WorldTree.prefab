@@ -48,7 +48,7 @@ MonoBehaviour:
   debugColor: {r: 0, g: 0.6226415, b: 0.08939484, a: 0}
   initialHealth: 200
   maxHealth: 200
-  healthGainedByPlanting: 15
+  healthGainedByPlanting: 30
   healthGainedByWatering: 5
   healthGainedPerTimeStep: -1
   debugColourWhenPlanted: {r: 0.6117647, g: 0.6627451, b: 0.7686275, a: 0}
