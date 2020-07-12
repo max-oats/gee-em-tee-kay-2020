@@ -52,9 +52,9 @@ class GameState_GameOver : BaseGameState
 
     public override void Update()
     {
-        if (game.input.GetButtonDown("Restart"))
+        if (Game.input.GetButtonDown("Restart"))
         {
-            game.gameStateMachine.StartGame();
+            Game.gameStateMachine.StartGame();
         }
     }
 

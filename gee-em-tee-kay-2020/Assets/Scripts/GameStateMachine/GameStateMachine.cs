@@ -48,7 +48,7 @@ public class GameStateMachine : MonoBehaviour
 
     void Update()
     {
-        if (currentState)
+        if (currentState != null)
         {
             currentState.Update();
         }
