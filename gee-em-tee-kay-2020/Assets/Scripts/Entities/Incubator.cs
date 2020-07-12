@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class IncubatorInteractedWithParams : BaseInteractedWithParams
 {
@@ -12,6 +14,8 @@ public class Incubator : BaseEntity
 {
     public Color debugColorWithEggs;
     public Color debugColorWhenWatered;
+
+    public List<GameObject> eggs;
 
     private int numEggs = 0;
     private bool sufficientlyWatered = false;
@@ -44,6 +48,7 @@ public class Incubator : BaseEntity
                 numEggs = playerParams.eggsToLay;
                 returnParams.fertilised = true;
                 interactParams.interactingEntity.InteractionResult(returnParams);
+                UpdateEggs();
             }
         }
         else
@@ -51,6 +56,19 @@ public class Incubator : BaseEntity
             base.TriggerInteract(interactParams);
         }
 
+    }
+
+    void UpdateEggs()
+    {
+        foreach (GameObject egg in eggs)
+        {
+            egg.SetActive(false);
+        }
+
+        for (int i = 0; i < Mathf.Min(numEggs, 3); ++i)
+        {
+            eggs[i].SetActive(true);
+        }
     }
 
     public override EntityType GetEntityType()
@@ -84,6 +102,7 @@ public class Incubator : BaseEntity
         Game.lifeCycleManager.RegisterIncubator(this);
 
         juicer = GetComponent<Juicer>();
+        UpdateEggs();
     }
 
     void Update()
