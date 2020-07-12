@@ -12,9 +12,18 @@ public class EnemyInteractParams : BaseInteractParams
 public abstract class BaseEnemy : BaseEntity
 {
     [SerializeField]
+    private int damageDoneByBullets = 5;
+    [SerializeField]
+    private int damageDoneByPlayer = 5;
+    [SerializeField]
+    private int initialHealth = 5;
+
+    [SerializeField]
     private GameObject debugMarkerPrefab = null;
     [SerializeField]
     private bool debugShowPath = false;
+
+    private int currentHealth = 0;
 
     protected EnemyManager myManager = null;
 
@@ -22,7 +31,25 @@ public abstract class BaseEnemy : BaseEntity
 
     public override void TriggerInteract(BaseInteractParams interactParams)
     {
-        // Maybe should implement really weak attack?
+        switch(interactParams.interactingType)
+        {
+            case EntityType.Player:
+            {
+                currentHealth -= damageDoneByPlayer;
+                break;
+            }
+            case EntityType.Bullet:
+            {
+                currentHealth -= damageDoneByBullets;
+                break;
+            }
+        }
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+
         base.TriggerInteract(interactParams);    
     }
 
@@ -47,9 +74,10 @@ public abstract class BaseEnemy : BaseEntity
         }
     }
 
-    void AddDebugMarker(WorldTile tile)
+    protected virtual void Die()
     {
-        GameObject.Instantiate(debugMarkerPrefab, Game.worldMap.GetTilePos(tile), Quaternion.identity);
+        RemoveFromMap();
+        Kill();
     }
 
     protected WorldTile GetNextTileInDirection(WorldTile currentTile, Direction4 dir)
@@ -65,5 +93,15 @@ public abstract class BaseEnemy : BaseEntity
             default:
                 return Game.worldMap.GetTileInDirectionFrom(Direction.West, currentTile);
         }
+    }
+
+    void Awake()
+    {
+        currentHealth = initialHealth;
+    }
+
+    void AddDebugMarker(WorldTile tile)
+    {
+        GameObject.Instantiate(debugMarkerPrefab, Game.worldMap.GetTilePos(tile), Quaternion.identity);
     }
 }

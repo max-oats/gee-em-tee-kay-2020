@@ -55,4 +55,10 @@ public class Enemy_WeakMelee : BaseEnemy
     {
         return EntityType.Enemy_WeakMelee;
     }
+
+    protected override void Die()
+    {
+        // Trigger animation
+        base.Die();
+    }
 }
