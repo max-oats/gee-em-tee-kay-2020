@@ -38,6 +38,6 @@ public abstract class BaseEntity : MonoBehaviour
 
     protected void RemoveFromMap()
     {
-        Game.worldMap.SetInhabitant(currentWorldTile, null);
+        Game.worldMap.RemoveInhabitant(currentWorldTile, this);
     }
 }

@@ -23,18 +23,28 @@ public class WorldMap : MonoBehaviour
         return tileGrid[x,y].HasInhabitant();
     }
 
-    public void SetInhabitant(int x, int y, BaseEntity newInhabitant)
+    public void AddInhabitant(int x, int y, BaseEntity newInhabitant)
     {
-        SetInhabitant(tileGrid[x,y], newInhabitant);
+        AddInhabitant(tileGrid[x,y], newInhabitant);
     }
 
-    public void SetInhabitant(WorldTile tile, BaseEntity newInhabitant)
+    public void AddInhabitant(WorldTile tile, BaseEntity newInhabitant)
     {
-        tile.SetInhabitant(newInhabitant);
+        tile.AddInhabitant(newInhabitant);
         if (newInhabitant)
         {
             newInhabitant.SetTile(tile);
         }
+    }
+
+    public void RemoveInhabitant(int x, int y, BaseEntity inhabitant)
+    {
+        RemoveInhabitant(tileGrid[x,y], inhabitant);
+    }
+
+    public void RemoveInhabitant(WorldTile tile, BaseEntity inhabitant)
+    {
+        tile.RemoveInhabitant(inhabitant);
     }
 
     public bool InteractWith(int x, int y, InteractParams interactParams)
@@ -57,7 +67,7 @@ public class WorldMap : MonoBehaviour
             transform
         ) as GameObject;
         BaseEntity entity = newObject.GetComponent<BaseEntity>();
-        SetInhabitant(tileX, tileY, entity);
+        AddInhabitant(tileX, tileY, entity);
         Game.entities.RegisterNewEntity(entity);
         return entity;
     }
