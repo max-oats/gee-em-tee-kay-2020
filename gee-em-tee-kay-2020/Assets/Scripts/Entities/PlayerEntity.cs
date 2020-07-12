@@ -26,6 +26,8 @@ public class PlayerEntity : BaseEntity
     [SerializeField]
     private SkinnedMeshRenderer beardRenderer = null;
     [SerializeField]
+    private SkinnedMeshRenderer eyeRenderer = null;
+    [SerializeField]
     private List<EntityType> instanceObstacleTypes = new List<EntityType>();
 
     private int currentTimeStepsTillDeath = 0;
@@ -77,6 +79,7 @@ public class PlayerEntity : BaseEntity
         currentTimeStepsTillDeath--;
         animator.SetFloat("Age", (float)(lifespan-currentTimeStepsTillDeath)/(float)lifespan);
         beardRenderer.SetBlendShapeWeight(0, ((float)(currentTimeStepsTillDeath)/(float)lifespan)*100f);
+        eyeRenderer.SetBlendShapeWeight(0, ((float)(currentTimeStepsTillDeath)/(float)lifespan)*100f);
         if (currentTimeStepsTillDeath == 0)
         {
             Game.entities.onTimeStepComplete += Die;
@@ -250,10 +253,13 @@ public class PlayerEntity : BaseEntity
 
         animator.CrossFadeInFixedTime("Death", 0.1f);
 
+        yield return new WaitForSeconds(0.1f);
+        eyeRenderer.SetBlendShapeWeight(1, 100f);
+
         yield return new WaitForSeconds(1.5f);
 
         float timeCounter = 0f;
-        float beardBlanketBlendTime = 0.5f;
+        float beardBlanketBlendTime = 1f;
         while (timeCounter < beardBlanketBlendTime)
         {
             timeCounter += Time.deltaTime;

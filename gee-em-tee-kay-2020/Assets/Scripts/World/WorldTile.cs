@@ -55,8 +55,12 @@ public class WorldTile : MonoBehaviour
                                             rgb.z + Random.Range(-colourOffsets.z, colourOffsets.z), 1f);
         block.SetColor("_Color", color);
                                             
-        MeshRenderer debugRenderer = GetComponentInChildren<MeshRenderer>();
-        debugRenderer.SetPropertyBlock(block);
+        MeshRenderer[] debugRenderer = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer renderer in debugRenderer)
+        {
+            if (renderer.gameObject.name == "Grass")
+                renderer.SetPropertyBlock(block);
+        }
     }
     
     public void TriggerInteract(BaseInteractParams interactParams)

@@ -106,7 +106,7 @@ public class WorldGenerator : MonoBehaviour
                     worldMap.tileGrid[i,j] = worldTile;
                 }
 
-                newTile.transform.localScale = new Vector3(tileSideLengthInUnits,1f,tileSideLengthInUnits);
+                newTile.transform.localScale = new Vector3(tileSideLengthInUnits,tileSideLengthInUnits,tileSideLengthInUnits);
 
                 if (i == 0 || i == sideLengthInTiles - 1 || j == 0 || j == sideLengthInTiles - 1)
                 {
