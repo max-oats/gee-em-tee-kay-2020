@@ -24,6 +24,7 @@ public class Enemy_WeakMelee : BaseEnemy
                 //StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(nextTile)));
 
                 Game.worldMap.AddInhabitant(nextTile, this);
+                gameObject.transform.position = Game.worldMap.GetTilePos(nextTile);
             }
         }
         else 
