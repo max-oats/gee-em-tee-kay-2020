@@ -99,6 +99,9 @@ MonoBehaviour:
   - type: 7
     prefab: {fileID: 8639300084964588442, guid: 227db5ed905a64affb1ac476157702b1,
       type: 3}
+  - type: 8
+    prefab: {fileID: 6516844411081635867, guid: ad494f14f540745789977176aff70e45,
+      type: 3}
   entityUpdatePriority: 040000000100000008000000050000000300000007000000
   allEntities: []
   tickingEntities: []
