@@ -11,7 +11,7 @@ public class Water : BaseEntity
             PlayerInteractParams playerParams = interactParams as PlayerInteractParams;
             if (!playerParams.holdingWater && !playerParams.heldAncestor)
             {
-                interactParams.interactingEntity.InteractionResult(new BaseInteractedWithParams(EntityType.Water, this));
+                base.TriggerInteract(interactParams);
             }
         }
     }

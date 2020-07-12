@@ -15,11 +15,12 @@ public class Ancestor : BaseEntity
             PlayerInteractParams playerParams = interactParams as PlayerInteractParams;
             if (!playerParams.holdingWater && !playerParams.heldAncestor)
             {
-                interactParams.interactingEntity.InteractionResult(new BaseInteractedWithParams(EntityType.Ancestor, this));
-                //interactParams.interactingCharacter.GatherAncestor(this);
                 RemoveFromMap();
             }
         }
+
+        base.TriggerInteract(interactParams);
+
     }
 
     public override EntityType GetEntityType()

@@ -59,6 +59,7 @@ public class EntityManager : MonoBehaviour
 
     public void StepTime()
     {
+        Debug.Log("Step Time");
         foreach (BaseEntity entity in tickingEntities)
         {
             entity.StepTime();

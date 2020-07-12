@@ -1,5 +1,5 @@
 // Params passed to the thing being interacted with
-public abstract class BaseInteractParams
+public class BaseInteractParams
 {
     public BaseInteractParams(EntityType inType, BaseEntity inEntity)
     {
