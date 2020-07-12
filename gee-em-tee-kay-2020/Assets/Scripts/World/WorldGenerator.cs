@@ -14,7 +14,7 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField, Socks.Field(category="Map")]
     private int sideLengthInTiles = 0;
     [SerializeField, Socks.Field(category="Map")]
-    public Vector2Int treeTopLeftCornerLocation = new Vector2Int();
+    public Vector2Int treeBottomLeftCornerLocation = new Vector2Int();
     [SerializeField, Socks.Field(category="Map")]
     private Vector2Int playerInitialPosition = new Vector2Int();
 
@@ -114,11 +114,11 @@ public class WorldGenerator : MonoBehaviour
                     continue;
                 }
 
-                if (i == treeTopLeftCornerLocation.x || i == treeTopLeftCornerLocation.x + 1)
+                if (i == treeBottomLeftCornerLocation.x || i == treeBottomLeftCornerLocation.x + 1)
                 {
-                    if (j == treeTopLeftCornerLocation.y || j == treeTopLeftCornerLocation.y + 1)
+                    if (j == treeBottomLeftCornerLocation.y || j == treeBottomLeftCornerLocation.y + 1)
                     {
-                        if (i == treeTopLeftCornerLocation.x && j == treeTopLeftCornerLocation.y)
+                        if (i == treeBottomLeftCornerLocation.x && j == treeBottomLeftCornerLocation.y)
                         {
                             if (worldTreePrefab)
                             {

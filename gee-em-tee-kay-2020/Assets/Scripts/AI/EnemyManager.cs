@@ -170,7 +170,7 @@ public class EnemyManager : MonoBehaviour
 
     void GetPossibleGoals()
     {
-        Vector2Int treeTopLeft = GameObject.Find("World").GetComponent<WorldGenerator>().treeTopLeftCornerLocation;
+        Vector2Int treeTopLeft = GameObject.Find("World").GetComponent<WorldGenerator>().treeBottomLeftCornerLocation;
         Vector2Int currentPoint = treeTopLeft - new Vector2Int(1,1);
 
         possibleGoals.Add(currentPoint);
