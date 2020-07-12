@@ -14,8 +14,7 @@ public class WorldTile : MonoBehaviour
 
     public GameObject bush;
 
-
-    private Color color;
+    private Color color = new Color(0,0,0,0);
 
     private List<BaseEntity> inhabitants = new List<BaseEntity>();
 
@@ -115,7 +114,7 @@ public class WorldTile : MonoBehaviour
         }
         else
         {
-            SetDebugColour(Color.white);
+            SetDebugColour(new Color(0,0,0,0));
         }
     }
 
