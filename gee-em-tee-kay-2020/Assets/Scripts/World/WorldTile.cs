@@ -37,8 +37,14 @@ public class WorldTile : MonoBehaviour
 
     public void SetMaterial(Material material)
     {
-        MeshRenderer debugRenderer = GetComponentInChildren<MeshRenderer>();
-        debugRenderer.material = material;
+        MeshRenderer[] debugRenderer = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer rend in debugRenderer)
+        {
+            if (rend.gameObject.name == "Grass")
+            {
+                rend.material = material;
+            }
+        }
     }
 
     public void SetHeight(float height)
