@@ -79,7 +79,8 @@ MonoBehaviour:
   - type: 0
     prefab: {fileID: 149611163642630930, guid: 1bcc3e622c1134514b0efd198b29c0e7, type: 3}
   - type: 1
-    prefab: {fileID: 14653465211172316, guid: 5004d20a3db9c4b5aa30d953df4a3387, type: 3}
+    prefab: {fileID: 5879730701521428320, guid: 5004d20a3db9c4b5aa30d953df4a3387,
+      type: 3}
   - type: 2
     prefab: {fileID: 2521162274213534067, guid: ac7457eb1896aea47846f304c51a4d82,
       type: 3}
@@ -97,9 +98,6 @@ MonoBehaviour:
       type: 3}
   - type: 7
     prefab: {fileID: 8639300084964588442, guid: 227db5ed905a64affb1ac476157702b1,
-      type: 3}
-  - type: 8
-    prefab: {fileID: 6516844411081635867, guid: ad494f14f540745789977176aff70e45,
       type: 3}
   entityUpdatePriority: 040000000100000008000000050000000300000007000000
   allEntities: []
