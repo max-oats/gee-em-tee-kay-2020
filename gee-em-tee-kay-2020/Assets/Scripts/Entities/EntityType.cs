@@ -1,11 +1,12 @@
 public enum EntityType
 {
-    Ancestor,
-    Enemy_WeakMelee,
-    Hedge,
-    Incubator,
-    Player,
-    Tower_Water,
-    Water,
-    WorldTree,
+    Ancestor = 0,
+    Enemy_WeakMelee = 1,
+    Hedge = 2,
+    Incubator = 3,
+    Player = 4,
+    Tower_Water = 5,
+    Water = 6,
+    WorldTree = 7,
+    MAX = 8,
 }
