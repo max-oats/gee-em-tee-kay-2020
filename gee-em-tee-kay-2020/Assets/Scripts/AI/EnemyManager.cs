@@ -171,23 +171,32 @@ public class EnemyManager : MonoBehaviour
     void GetPossibleGoals()
     {
         Vector2Int treeTopLeft = GameObject.Find("World").GetComponent<WorldGenerator>().treeBottomLeftCornerLocation;
-        Vector2Int currentPoint = treeTopLeft - new Vector2Int(1,1);
+        Vector2Int currentPoint = treeTopLeft - new Vector2Int(0,1);
 
         possibleGoals.Add(currentPoint);
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             currentPoint += new Vector2Int(1,0);
-            possibleGoals.Add(currentPoint);
+            if (i != 1)
+            {
+                possibleGoals.Add(currentPoint);
+            }
         }
         for (int i = 0; i < 3; i++)
         {
             currentPoint += new Vector2Int(0,1);
-            possibleGoals.Add(currentPoint);
+            if (i != 2)
+            {
+                possibleGoals.Add(currentPoint);
+            }
         }
         for (int i = 0; i < 3; i++)
         {
             currentPoint += new Vector2Int(-1,0);
-            possibleGoals.Add(currentPoint);
+            if (i != 2)
+            {
+                possibleGoals.Add(currentPoint);
+            }
         }
         for (int i = 0; i < 2; i++)
         {

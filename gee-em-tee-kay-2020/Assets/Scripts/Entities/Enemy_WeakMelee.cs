@@ -42,7 +42,7 @@ public class Enemy_WeakMelee : BaseEnemy
                 enemyParams.tileY = worldTreeTile.z;
                 enemyParams.damageDoneToWorldTree = damageDoneToWorldTreePerAttack;
 
-                Debug.Log("Enemy attacking!");
+                FaceDirection(Socks.Utils.GetDirection(currentWorldTile, worldTreeTile));
 
                 GetComponentInChildren<Animator>().CrossFadeInFixedTime("Attack", 0.1f);
 
