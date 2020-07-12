@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColor: {r: 0, g: 0.6226415, b: 0.08939484, a: 0}
-  initialHealth: 30
-  maxHealth: 50
+  initialHealth: 200
+  maxHealth: 200
   healthGainedByPlanting: 15
   healthGainedByWatering: 5
   healthGainedPerTimeStep: -1
