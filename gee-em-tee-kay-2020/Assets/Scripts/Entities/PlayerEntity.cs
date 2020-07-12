@@ -28,6 +28,10 @@ public class PlayerEntity : BaseEntity
     [SerializeField]
     private SkinnedMeshRenderer eyeRenderer = null;
     [SerializeField]
+    private GameObject water = null;
+    [SerializeField]
+    private GameObject waterSplash = null;
+    [SerializeField]
     private List<EntityType> instanceObstacleTypes = new List<EntityType>();
 
     private int currentTimeStepsTillDeath = 0;
@@ -89,6 +93,7 @@ public class PlayerEntity : BaseEntity
     void GatherAncestor(Ancestor inAncestor)
     {
         // Trigger animation
+        StartCoroutine(SetLayerWeight(4f, 0.1f, 1, 1f));
         heldAncestor = inAncestor;
     }
 
@@ -101,14 +106,36 @@ public class PlayerEntity : BaseEntity
 
     void UseWater()
     {
+        StartCoroutine(SetLayerWeight(0f, 0.5f, 2, 0f));
+        animator.CrossFadeInFixedTime("SpitWater", 0.1f);
+        GameObject go = Instantiate(waterSplash, transform.position, transform.rotation);
+        Destroy(go, 5f);
         // Trigger animation
         holdingWater = false;
+        water.SetActive(false);
     }
 
     void GatherWater()
     {
+        animator.CrossFadeInFixedTime("Drink", 0.1f);
+        water.SetActive(true);
+        StartCoroutine(SetLayerWeight(1f, 0.2f, 2, 1f));
         // Trigger animation
         holdingWater = true;
+    }
+
+    IEnumerator SetLayerWeight(float delay, float time, int layer, float weight)
+    {
+        yield return new WaitForSeconds(delay);
+
+        float timeCounter = 0f;
+        float initial = animator.GetLayerWeight(layer);
+        while (timeCounter < time)
+        {
+            timeCounter += Time.deltaTime;
+            animator.SetLayerWeight(layer, Mathf.Lerp(initial, weight, timeCounter/time));
+            yield return null;
+        }
     }
 
     void LayEggs()
