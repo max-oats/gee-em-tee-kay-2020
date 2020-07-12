@@ -30,6 +30,7 @@ public class Ancestor : BaseEntity
     {
         PlayerEntity pe = prms.interactingEntity as PlayerEntity;
         PlayerController pc = pe.GetComponent<PlayerController>();
+        pc.performingAction = true;
         pc.MoveToValidLocation(GetTile().x, GetTile().z);
 
         yield return new WaitForSeconds(1.0f);
@@ -42,6 +43,8 @@ public class Ancestor : BaseEntity
         GameObject go = Instantiate(particleDeath, transform.position, Quaternion.identity);
         Destroy(go, 5f);
         yield return new WaitForSeconds(0.3f);
+
+        pc.performingAction = false;
 
         RemoveFromMap();
     }

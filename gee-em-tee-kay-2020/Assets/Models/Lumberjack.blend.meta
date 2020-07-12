@@ -58,7 +58,7 @@ ModelImporter:
       takeName: Armature|Attack
       internalID: 0
       firstFrame: 0
-      lastFrame: 87
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -145,7 +145,7 @@ ModelImporter:
       takeName: Armature|Spawn
       internalID: 0
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
