@@ -29,8 +29,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7097234500106158298}
-  - {fileID: 352334330633998979}
   - {fileID: 2820899290068455747}
+  - {fileID: 352334330633998979}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -139,11 +139,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7097234499878238529, guid: 6d44f95c8cca7fb49a964e8547170e1f,
         type: 3}
-      propertyPath: ShapeModule.m_Scale.z
-      value: 30.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 7097234499878238529, guid: 6d44f95c8cca7fb49a964e8547170e1f,
-        type: 3}
       propertyPath: ShapeModule.m_Scale.x
       value: 130.26
       objectReference: {fileID: 0}
@@ -151,6 +146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
       value: 138.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097234499878238529, guid: 6d44f95c8cca7fb49a964e8547170e1f,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 30.34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d44f95c8cca7fb49a964e8547170e1f, type: 3}
@@ -210,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 7097234499878238528, guid: 6d44f95c8cca7fb49a964e8547170e1f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7097234499878238528, guid: 6d44f95c8cca7fb49a964e8547170e1f,
         type: 3}
@@ -295,7 +295,7 @@ PrefabInstance:
     - target: {fileID: 7097234499878238528, guid: 6d44f95c8cca7fb49a964e8547170e1f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7097234499878238528, guid: 6d44f95c8cca7fb49a964e8547170e1f,
         type: 3}
