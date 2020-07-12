@@ -21,10 +21,13 @@ public class WorldTree : BaseEntity
     public Color debugColourWhenWatered;
 
     private int currentHealth = 0;
+    private Juicer juicer;
+
 
     void Awake()
     {
         currentHealth = initialHealth;
+        juicer = GetComponent<Juicer>();
     }
 
     public override void TriggerInteract(BaseInteractParams interactParams)
@@ -47,6 +50,7 @@ public class WorldTree : BaseEntity
             debugColor = debugColourWhenPlanted;
             resultParams.buriedAncestor = true;
             playerParams.interactingEntity.InteractionResult(resultParams);
+            juicer.Squash(0.6f, 0.3f);
         }
         else if (playerParams.holdingWater)
         {
@@ -55,6 +59,7 @@ public class WorldTree : BaseEntity
             debugColor = debugColourWhenWatered;
             resultParams.watered = true;
             playerParams.interactingEntity.InteractionResult(resultParams);
+            juicer.Squash(0.6f, 0.3f);
         }
     }
 
