@@ -30,8 +30,10 @@ public class Tower_Water : BaseTower
         return EntityType.Tower_Water;
     }
 
-    void Awake()
+    public override void SetTile(WorldTile inTile)
     {
+        base.SetTile(inTile);
+
         StartCoroutine(MoveUp());
     }
 
@@ -42,7 +44,7 @@ public class Tower_Water : BaseTower
         {
             timeCounter += Time.deltaTime;
 
-            currentWorldTile.SetHeight(Mathf.Lerp(0f, 1.5f, timeCounter/1f));
+            currentWorldTile.SetHeight(Mathf.Lerp(0f, 2f, timeCounter/1f));
 
             yield return null;
         }
