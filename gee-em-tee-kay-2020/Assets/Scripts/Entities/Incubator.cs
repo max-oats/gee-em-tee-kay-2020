@@ -30,6 +30,11 @@ public class Incubator : BaseEntity
         return false;
     }
 
+    public override EntityType GetEntityType()
+    {
+        return EntityType.Incubator;
+    }
+
     public void UseEgg()
     {
         numEggs--;

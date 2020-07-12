@@ -1,4 +1,4 @@
-public class BaseTower : BaseEntity
+public abstract class BaseTower : BaseEntity
 {
     public override bool TriggerInteract(InteractParams interactParams)
     {

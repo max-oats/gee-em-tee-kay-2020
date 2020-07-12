@@ -18,6 +18,7 @@ public abstract class BaseEntity : MonoBehaviour
 
     // Return true if the interaction succeeded
     public abstract bool TriggerInteract(InteractParams interactParams);
+    public abstract EntityType GetEntityType();
     public virtual void StepTime() {}
 
     public virtual void SetTile(WorldTile inTile)

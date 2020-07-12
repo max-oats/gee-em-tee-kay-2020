@@ -39,6 +39,11 @@ public class WorldTree : BaseEntity
         return false;
     }
 
+    public override EntityType GetEntityType()
+    {
+        return EntityType.WorldTree;
+    }
+
     public override void StepTime()
     {
         // Lose health

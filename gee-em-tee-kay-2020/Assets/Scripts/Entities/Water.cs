@@ -10,6 +10,11 @@ public class Water : BaseEntity
         return false;
     }
 
+    public override EntityType GetEntityType()
+    {
+        return EntityType.Water;
+    }
+
     public override void SetTile(WorldTile inTile)
     {
         base.SetTile(inTile);
