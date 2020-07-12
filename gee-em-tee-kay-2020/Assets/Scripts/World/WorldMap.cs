@@ -130,6 +130,11 @@ public class WorldMap : MonoBehaviour
                     continue;
                 }
 
+                if (i != 0 && j != 0)
+                {
+                    continue;
+                }
+
                 WorldTile thisTile = tileGrid[location.x+i, location.z+j];
                 if (thisTile.HasInhabitantOfType(entity))
                 {

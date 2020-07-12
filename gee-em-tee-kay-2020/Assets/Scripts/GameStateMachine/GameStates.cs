@@ -9,6 +9,7 @@ abstract class BaseGameState
 
     public virtual void Init() {}
     public abstract void EnterState();
+    public virtual void Update() {}
     public abstract void LeaveState();
 }
 
@@ -47,6 +48,14 @@ class GameState_GameOver : BaseGameState
     {
         // Bring up black screen and sad graphic
         Debug.LogFormat("Game Over: {0}", reason);
+    }
+
+    public override void Update()
+    {
+        if (game.input.GetButtonDown("Restart"))
+        {
+            game.gameStateMachine.StartGame();
+        }
     }
 
     public override void LeaveState()

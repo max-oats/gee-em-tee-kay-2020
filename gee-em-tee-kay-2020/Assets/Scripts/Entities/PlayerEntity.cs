@@ -70,6 +70,9 @@ public class PlayerEntity : BaseEntity
             case EntityType.WorldTree:
                 OnWorldTreeInteractedWith(interactedWithParams as WorldTreeInteractedWithParams);
                 break;
+            case EntityType.Enemy_WeakMelee:
+                Game.entities.StepTime();
+                break;
         }
     }
 
