@@ -22,7 +22,7 @@ public class WorldTree : BaseEntity
 
     [SerializeField]
     private bool debugLogHealth = false;
-    
+
     private int currentHealth = 0;
     private Juicer juicer;
 
@@ -44,6 +44,7 @@ public class WorldTree : BaseEntity
                 TriggerInteractByEnemy(interactParams as EnemyInteractParams);
                 break;
         }
+        base.TriggerInteract(interactParams);
     }
 
     void TriggerInteractByPlayer(PlayerInteractParams playerParams)
