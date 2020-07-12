@@ -75,7 +75,6 @@ public class EntityManager : MonoBehaviour
 
     public void StepTime()
     {
-        Debug.Log("Step Time");
         List<BaseEntity> tickingEntitiesCopy = new List<BaseEntity>(tickingEntities);
         foreach (BaseEntity entity in tickingEntitiesCopy)
         {

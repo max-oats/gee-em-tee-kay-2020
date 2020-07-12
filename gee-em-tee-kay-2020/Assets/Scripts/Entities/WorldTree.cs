@@ -20,6 +20,9 @@ public class WorldTree : BaseEntity
     public Color debugColourWhenPlanted;
     public Color debugColourWhenWatered;
 
+    [SerializeField]
+    private bool debugLogHealth = false;
+    
     private int currentHealth = 0;
     private Juicer juicer;
 
@@ -82,7 +85,10 @@ public class WorldTree : BaseEntity
         // Lose health
         ModifyHealth(healthGainedPerTimeStep);
 
-        Debug.LogFormat("Tree Health {0}", currentHealth);
+        if (debugLogHealth)
+        {
+            Debug.LogFormat("Tree Health {0}", currentHealth);
+        }
     }
 
     public void ModifyHealth(int delta)
