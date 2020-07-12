@@ -16,6 +16,8 @@ public class Incubator : BaseEntity
     private int numEggs = 0;
     private bool sufficientlyWatered = false;
 
+    private Juicer juicer;
+
     public override void TriggerInteract(BaseInteractParams interactParams)
     {
         if (interactParams.interactingType == EntityType.Player)
@@ -26,6 +28,8 @@ public class Incubator : BaseEntity
             {
                 if (playerParams.holdingWater)
                 {
+                    juicer.Stretch(1f, 0.2f);
+
                     // Water plant
                     sufficientlyWatered = true;
                     returnParams.watered = true;
@@ -34,6 +38,8 @@ public class Incubator : BaseEntity
             }
             else if (playerParams.eggsToLay > 0)
             {
+                juicer.Squash(1f, 0.2f);
+
                 // Lay egg
                 numEggs = playerParams.eggsToLay;
                 returnParams.fertilised = true;
@@ -71,6 +77,8 @@ public class Incubator : BaseEntity
     void Awake()
     {
         Game.lifeCycleManager.RegisterIncubator(this);
+
+        juicer = GetComponent<Juicer>();
     }
 
     void Update()
