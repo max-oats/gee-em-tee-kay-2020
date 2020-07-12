@@ -8,12 +8,16 @@ public class Incubator : BaseEntity
     private int numEggs = 0;
     private bool sufficientlyWatered = false;
 
+    private Juicer juicer;
+
     public override bool TriggerInteract(InteractParams interactParams)
     {
         if (numEggs > 0)
         {
             if (interactParams.holdingWater)
             {
+                juicer.Stretch(1f, 0.2f);
+
                 // Water plant
                 sufficientlyWatered = true;
                 interactParams.interactingCharacter.UseWater();
@@ -22,6 +26,8 @@ public class Incubator : BaseEntity
         }
         else if (interactParams.eggsToLay > 0)
         {
+            juicer.Squash(1f, 0.2f);
+            
             // Lay egg
             numEggs = interactParams.eggsToLay;
             interactParams.interactingCharacter.LayEggs();
@@ -59,6 +65,8 @@ public class Incubator : BaseEntity
     void Awake()
     {
         Game.lifeCycleManager.RegisterIncubator(this);
+
+        juicer = GetComponent<Juicer>();
     }
 
     void Update()
