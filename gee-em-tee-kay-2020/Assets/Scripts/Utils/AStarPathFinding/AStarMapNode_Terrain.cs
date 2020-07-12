@@ -6,12 +6,9 @@ public class AStarMapNode_Terrain : AStarMapNode
     // Distance of node from goal node
     private int hCost = 0;
 
-    // gCost + hCost
-    private int fCost = 0;
-
     private AStarMapNode_Terrain parent = null;
 
-    public AStarMapNode_Terrain(int inH)
+    public AStarMapNode_Terrain(int inX, int inY, int inH) : base(inX, inY)
     {
         hCost = inH;
     }
@@ -28,13 +25,22 @@ public class AStarMapNode_Terrain : AStarMapNode
 
     public int GetFCost()
     {
-        return fCost;
+        return gCost + hCost;
     }
 
     void SetGCost(int inG)
     {
         gCost = inG;
-        fCost = gCost + hCost;
+    }
+
+    public void SetIsStart()
+    {
+        gCost = 0;
+    }
+
+    public AStarMapNode_Terrain GetParent()
+    {
+        return parent;
     }
 
     public void TrySetParent(AStarMapNode_Terrain inParent, int stepCostFromParent)
