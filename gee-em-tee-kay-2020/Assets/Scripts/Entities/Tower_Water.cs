@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Tower_Water : BaseTower
 {
@@ -26,6 +28,24 @@ public class Tower_Water : BaseTower
     public override EntityType GetEntityType()
     {
         return EntityType.Tower_Water;
+    }
+
+    void Awake()
+    {
+        StartCoroutine(MoveUp());
+    }
+
+    IEnumerator MoveUp()
+    {
+        float timeCounter = 0f;
+        while (timeCounter < 1f)
+        {
+            timeCounter += Time.deltaTime;
+
+            currentWorldTile.SetHeight(Mathf.Lerp(0f, 1.5f, timeCounter/1f));
+
+            yield return null;
+        }
     }
 
     void FireShotInDirection(Direction dir)

@@ -1,0 +1,2648 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d7cb59c61463040b400ee6ae768ed8, type: 3}
+  m_Name: WoolDatabase
+  m_EditorClassIdentifier: 
+  nodes:
+  - pos: {x: 0, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\IntoTheFrogRoom.yarn
+    title: Intro.IntoTheFrogRoom.EnterStorage
+    lines:
+    - <<Camera zoom 1.3>>
+    - <<LaundretteDoor open>>
+    - <<Marcie move_along_path Intro.IntoTheFrogRoom.Marcie.EnterStorage>>
+    - 'Marcie: blegh!!! i hate this room'
+    - <<Camera rotate e 2>>
+    - 'Marcie: so dusty'
+    - <<set_flag $_exclaimed>>
+    - <<Robin move_along_path Intro.IntoTheFrogRoom.Robin.EnterStorage>>
+    - 'Robin: yeah its... not great'
+    - 'Robin: but i''m hoping when i''m done here it''ll be a whole lot cleaner'
+    - <<set_flag $_pre_get_on_shoulders>>
+    - 'Robin: now come on! get up on my shoulders'
+    - <<set_flag $_post_get_on_shoulders>>
+    - <<wait 0.5>>
+    - <<Camera follow_targets Robin Marcie>>
+    - <<wait 0.5>>
+    - <<set_flag $_marcie_on_shoulders>>
+    - <<Marcie disable_friend_searcher>>
+    - 'Robin: ok so'
+    - <<Camera set_state DetergentCam>>
+    - <<ShelfFall stop_culling_wall n>>
+    - <<ShelfFall stop_culling_wall w>>
+    - <<Camera follow_targets Robin Marcie Detergent>>
+    - <<wait 1>>
+    - 'Robin: i need that pipe unblocking liquid up there ok?'
+    - 'Marcie: ok lemme try'
+    - <<Marcie anim OnShoulders_ReachUp>>
+    - <<wait 1>>
+    - 'Marcie: almost... got it!'
+    - <<spawn_entity Frog SurpriseFrog>>
+    - <<Camera set_state DetergentFrogCam>>
+    - <<wait 1>>
+    - <<SurpriseFrog anim_instant SpringUp>>
+    - <<SurpriseFrog set_movement_mode Kinematic>>
+    - <<SurpriseFrog set_actor_position SurpriseFrog.Emerge>>
+    - <<SurpriseFrog disable_friend_searcher>>
+    - <<wait 2>>
+    - <<SurpriseFrog move_tongue 1.7 1.5>>
+    - <<wait 0.5>>
+    - <<Camera set_state DetergentFrogLickCam>>
+    - <<wait 1.5>>
+    - 'Robin: [j][b]ummmmmmm marcie could you please hurry up'
+    - <<wait 1>>
+    - <<SurpriseFrog attach_tongue FrogTongueAttachPoint>>
+    - <<Robin anim HoldOnShoulders_StepBack>>
+    - <<Camera set_state DetergentFrogLickZoomCam>>
+    - <<wait 2>>
+    - 'Marcie: [j][b]robin!!!'
+    - <<Robin anim HoldOnShoulders_FallDown>>
+    - <<Robin detach shoulders>>
+    - <<Marcie set_movement_mode Kinematic>>
+    - <<Marcie anim HangOffShelf>>
+    - <<Marcie set_position Intro.IntoTheFrogRoom.Marcie.MarcieHangPoint>>
+    - <<Camera zoom 1>>
+    - <<Camera clear_state>>
+    - <<wait 1>>
+    - <<SurpriseFrog detach_tongue>>
+    - <<SurpriseFrog move_tongue 0.2 1>>
+    - <<wait 1>>
+    - <<SurpriseFrog destroy>>
+    - 'Robin: [b]{shake}marcie!!! are you okay?'
+    - ->yeah i'm strong as hell
+    - '    <<skip_to_next_after_char 20>>'
+    - '    Marcie: yeah i''m strong as hell'
+    - ->um no please help
+    - '    <<skip_to_next_after_char 20>>'
+    - '    Marcie: um no please help'
+    - <<Marcie set_movement_mode Physics>>
+    - <<ShelfFall anim FallDown>>
+    - // thing falls down
+    - <<Camera set_state ShelfFallen 1.5>>
+    - <<wait 0.7>>
+    - <<Marcie set_position Intro.IntoTheFrogRoom.Marcie.ShelfFall>>
+    - <<Marcie anim ProtectedByRobin>>
+    - <<Robin set_position Intro.IntoTheFrogRoom.Robin.ShelfFall>>
+    - <<Robin anim ProtectMarcie>>
+    - <<Camera shake 1>>
+    - <<wait 0.1>>
+    - <<Camera shake 1>>
+    - <<wait 0.1>>
+    - <<Camera shake 1>>
+    - <<wait 0.1>>
+    - <<Camera shake 1>>
+    - <<wait 0.1>>
+    - <<Camera shake 1>>
+    - <<wait 0.1>>
+    - <<Camera shake 1>>
+    - <<wait 3>>
+    - <<Marcie set_movement_mode Kinematic>>
+    - <<Robin attach Marcie hands>>
+    - <<Marcie anim IdleWalk>>
+    - <<Robin anim HoldUp>>
+    - <<ShelfFall anim PopUp>>
+    - 'Robin: marcie!!! are you okay!!!'
+    - <<Camera clear_targets>>
+    - <<Camera clear_state>>
+    - <<Camera reset>>
+    - <<Camera rotate ne>>
+    - 'Marcie: ............................. huh'
+    - 'Robin: marcie!'
+    - <<Camera rotate e>>
+    - 'Marcie: i had no idea there was a door here'
+    - <<Camera rotate ne>>
+    - 'Robin: excuse me'
+    - <<Robin anim HoldUp_Turn>>
+    - 'Robin: are you hurt? lemme get a good look at u'
+    - 'Marcie: [j=1.5][b]i don''t think i''ve ever been in here'
+    - <<Robin anim HoldUp>>
+    - <<Robin detach hands>>
+    - <<Robin attach Marcie hands_flipped>>
+    - 'Robin: {shake}[b]marcie!!!{wait}[/b] are you hurt!!!!!'
+    - 'Marcie: no i''m fine!'
+    - 'Marcie: the only pain i feel'
+    - 'Marcie: is the pain of not knowing'
+    - 'Robin: uh huh very poetic. seriously you''re not hurt at all?'
+    - 'Marcie: no robin i''m fine!'
+    - // robin puts marcie down
+    - <<Robin detach hands_flipped>>
+    - <<Robin anim IdleWalk>>
+    - <<Marcie set_movement_mode Physics>>
+    - <<Robin stop_ignoring Marcie>>
+    - <<Marcie stop_ignoring Robin>>
+    - <<Marcie enable_friend_searcher>>
+    - <<Robin enable_friend_searcher>>
+    - 'Robin: okay good. now lets start clearing up this mess'
+    - 'Marcie: in a second'
+    - 'Marcie: i''ve spent like 35 summers in this laundrette and i have explored
+      every inch of it'
+    - 'Marcie: and i have [b]never[/b] seen this door before'
+    - 'Marcie: we have to check it out'
+    - 'Robin: ... do you promise we''ll make this place spotless afterwards'
+    - 'Robin: i can''t get fired on my first day marcie'
+    - 'Marcie: of course i''ll help!!! [size=0.8][b]if you accompany me on this quest.'
+    - 'Robin: fine but its probably just more closet'
+    - 'Robin: probably filled with a buncha gross spiders'
+    - 'Robin: and slime'
+    - 'Robin: furry arachnids covered in slime. is that what you want'
+    - 'Marcie: omg you''re right'
+    - 'Marcie: ... {wait}you should go first'
+    - 'Robin: great.'
+    - <<load_moment Dream1>>
+    fullString: "<<Camera zoom 1.3>>\n<<LaundretteDoor open>>\n<<Marcie move_along_path
+      Intro.IntoTheFrogRoom.Marcie.EnterStorage>>\nMarcie: blegh!!! i hate this room\n<<Camera
+      rotate e 2>>\nMarcie: so dusty\n<<set_flag $_exclaimed>>\n<<Robin move_along_path
+      Intro.IntoTheFrogRoom.Robin.EnterStorage>>\nRobin: yeah its... not great\nRobin:
+      but i'm hoping when i'm done here it'll be a whole lot cleaner\n<<set_flag $_pre_get_on_shoulders>>\nRobin:
+      now come on! get up on my shoulders\n<<set_flag $_post_get_on_shoulders>>\n<<wait
+      0.5>>\n<<Camera follow_targets Robin Marcie>>\n<<wait 0.5>>\n<<set_flag $_marcie_on_shoulders>>\n<<Marcie
+      disable_friend_searcher>>\nRobin: ok so\n<<Camera set_state DetergentCam>>\n<<ShelfFall
+      stop_culling_wall n>>\n<<ShelfFall stop_culling_wall w>>\n<<Camera follow_targets
+      Robin Marcie Detergent>>\n<<wait 1>>\nRobin: i need that pipe unblocking liquid
+      up there ok?\nMarcie: ok lemme try\n<<Marcie anim OnShoulders_ReachUp>>\n<<wait
+      1>>\nMarcie: almost... got it!\n<<spawn_entity Frog SurpriseFrog>>\n<<Camera
+      set_state DetergentFrogCam>>\n<<wait 1>>\n<<SurpriseFrog anim_instant SpringUp>>\n<<SurpriseFrog
+      set_movement_mode Kinematic>>\n<<SurpriseFrog set_actor_position SurpriseFrog.Emerge>>\n<<SurpriseFrog
+      disable_friend_searcher>>\n<<wait 2>>\n<<SurpriseFrog move_tongue 1.7 1.5>>\n<<wait
+      0.5>>\n<<Camera set_state DetergentFrogLickCam>>\n<<wait 1.5>>\nRobin: [j][b]ummmmmmm
+      marcie could you please hurry up\n<<wait 1>>\n<<SurpriseFrog attach_tongue FrogTongueAttachPoint>>\n<<Robin
+      anim HoldOnShoulders_StepBack>>\n<<Camera set_state DetergentFrogLickZoomCam>>\n<<wait
+      2>>\nMarcie: [j][b]robin!!!\n<<Robin anim HoldOnShoulders_FallDown>>\n<<Robin
+      detach shoulders>>\n<<Marcie set_movement_mode Kinematic>>\n<<Marcie anim HangOffShelf>>\n<<Marcie
+      set_position Intro.IntoTheFrogRoom.Marcie.MarcieHangPoint>>\n<<Camera zoom 1>>\n<<Camera
+      clear_state>>\n<<wait 1>>\n<<SurpriseFrog detach_tongue>>\n<<SurpriseFrog move_tongue
+      0.2 1>>\n<<wait 1>>\n<<SurpriseFrog destroy>>\nRobin: [b]{shake}marcie!!! are
+      you okay?\n->yeah i'm strong as hell\n    <<skip_to_next_after_char 20>>\n    Marcie:
+      yeah i'm strong as hell\n->um no please help\n    <<skip_to_next_after_char
+      20>>\n    Marcie: um no please help\n<<Marcie set_movement_mode Physics>>\n<<ShelfFall
+      anim FallDown>>\n// thing falls down\n<<Camera set_state ShelfFallen 1.5>>\n<<wait
+      0.7>>\n<<Marcie set_position Intro.IntoTheFrogRoom.Marcie.ShelfFall>>\n<<Marcie
+      anim ProtectedByRobin>>\n<<Robin set_position Intro.IntoTheFrogRoom.Robin.ShelfFall>>\n<<Robin
+      anim ProtectMarcie>>\n<<Camera shake 1>>\n<<wait 0.1>>\n<<Camera shake 1>>\n<<wait
+      0.1>>\n<<Camera shake 1>>\n<<wait 0.1>>\n<<Camera shake 1>>\n<<wait 0.1>>\n<<Camera
+      shake 1>>\n<<wait 0.1>>\n<<Camera shake 1>>\n<<wait 3>>\n<<Marcie set_movement_mode
+      Kinematic>>\n<<Robin attach Marcie hands>>\n<<Marcie anim IdleWalk>>\n<<Robin
+      anim HoldUp>>\n<<ShelfFall anim PopUp>>\nRobin: marcie!!! are you okay!!!\n<<Camera
+      clear_targets>>\n<<Camera clear_state>>\n<<Camera reset>>\n<<Camera rotate ne>>\nMarcie:
+      ............................. huh\nRobin: marcie!\n<<Camera rotate e>>\nMarcie:
+      i had no idea there was a door here\n<<Camera rotate ne>>\nRobin: excuse me\n<<Robin
+      anim HoldUp_Turn>>\nRobin: are you hurt? lemme get a good look at u\nMarcie:
+      [j=1.5][b]i don't think i've ever been in here\n<<Robin anim HoldUp>>\n<<Robin
+      detach hands>>\n<<Robin attach Marcie hands_flipped>>\nRobin: {shake}[b]marcie!!!{wait}[/b]
+      are you hurt!!!!!\nMarcie: no i'm fine!\nMarcie: the only pain i feel\nMarcie:
+      is the pain of not knowing\nRobin: uh huh very poetic. seriously you're not
+      hurt at all?\nMarcie: no robin i'm fine!\n// robin puts marcie down\n<<Robin
+      detach hands_flipped>>\n<<Robin anim IdleWalk>>\n<<Marcie set_movement_mode
+      Physics>>\n<<Robin stop_ignoring Marcie>>\n<<Marcie stop_ignoring Robin>>\n<<Marcie
+      enable_friend_searcher>>\n<<Robin enable_friend_searcher>>\nRobin: okay good.
+      now lets start clearing up this mess\nMarcie: in a second\nMarcie: i've spent
+      like 35 summers in this laundrette and i have explored every inch of it\nMarcie:
+      and i have [b]never[/b] seen this door before\nMarcie: we have to check it out\nRobin:
+      ... do you promise we'll make this place spotless afterwards\nRobin: i can't
+      get fired on my first day marcie\nMarcie: of course i'll help!!! [size=0.8][b]if
+      you accompany me on this quest.\nRobin: fine but its probably just more closet\nRobin:
+      probably filled with a buncha gross spiders\nRobin: and slime\nRobin: furry
+      arachnids covered in slime. is that what you want\nMarcie: omg you're right\nMarcie:
+      ... {wait}you should go first\nRobin: great.\n<<load_moment Dream1>>"
+    hash: 0
+  - pos: {x: 110, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\IntoTheFrogRoom.yarn
+    title: Intro.IntoTheFrogRoom.EnterStorageOld
+    lines:
+    - <<Camera zoom 1.3>>
+    - <<LaundretteDoor open>>
+    - <<Marcie move_along_path Intro.IntoTheFrogRoom.Marcie.EnterStorage>>
+    - 'Marcie: ... uhhhhhhhhhhhh'
+    - <<Robin move_along_path Intro.IntoTheFrogRoom.Robin.EnterStorage>>
+    - 'Robin: what is it?'
+    - <<set_flag $_exclaimed>>
+    - 'Marcie: the sock is gone'
+    - 'Robin: uh. what do you mean'
+    - <<Camera follow_targets Marcie Robin>>
+    - <<Camera zoom 1>>
+    - <<Camera rotate ws 2>>
+    - 'Robin: this room looks wrecked!! was this always like this?'
+    - 'Marcie: no!!!'
+    - 'Marcie: it was fine when i was in here a second ago uhhhhh'
+    - <<Camera zoom 1.3>>
+    - <<Camera clear_targets>>
+    - 'Marcie: [j=0.6]nooooooooooo'
+    - <<Marcie anim Flatten>>
+    - 'Marcie: [j=0.8]noooo mum is gonna blame me noooo'
+    - 'Marcie: [size=0.8][b][j=0.9]noooooo'
+    - 'Robin: hey!! don''t worry'
+    - 'Robin: we can investigate!!'
+    - 'Marcie: [size=0.8][b][j=0.95]noooo'
+    - 'Robin: marcie.'
+    - <<Robin anim PullOutMagnifyingGlass>>
+    - <<wait 0.7>>
+    - <<Camera zoom 1.6>>
+    - <<wait 1>>
+    - 'Robin: we got this.'
+    - <<Camera rotate w>>
+    - <<Camera zoom 1.3>>
+    - <<wait 0.4>>
+    - 'Marcie: why do you have that!!!!!'
+    - <<Marcie anim StandUpFromSquish>>
+    - 'Robin: sometimes you just gotta look real close at a mushroom'
+    - 'Marcie: i'
+    - <<Marcie look_at StorageFrog>>
+    - <<wait 0.5>>
+    - 'Marcie: hold on [b][big]what'
+    - <<Marcie turn_to_face StorageFrog>>
+    - <<wait 0.5>>
+    - 'Marcie: i could swear there was a wall here!!!'
+    - <<Robin anim IdleWalk>>
+    - <<Robin turn_to_face StorageFrog>>
+    - <<Camera rotate s>>
+    - 'Robin: uhhhhhhhhhhhh doesn''t look like it bud'
+    - 'Robin: do you not know what''s back there?'
+    - 'Marcie: uhhhhhhhhhhhhh no'
+    - <<Marcie clear_look_at>>
+    - 'Robin: uhhhhhhhhhhhhhhhhhhhhh'
+    - 'Marcie: uhhhhhhhhhhhhhhhhhh i guess lets check it out?'
+    - 'Robin: should we not get your mum or something'
+    - 'Marcie: she''s super busy! i''d get my dad but he''s at work'
+    - <<Marcie look_at StorageFrog>>
+    - 'Marcie: lets go on an adventure!!'
+    - 'Marcie: ...'
+    - <<Marcie clear_look_at>>
+    - 'Marcie: i''m right behind you'
+    - 'Robin: uh huh'
+    - <<Robin anim IdleWalk>>
+    - <<Robin move_along Intro.IntoTheFrogRoom.Robin.Investigating>>
+    fullString: '<<Camera zoom 1.3>>
+
+      <<LaundretteDoor open>>
+
+      <<Marcie move_along_path Intro.IntoTheFrogRoom.Marcie.EnterStorage>>
+
+      Marcie: ... uhhhhhhhhhhhh
+
+      <<Robin move_along_path Intro.IntoTheFrogRoom.Robin.EnterStorage>>
+
+      Robin: what is it?
+
+      <<set_flag $_exclaimed>>
+
+      Marcie: the sock is gone
+
+      Robin: uh. what do you mean
+
+      <<Camera follow_targets Marcie Robin>>
+
+      <<Camera zoom 1>>
+
+      <<Camera rotate ws 2>>
+
+      Robin: this room looks wrecked!! was this always like this?
+
+      Marcie: no!!!
+
+      Marcie: it was fine when i was in here a second ago uhhhhh
+
+      <<Camera zoom 1.3>>
+
+      <<Camera clear_targets>>
+
+      Marcie: [j=0.6]nooooooooooo
+
+      <<Marcie anim Flatten>>
+
+      Marcie: [j=0.8]noooo mum is gonna blame me noooo
+
+      Marcie: [size=0.8][b][j=0.9]noooooo
+
+      Robin: hey!! don''t worry
+
+      Robin: we can investigate!!
+
+      Marcie: [size=0.8][b][j=0.95]noooo
+
+      Robin: marcie.
+
+      <<Robin anim PullOutMagnifyingGlass>>
+
+      <<wait 0.7>>
+
+      <<Camera zoom 1.6>>
+
+      <<wait 1>>
+
+      Robin: we got this.
+
+      <<Camera rotate w>>
+
+      <<Camera zoom 1.3>>
+
+      <<wait 0.4>>
+
+      Marcie: why do you have that!!!!!
+
+      <<Marcie anim StandUpFromSquish>>
+
+      Robin: sometimes you just gotta look real close at a mushroom
+
+      Marcie: i
+
+      <<Marcie look_at StorageFrog>>
+
+      <<wait 0.5>>
+
+      Marcie: hold on [b][big]what
+
+      <<Marcie turn_to_face StorageFrog>>
+
+      <<wait 0.5>>
+
+      Marcie: i could swear there was a wall here!!!
+
+      <<Robin anim IdleWalk>>
+
+      <<Robin turn_to_face StorageFrog>>
+
+      <<Camera rotate s>>
+
+      Robin: uhhhhhhhhhhhh doesn''t look like it bud
+
+      Robin: do you not know what''s back there?
+
+      Marcie: uhhhhhhhhhhhhh no
+
+      <<Marcie clear_look_at>>
+
+      Robin: uhhhhhhhhhhhhhhhhhhhhh
+
+      Marcie: uhhhhhhhhhhhhhhhhhh i guess lets check it out?
+
+      Robin: should we not get your mum or something
+
+      Marcie: she''s super busy! i''d get my dad but he''s at work
+
+      <<Marcie look_at StorageFrog>>
+
+      Marcie: lets go on an adventure!!
+
+      Marcie: ...
+
+      <<Marcie clear_look_at>>
+
+      Marcie: i''m right behind you
+
+      Robin: uh huh
+
+      <<Robin anim IdleWalk>>
+
+      <<Robin move_along Intro.IntoTheFrogRoom.Robin.Investigating>>'
+    hash: 0
+  - pos: {x: 220, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\IntoTheFrogRoom.yarn
+    title: Intro.IntoTheFrogRoom.FoundFrog
+    lines:
+    - <<Marcie walk_to Intro.IntoTheFrogRoom.Marcie.FrogPoint>>
+    - <<wait 0.3>>
+    - <<Marcie anim CrouchIdle>>
+    - <<wait 2>>
+    - 'Marcie: [b][size=0.8]pssssst robin!'
+    - <<Robin move_along Intro.IntoTheFrogRoom.Robin.MoveToFrogPoint>>
+    - <<wait 2>>
+    - 'Robin: what is it!'
+    - 'Marcie: [b][size=0.8]look!'
+    - <<Camera follow_targets Marcie StorageFrog>>
+    - 'Marcie: [b][size=0.8]a frog'
+    - <<Robin anim Fear>>
+    - 'Robin: a [b][big]what'
+    - 'Robin: [b][big]why are there frogs here!!!!!!'
+    - 'Marcie: [big]shhhhhh [b][size=0.8]you''ll scare her!!!'
+    - <<Robin anim IdleWalk>>
+    - 'Robin: well what would you suggest'
+    - 'Marcie: uhhhhh'
+    - <<Marcie look_at StorageFrog>>
+    - 'Marcie: ........'
+    - <<start_mission IntroTest>>
+    - <<Marcie disable_movement>>
+    fullString: '<<Marcie walk_to Intro.IntoTheFrogRoom.Marcie.FrogPoint>>
+
+      <<wait 0.3>>
+
+      <<Marcie anim CrouchIdle>>
+
+      <<wait 2>>
+
+      Marcie: [b][size=0.8]pssssst robin!
+
+      <<Robin move_along Intro.IntoTheFrogRoom.Robin.MoveToFrogPoint>>
+
+      <<wait 2>>
+
+      Robin: what is it!
+
+      Marcie: [b][size=0.8]look!
+
+      <<Camera follow_targets Marcie StorageFrog>>
+
+      Marcie: [b][size=0.8]a frog
+
+      <<Robin anim Fear>>
+
+      Robin: a [b][big]what
+
+      Robin: [b][big]why are there frogs here!!!!!!
+
+      Marcie: [big]shhhhhh [b][size=0.8]you''ll scare her!!!
+
+      <<Robin anim IdleWalk>>
+
+      Robin: well what would you suggest
+
+      Marcie: uhhhhh
+
+      <<Marcie look_at StorageFrog>>
+
+      Marcie: ........
+
+      <<start_mission IntroTest>>
+
+      <<Marcie disable_movement>>'
+    hash: 0
+  - pos: {x: 330, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\IntoTheFrogRoom.yarn
+    title: Intro.IntoTheFrogRoom.StorageMission
+    lines:
+    - <<Marcie toggle_crouch_input>>
+    - <<Marcie enable_movement>>
+    - <<wait 1>>
+    - <<StorageFrog anim Jump>>
+    - <<Robin anim Fear>>
+    - <<wait 2>>
+    - <<StorageFrog anim Jump>>
+    - <<wait 1>>
+    - <<StorageFrog anim Jump>>
+    - <<wait 1>>
+    - <<StorageFrog anim Fear>>
+    - 'Robin: {shake 1.5}[big][b]no way!!!!!!'
+    - <<Marcie toggle_crouch_input>>
+    - 'Marcie: no!!! robin!!!'
+    - <<StorageFrog anim IdleWalk>>
+    - <<Camera rotate s 0.5>>
+    - <<Camera follow_targets StorageFrog>>
+    - <<StorageFrog set_float Jump.Power 1.5>>
+    - <<StorageFrog move_along_path Intro.IntoTheFrogRoom.FrogLeader.HopAway>>
+    - <<wait 0.5>>
+    - <<Camera zoom 1.5 1>>
+    - <<Robin move_along_path Intro.IntoTheFrogRoom.Robin.RunAfterFrog>>
+    - <<wait_for_flag $_robin_at_hole>>
+    - <<wait 0.2>>
+    - <<Camera clear_targets>>
+    - 'Robin: oh its too dark in there i can''t see a thing!!'
+    - <<Robin anim IdleWalk>>
+    - <<Robin anim Sigh>>
+    - <<wait 1>>
+    - 'Robin: well its only a sock. lets focus on fixing this place'
+    - <<Marcie move_along_path Intro.IntoTheFrogRoom.Marcie.JumpIntoHole>>
+    - <<wait 3>>
+    - <<Robin anim fear>>
+    - 'Robin: marcie!!!!! what are you doing!!!!!'
+    - 'Hole: i''m in here!!'
+    - 'Robin: marcie oh my god are you ok!!!!'
+    - 'Hole: i''m fine!!!! i fell in a puddle!!!!'
+    - <<skip_to_next_after_char 30>>
+    - 'Hole: hold on i''m looking around'
+    - 'Hole: [big][b][shake][j]ouch!!!!!!!!!'
+    - 'Robin: marcie!!! what was that'
+    - 'Hole: i tripped on something!!!'
+    - 'Hole: wait! i think its stairs!'
+    - <<Robin move_along_path Intro.IntoTheFrogRoom.Robin.Pacing>>
+    - <<Camera rotate e 1>>
+    - 'Robin: okay, um'
+    - 'Robin: can you see enough to climb them?'
+    - 'Robin: oh god oh god oh god your parents are gonna kill me'
+    - 'Robin: i don''t even know your parents'
+    - 'Robin: this is [b][i]not[/i][/b] a good first impression'
+    - <<Marcie disable_friend_searcher>>
+    - <<Marcie set_movement_mode Kinematic>>
+    - <<Marcie anim PokeHeadOut 0>>
+    - <<wait 0.1>>
+    - <<Marcie set_position Intro.IntoTheFrogRoom.Marcie.OnTrapDoor>>
+    - <<Camera follow_targets Marcie>>
+    - <<TrapDoor anim OpenABit>>
+    - <<Robin anim Fear>>
+    - <<Robin turn_to_face Marcie>>
+    - <<wait 0.7>>
+    - 'Marcie: hello!!!!'
+    - 'Robin: marcie!!! you scared the life outta me'
+    - <<Marcie disable_auto_anim>>
+    - <<Marcie move_along_path Intro.IntoTheFrogRoom.Marcie.JumpOutOfHole>>
+    - <<Robin turn_to_face Marcie>>
+    - <<Marcie anim ClimbUp>>
+    - <<TrapDoor anim OpenThenClose>>
+    - <<wait 1>>
+    - <<Marcie enable_auto_anim>>
+    - <<Marcie enable_friend_searcher>>
+    - 'Marcie: i got her!'
+    - 'Robin: you did!!!!'
+    - 'Robin: wait i... think that''s a different frog'
+    - <<Marcie look_at BackUpFrog>>
+    - <<wait 1>>
+    - <<Marcie look_at Robin>>
+    - 'Marcie: oh.'
+    - 'Robin: ... how many frogs are down there?'
+    - 'Marcie: ... uhhhhhhhhhhhh'
+    - 'Marcie: ... shall we find out'
+    - 'Robin: marcie i am [b]not[/b] a fan of reptiles or amphibians or honestly any
+      slimy creature'
+    - 'Robin: if there''s a lot of frogs down there'
+    - 'Robin: i might scream'
+    - 'Marcie: don''t worry. you''ve got me'
+    - 'Marcie: [b][big]the frog whisperer.'
+    - 'Robin: you''re visibly shaking.'
+    - 'Marcie: [jittery=2][b]yeah but!!!'
+    - 'Marcie: [jittery][b]thats because i''m scared of the dark!!! not frogs!!!'
+    - 'Robin: okay. five minutes in the weird frog room then we''re heading back.
+      ok?'
+    - 'Marcie: [jittery][b]ok deal.'
+    - 'Robin: ...'
+    - 'Marcie: ...'
+    - 'Robin: ...'
+    - 'Marcie: you know you''re the adult and you have to lead the way right'
+    - 'Robin: ..................... fine'
+    - <<Robin move_to_room FrogRoom>>
+    - <<Robin hide_object magnifying_glass>>
+    - <<Marcie move_to_room FrogRoom>>
+    - <<change_scene FrogRoom>>
+    fullString: '<<Marcie toggle_crouch_input>>
+
+      <<Marcie enable_movement>>
+
+      <<wait 1>>
+
+      <<StorageFrog anim Jump>>
+
+      <<Robin anim Fear>>
+
+      <<wait 2>>
+
+      <<StorageFrog anim Jump>>
+
+      <<wait 1>>
+
+      <<StorageFrog anim Jump>>
+
+      <<wait 1>>
+
+      <<StorageFrog anim Fear>>
+
+      Robin: {shake 1.5}[big][b]no way!!!!!!
+
+      <<Marcie toggle_crouch_input>>
+
+      Marcie: no!!! robin!!!
+
+      <<StorageFrog anim IdleWalk>>
+
+      <<Camera rotate s 0.5>>
+
+      <<Camera follow_targets StorageFrog>>
+
+      <<StorageFrog set_float Jump.Power 1.5>>
+
+      <<StorageFrog move_along_path Intro.IntoTheFrogRoom.FrogLeader.HopAway>>
+
+      <<wait 0.5>>
+
+      <<Camera zoom 1.5 1>>
+
+      <<Robin move_along_path Intro.IntoTheFrogRoom.Robin.RunAfterFrog>>
+
+      <<wait_for_flag $_robin_at_hole>>
+
+      <<wait 0.2>>
+
+      <<Camera clear_targets>>
+
+      Robin: oh its too dark in there i can''t see a thing!!
+
+      <<Robin anim IdleWalk>>
+
+      <<Robin anim Sigh>>
+
+      <<wait 1>>
+
+      Robin: well its only a sock. lets focus on fixing this place
+
+      <<Marcie move_along_path Intro.IntoTheFrogRoom.Marcie.JumpIntoHole>>
+
+      <<wait 3>>
+
+      <<Robin anim fear>>
+
+      Robin: marcie!!!!! what are you doing!!!!!
+
+      Hole: i''m in here!!
+
+      Robin: marcie oh my god are you ok!!!!
+
+      Hole: i''m fine!!!! i fell in a puddle!!!!
+
+      <<skip_to_next_after_char 30>>
+
+      Hole: hold on i''m looking around
+
+      Hole: [big][b][shake][j]ouch!!!!!!!!!
+
+      Robin: marcie!!! what was that
+
+      Hole: i tripped on something!!!
+
+      Hole: wait! i think its stairs!
+
+      <<Robin move_along_path Intro.IntoTheFrogRoom.Robin.Pacing>>
+
+      <<Camera rotate e 1>>
+
+      Robin: okay, um
+
+      Robin: can you see enough to climb them?
+
+      Robin: oh god oh god oh god your parents are gonna kill me
+
+      Robin: i don''t even know your parents
+
+      Robin: this is [b][i]not[/i][/b] a good first impression
+
+      <<Marcie disable_friend_searcher>>
+
+      <<Marcie set_movement_mode Kinematic>>
+
+      <<Marcie anim PokeHeadOut 0>>
+
+      <<wait 0.1>>
+
+      <<Marcie set_position Intro.IntoTheFrogRoom.Marcie.OnTrapDoor>>
+
+      <<Camera follow_targets Marcie>>
+
+      <<TrapDoor anim OpenABit>>
+
+      <<Robin anim Fear>>
+
+      <<Robin turn_to_face Marcie>>
+
+      <<wait 0.7>>
+
+      Marcie: hello!!!!
+
+      Robin: marcie!!! you scared the life outta me
+
+      <<Marcie disable_auto_anim>>
+
+      <<Marcie move_along_path Intro.IntoTheFrogRoom.Marcie.JumpOutOfHole>>
+
+      <<Robin turn_to_face Marcie>>
+
+      <<Marcie anim ClimbUp>>
+
+      <<TrapDoor anim OpenThenClose>>
+
+      <<wait 1>>
+
+      <<Marcie enable_auto_anim>>
+
+      <<Marcie enable_friend_searcher>>
+
+      Marcie: i got her!
+
+      Robin: you did!!!!
+
+      Robin: wait i... think that''s a different frog
+
+      <<Marcie look_at BackUpFrog>>
+
+      <<wait 1>>
+
+      <<Marcie look_at Robin>>
+
+      Marcie: oh.
+
+      Robin: ... how many frogs are down there?
+
+      Marcie: ... uhhhhhhhhhhhh
+
+      Marcie: ... shall we find out
+
+      Robin: marcie i am [b]not[/b] a fan of reptiles or amphibians or honestly any
+      slimy creature
+
+      Robin: if there''s a lot of frogs down there
+
+      Robin: i might scream
+
+      Marcie: don''t worry. you''ve got me
+
+      Marcie: [b][big]the frog whisperer.
+
+      Robin: you''re visibly shaking.
+
+      Marcie: [jittery=2][b]yeah but!!!
+
+      Marcie: [jittery][b]thats because i''m scared of the dark!!! not frogs!!!
+
+      Robin: okay. five minutes in the weird frog room then we''re heading back. ok?
+
+      Marcie: [jittery][b]ok deal.
+
+      Robin: ...
+
+      Marcie: ...
+
+      Robin: ...
+
+      Marcie: you know you''re the adult and you have to lead the way right
+
+      Robin: ..................... fine
+
+      <<Robin move_to_room FrogRoom>>
+
+      <<Robin hide_object magnifying_glass>>
+
+      <<Marcie move_to_room FrogRoom>>
+
+      <<change_scene FrogRoom>>'
+    hash: 0
+  - pos: {x: 440, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\IntoTheFrogRoom.yarn
+    title: Intro.IntoTheFrogRoom.EnteringFrogRoom
+    lines:
+    - <<Marcie set_position Intro.IntoTheFrogRoom.Marcie.FrogRoomEntrance>>
+    - <<Robin set_position Intro.IntoTheFrogRoom.Robin.FrogRoomEntrance>>
+    - <<Camera follow_targets Marcie Robin>>
+    - <<Camera rotate_instant w>>
+    - <<Camera zoom 2.6>>
+    - <<Robin look_at Marcie>>
+    - <<Marcie look_at Robin>>
+    - <<wait 1>>
+    - 'Robin: ok where''s the light'
+    - 'Robin: ew ew marcie i think i just touched something slimy'
+    - 'Marcie: that was my nose!'
+    - 'Robin: wait i think i got it'
+    - <<wait 0.5>>
+    - <<play_sound LightSwitch>>
+    - <<Weather set_weather FrogRoom.Morning>>
+    - 'Marcie: ahh that''s better'
+    - <<wait 0.5>>
+    - <<Robin look_at LookFrog>>
+    - <<Marcie look_at LookFrog>>
+    - <<wait 1>>
+    - <<Camera zoom 1>>
+    - <<Camera rotate s>>
+    - <<wait 2>>
+    - // cut out and in
+    - // <<wait 2>>
+    - 'Robin: ahh'
+    - 'Marcie: [size=0.8][j=0.3]robin'
+    - // robin gets down
+    - <<wait 2>>
+    - 'Robin: [j]i''m sorry i just'
+    - 'Robin: [j]am really not a fan of frogs'
+    - 'Marcie: that''s okay! i think you scared them off anyway'
+    - 'Marcie: but luckily i''ve still got this lil lovely lil bobbin'
+    - //nuzzles into frog
+    - 'Robin: marcie ew! you don''t know where she''s been!'
+    - 'Marcie: what is your problem!'
+    - 'Marcie: were you like'
+    - 'Marcie: bitten by a frog or something'
+    - 'Robin: shhhhhhhh they''re just slimy and weird ok!!!!'
+    - 'Marcie: [size=0.8][b]they''re not even that slimy'
+    - 'Marcie: is your sock around here anywhere at least'
+    - 'Robin: i''ll be honest i''m probably gonna burn this sock when we''re done
+      here'
+    - 'Marcie: robin. {wait}do you want to let the frogs win?'
+    - 'Robin: ... {wait 2}alright fine lets find this damn sock'
+    - <<set_flag $entered_frog_room>>
+    fullString: '<<Marcie set_position Intro.IntoTheFrogRoom.Marcie.FrogRoomEntrance>>
+
+      <<Robin set_position Intro.IntoTheFrogRoom.Robin.FrogRoomEntrance>>
+
+      <<Camera follow_targets Marcie Robin>>
+
+      <<Camera rotate_instant w>>
+
+      <<Camera zoom 2.6>>
+
+      <<Robin look_at Marcie>>
+
+      <<Marcie look_at Robin>>
+
+      <<wait 1>>
+
+      Robin: ok where''s the light
+
+      Robin: ew ew marcie i think i just touched something slimy
+
+      Marcie: that was my nose!
+
+      Robin: wait i think i got it
+
+      <<wait 0.5>>
+
+      <<play_sound LightSwitch>>
+
+      <<Weather set_weather FrogRoom.Morning>>
+
+      Marcie: ahh that''s better
+
+      <<wait 0.5>>
+
+      <<Robin look_at LookFrog>>
+
+      <<Marcie look_at LookFrog>>
+
+      <<wait 1>>
+
+      <<Camera zoom 1>>
+
+      <<Camera rotate s>>
+
+      <<wait 2>>
+
+      // cut out and in
+
+      // <<wait 2>>
+
+      Robin: ahh
+
+      Marcie: [size=0.8][j=0.3]robin
+
+      // robin gets down
+
+      <<wait 2>>
+
+      Robin: [j]i''m sorry i just
+
+      Robin: [j]am really not a fan of frogs
+
+      Marcie: that''s okay! i think you scared them off anyway
+
+      Marcie: but luckily i''ve still got this lil lovely lil bobbin
+
+      //nuzzles into frog
+
+      Robin: marcie ew! you don''t know where she''s been!
+
+      Marcie: what is your problem!
+
+      Marcie: were you like
+
+      Marcie: bitten by a frog or something
+
+      Robin: shhhhhhhh they''re just slimy and weird ok!!!!
+
+      Marcie: [size=0.8][b]they''re not even that slimy
+
+      Marcie: is your sock around here anywhere at least
+
+      Robin: i''ll be honest i''m probably gonna burn this sock when we''re done here
+
+      Marcie: robin. {wait}do you want to let the frogs win?
+
+      Robin: ... {wait 2}alright fine lets find this damn sock
+
+      <<set_flag $entered_frog_room>>'
+    hash: 0
+  - pos: {x: 550, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\IntoTheFrogRoom.yarn
+    title: Intro.IntoTheFrogRoom.FoundSock
+    lines:
+    - 'Marcie: robin!!! i found it i found it!!!'
+    - 'Robin: oh hey!!!'
+    - // robin runs over to the sock
+    - 'Robin: its!!! covered in frog juice!!!'
+    - 'Marcie: whoa hey there are mushrooms growing down here!'
+    - 'Robin: oh this? yeah looks like a classic fill_in(red_mushroom_name) to me'
+    - 'Robin: a lot of people use it as red dye! it stains real bad'
+    - 'Marcie: ..........'
+    - 'Robin: ....... why are you staring at me'
+    - 'Marcie: are you some kinda..... fungi expert??? what'
+    - 'Robin: oh!! well, i, kinda'
+    - 'Robin: basically i used to be a witch'
+    - 'Marcie: [b]what'
+    - 'Robin: not like! the casting fireballs at my enemies type! that''s not real'
+    - 'Marcie: so you can''t do magic?'
+    - 'Robin: well that depends on what you mean by magic'
+    - 'Marcie: ... [b]what'
+    - 'Robin: well, basically, like'
+    - 'Robin: essentially'
+    - 'Robin: you know what this is too much to explain'
+    - 'Robin: and i''m gonna be late for work'
+    - 'Robin: and i still have to let your mum know that the cupboard is all messed
+      up!!'
+    - 'Marcie: wait wait!!!!'
+    - 'Marcie: you said this mushroom stains right?'
+    - 'Robin: yeah?'
+    - 'Marcie: ... do you wanna help me get back at screamy mcpidger up there'
+    - 'Robin: ..................'
+    - 'Marcie: pleeeeeaaaaase robin it won''t take long i promise!'
+    - 'Robin: ... okay fine that does sound fun'
+    - 'Robin: but you have to write me a fake doctor''s note to explain why i''m late'
+    - <<set_flag $found_red_shrooms>>
+    fullString: 'Marcie: robin!!! i found it i found it!!!
+
+      Robin: oh hey!!!
+
+      // robin runs over to the sock
+
+      Robin: its!!! covered in frog juice!!!
+
+      Marcie: whoa hey there are mushrooms growing down here!
+
+      Robin: oh this? yeah looks like a classic fill_in(red_mushroom_name) to me
+
+      Robin: a lot of people use it as red dye! it stains real bad
+
+      Marcie: ..........
+
+      Robin: ....... why are you staring at me
+
+      Marcie: are you some kinda..... fungi expert??? what
+
+      Robin: oh!! well, i, kinda
+
+      Robin: basically i used to be a witch
+
+      Marcie: [b]what
+
+      Robin: not like! the casting fireballs at my enemies type! that''s not real
+
+      Marcie: so you can''t do magic?
+
+      Robin: well that depends on what you mean by magic
+
+      Marcie: ... [b]what
+
+      Robin: well, basically, like
+
+      Robin: essentially
+
+      Robin: you know what this is too much to explain
+
+      Robin: and i''m gonna be late for work
+
+      Robin: and i still have to let your mum know that the cupboard is all messed
+      up!!
+
+      Marcie: wait wait!!!!
+
+      Marcie: you said this mushroom stains right?
+
+      Robin: yeah?
+
+      Marcie: ... do you wanna help me get back at screamy mcpidger up there
+
+      Robin: ..................
+
+      Marcie: pleeeeeaaaaase robin it won''t take long i promise!
+
+      Robin: ... okay fine that does sound fun
+
+      Robin: but you have to write me a fake doctor''s note to explain why i''m late
+
+      <<set_flag $found_red_shrooms>>'
+    hash: 0
+  - pos: {x: 660, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.EnterLaundrette
+    lines:
+    - // No auto look at!
+    - <<dont_look_at_me>>
+    - // clear the camera and look at the bus
+    - <<Camera clear_follow>>
+    - <<Camera set_state_instant BusCam>>
+    - // Bus arrives
+    - <<Bus change_anim Arrive>>
+    - <<wait 3>>
+    - // Marcie's mum move along the bus
+    - <<Mama move_along_path Intro.Intro.Mama.Intro>>
+    - // Mum is carrying box
+    - <<Mama start_emitting sweat>>
+    - <<Mama attach FileBox spine>>
+    - <<wait 2>>
+    - // Marcie starts moving along
+    - <<Marcie move_along_path Intro.Intro.Marcie.Intro>>
+    - <<wait 1>>
+    - <<Bus change_anim OpenDoor>>
+    - <<wait 5>>
+    - <<Camera clear_state>>
+    - ->[i]thank the bus driver
+    - '    Marcie: thank you sir!!'
+    - ->[i]don't thank the bus driver
+    - '    Mama: marcie!! where are your manners'
+    - '    Marcie: um!!!! thank you sir'
+    - <<wait 1>>
+    - <<Bus change_anim CloseDoor 0.3>>
+    - <<wait 1>>
+    - <<Mama start_moving>>
+    - <<wait 1>>
+    - <<Marcie start_moving>>
+    - <<wait 2>>
+    - <<Camera reset>>
+    - <<Bus change_anim Leave>>
+    - 'Mama: oh hey what did you end up watching while i was snoring on the sofa'
+    - 'Marcie: well'
+    - 'Marcie: i couldn''t decide between [b]sad dads[/b] and [b]bad dads[/b]'
+    - 'Marcie: and they were on at the same time'
+    - 'Marcie: and i spent so long deciding that i missed them both'
+    - 'Marcie: and just lay on the floor and watched the shopping channel for an hour'
+    - 'Mama: oh sweetie.'
+    - 'Mama: was the one where they all look after frog babies not on? {wait}that''s
+      my favourite.'
+    - 'Marcie: that''s [b]tad dads[/b] mum. and that went way downhill when all the
+      tadpoles grew up'
+    - 'Mama: ok but what about the one where they''re all called bradley'
+    - ->i... don't think that exists?
+    - '    Marcie: i... {wait 0.1}don''t think that exists?'
+    - ->are you trying to make jokes again?
+    - '    Marcie: mum are you trying to make jokes again'
+    - 'Mama: they haven''t made [b]brad dads[/b]????'
+    - 'Marcie: no, mum.'
+    - 'Mama: well what am i standing around in this dusty dump for'
+    - 'Mama: when i''ve got a [b]script[/b] to write!!!'
+    - 'Marcie: [w]muuuuuuuuuuuuuuuum'
+    - 'Mama: think of all the bradleys, marcie. there''s millions of them'
+    - <<Marcie change_anim GetMad>>
+    - 'Marcie: [jittery=1]{shake 0.5}[big][bold]OPEN. {wait}{shake 0.5}THE. {wait}{shake
+      0.5}DOOR.'
+    - <<OfficeDoor open>>
+    - 'Mama: oh shush. {wait}that took like one second.'
+    - <<set_flag _door_open>>
+    - <<Mama move_to_room Office>>
+    - <<Marcie move_to_room Office>>
+    - <<change_scene Office>>
+    fullString: "// No auto look at!\n<<dont_look_at_me>>\n// clear the camera and
+      look at the bus\n<<Camera clear_follow>>\n<<Camera set_state_instant BusCam>>\n//
+      Bus arrives\n<<Bus change_anim Arrive>>\n<<wait 3>>\n// Marcie's mum move along
+      the bus\n<<Mama move_along_path Intro.Intro.Mama.Intro>>\n// Mum is carrying
+      box\n<<Mama start_emitting sweat>>\n<<Mama attach FileBox spine>>\n<<wait 2>>\n//
+      Marcie starts moving along\n<<Marcie move_along_path Intro.Intro.Marcie.Intro>>\n<<wait
+      1>>\n<<Bus change_anim OpenDoor>>\n<<wait 5>>\n<<Camera clear_state>>\n->[i]thank
+      the bus driver\n    Marcie: thank you sir!!\n->[i]don't thank the bus driver\n
+      \   Mama: marcie!! where are your manners\n    Marcie: um!!!! thank you sir\n<<wait
+      1>>\n<<Bus change_anim CloseDoor 0.3>>\n<<wait 1>>\n<<Mama start_moving>>\n<<wait
+      1>>\n<<Marcie start_moving>>\n<<wait 2>>\n<<Camera reset>>\n<<Bus change_anim
+      Leave>>\nMama: oh hey what did you end up watching while i was snoring on the
+      sofa\nMarcie: well\nMarcie: i couldn't decide between [b]sad dads[/b] and [b]bad
+      dads[/b]\nMarcie: and they were on at the same time\nMarcie: and i spent so
+      long deciding that i missed them both\nMarcie: and just lay on the floor and
+      watched the shopping channel for an hour\nMama: oh sweetie.\nMama: was the one
+      where they all look after frog babies not on? {wait}that's my favourite.\nMarcie:
+      that's [b]tad dads[/b] mum. and that went way downhill when all the tadpoles
+      grew up\nMama: ok but what about the one where they're all called bradley\n->i...
+      don't think that exists?\n    Marcie: i... {wait 0.1}don't think that exists?\n->are
+      you trying to make jokes again?\n    Marcie: mum are you trying to make jokes
+      again\nMama: they haven't made [b]brad dads[/b]????\nMarcie: no, mum.\nMama:
+      well what am i standing around in this dusty dump for\nMama: when i've got a
+      [b]script[/b] to write!!!\nMarcie: [w]muuuuuuuuuuuuuuuum\nMama: think of all
+      the bradleys, marcie. there's millions of them\n<<Marcie change_anim GetMad>>\nMarcie:
+      [jittery=1]{shake 0.5}[big][bold]OPEN. {wait}{shake 0.5}THE. {wait}{shake 0.5}DOOR.\n<<OfficeDoor
+      open>>\nMama: oh shush. {wait}that took like one second.\n<<set_flag _door_open>>\n<<Mama
+      move_to_room Office>>\n<<Marcie move_to_room Office>>\n<<change_scene Office>>"
+    hash: 0
+  - pos: {x: 770, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.EnterOffice
+    lines:
+    - <<LaundretteDoor open>>
+    - <<Camera rotate_instant e>>
+    - <<Camera zoom 1>>
+    - <<Marcie move_along_path Intro.Intro.Marcie.Office>>
+    - <<Mama move_along_path Intro.Intro.Mama.Office>>
+    - <<Mama start_emitting sweat>>
+    - 'Marcie: ok but what would the plot even be!'
+    - 'Mama: when you have that many bradleys you don''t [b]need[/b] plot'
+    - 'Marcie: muuuuuum stoooop'
+    - 'Mama: fine!!!!! but when i''m a millionaire from brad dads you''re not getting
+      a penny'
+    - 'Mama: also um'
+    - 'Mama: sorry again that i have to do admin all day today.'
+    - 'Marcie: its ok mum! i''m totally used to it'
+    - 'Mama: don''t say that!!!'
+    - 'Marcie: i have big plans anyway'
+    - 'Mama: oh yeah?'
+    - ->[i]say something nice.
+    - '    Marcie: i''m gonna draw all day!!!!!!'
+    - '    Marcie: i''ll make sure i do a nice drawing of you, mum.'
+    - '    Mama: oooooh make sure you get my best side.'
+    - '    Marcie: which side is that?'
+    - '    Mama: .........'
+    - '    Mama: i''ll get back to you on that.'
+    - '    Marcie: i''ll just draw all sides'
+    - '    Marcie: a full 360.'
+    - '    Marcie: and then we can recreate a model of your head'
+    - '    Marcie: ... {wait}do you want me to leave out the bags under your eyes'
+    - '    Mama: honestly i''m too tired to get mad at you for that so'
+    - '    Mama: go ahead and draw my eye luggage'
+    - '    Mama: its where i keep all my secrets'
+    - '    ->... secrets?'
+    - '        Marcie: ... secrets?'
+    - '        Mama: secret secrets.'
+    - '    ->i just use mine for sweets'
+    - '        Marcie: oh i just use my eye bags for sweets'
+    - '        Mama: honey its too early to imagine my youngest child with gelatine
+      poking out of her eyes'
+    - '        Mama: and you don''t have eye bags'
+    - ->[i]say something not nice.
+    - '    Marcie: gonna do lots of bad things!!!'
+    - '    Marcie: i might even'
+    - '    <<Camera rotate e>>'
+    - '    <<Camera zoom 1.1>>'
+    - '    Marcie: [jittery=1][b]swear'
+    - '    <<Camera rotate s>>'
+    - '    <<Camera zoom 1.2>>'
+    - '    Mama: you wouldn''t.'
+    - '    <<Camera rotate e>>'
+    - '    <<Camera zoom 1.3>>'
+    - '    Marcie: try me.'
+    - '    ->the f-word'
+    - '        <<Camera zoom 1.5>>'
+    - '        <<Marcie change_anim GetMad>>'
+    - '        Marcie: {wait}.{wait}.{wait}. {shake}frick.'
+    - '    ->the s-word'
+    - '        <<Camera zoom 1.5>>'
+    - '        <<Marcie change_anim GetMad>>'
+    - '        Marcie: {wait}.{wait}.{wait}. {shake}shucks.'
+    - '    <<Camera zoom 1.0>>'
+    - '    <<Camera rotate s>>'
+    - '    Mama: oh.'
+    - '    Marcie: why aren''t you shocked!'
+    - '    Mama: oh i''m just. speechless'
+    - '    Mama: at how rude that was'
+    - '    Mama: wash your mouth out with soap or something'
+    - '    <<Marcie change_anim IdleWalk>>'
+    - <<set_flag _move_to_desk>>
+    - <<wait_for_flag _at_desk>>
+    - 'Mama: [jittery=1][size=0.8]mmfmfmfmmmfmff'
+    - ->mum are you ok
+    - '    Marcie: mum are you okay?    '
+    - '    Mama: [jittery=1][size=0.8][b]commffmffeee'
+    - '    Marcie: what?'
+    - '    <<Mama change_anim SlumpIdleToLook>>'
+    - '    <<wait 2>>'
+    - ->[i]ignore
+    - '    Marcie: ...'
+    - '    Mama: [jittery=1][big][b]{shake}mmfmfmfmmmfmff'
+    - '    ->fine what is it'
+    - '        Marcie: ok fine what is it'
+    - '        Mama: [jittery=1][size=0.8][b]commffmffeee'
+    - '        Marcie: what?'
+    - '        <<Mama change_anim SlumpIdleToLook>>'
+    - '        <<wait 2>>'
+    - '    ->[i]ignore harder'
+    - '        Marcie: ...'
+    - '        <<Mama change_anim SlumpIdleToLook>>'
+    - '        <<wait 2>>'
+    - '        Mama: [jittery=1][big][b]{shake}mmfmfmfmmmfmff'
+    - '        Marcie: fine what do you want'
+    - 'Mama: [jittery=0.5][big]{shake}coff[wavey=0.2]e[wavey=0.5]e[wavey=0.8]e[wavey=1.1]e[wavey=1.4]e[jittery=0.6][wavey=1.7]e[wavey=2.0]e'
+    - 'Marcie: i don''t know how to make coffee!'
+    - 'Mama: coffee. milk. sugar. mixed in hot water.'
+    - ->why can't you make it!
+    - '    Marcie: why can''t you make it!'
+    - '    Mama: oh, well, i can''t.'
+    - '    Mama: someone must''ve glued me to my seat.'
+    - '    Marcie: uh huh.'
+    - '    // try to move'
+    - '    Mama: yep definitely can''t move. thanks honey.'
+    - '    Marcie: ok mum.'
+    - ->okay but you owe me!
+    - '    Marcie: okay but you owe me.{wait} [big]big[/big] time.'
+    - '    Mama: i''ll write you an i.o.u.'
+    - '    Mama: i.o.u. one big hug.'
+    - '    Marcie: cute.'
+    - '    Marcie: i''ll do it for no less than one big hug and two cuddles.'
+    - '    Mama: one hug. one cuddle. and a pat on the head.'
+    - '    Marcie: you drive a hard bargain'
+    - '    Mama: take it or leave it.'
+    - '    Marcie: {wait}.{wait}.{wait}.{wait} you''ve got yourself a deal.'
+    - '    Mama: pleasure doing business with you, sweetie.'
+    - 'Mama: milk''s in the main room'
+    - 'Mama: the coffee and sugar is behind me.'
+    - 'Mama: maybe drop it in a basket to make it easier to carry?'
+    - 'Marcie: mum do you not remember the last time you left milk out of the fridge'
+    - 'Mama: oh nonsense, that room is freezing at night.'
+    - 'Marcie: hmmmmm'
+    - 'Mama: oh- you don''t need me to explain that you use [b][w=0.6]the bumpers[/w][/b]
+      to look around do you?'
+    - 'Marcie: um i actually use the [b][w=0.6]right analog stick[/w][/b] mum? {wait}ever
+      heard of it?'
+    - 'Mama: gosh. {wait}kids these days.'
+    - <<set_flag $watched_intro>>
+    - <<set_flag $mama.is_slumped>>
+    - <<start_mission MakeCoffee>>
+    - <<Mama enable_interact_trigger at_desk>>
+    fullString: "<<LaundretteDoor open>>\n<<Camera rotate_instant e>>\n<<Camera zoom
+      1>>\n<<Marcie move_along_path Intro.Intro.Marcie.Office>>\n<<Mama move_along_path
+      Intro.Intro.Mama.Office>>\n<<Mama start_emitting sweat>>\nMarcie: ok but what
+      would the plot even be!\nMama: when you have that many bradleys you don't [b]need[/b]
+      plot\nMarcie: muuuuuum stoooop\nMama: fine!!!!! but when i'm a millionaire from
+      brad dads you're not getting a penny\nMama: also um\nMama: sorry again that
+      i have to do admin all day today.\nMarcie: its ok mum! i'm totally used to it\nMama:
+      don't say that!!!\nMarcie: i have big plans anyway\nMama: oh yeah?\n->[i]say
+      something nice.\n    Marcie: i'm gonna draw all day!!!!!!\n    Marcie: i'll
+      make sure i do a nice drawing of you, mum.\n    Mama: oooooh make sure you get
+      my best side.\n    Marcie: which side is that?\n    Mama: .........\n    Mama:
+      i'll get back to you on that.\n    Marcie: i'll just draw all sides\n    Marcie:
+      a full 360.\n    Marcie: and then we can recreate a model of your head\n    Marcie:
+      ... {wait}do you want me to leave out the bags under your eyes\n    Mama: honestly
+      i'm too tired to get mad at you for that so\n    Mama: go ahead and draw my
+      eye luggage\n    Mama: its where i keep all my secrets\n    ->... secrets?\n
+      \       Marcie: ... secrets?\n        Mama: secret secrets.\n    ->i just use
+      mine for sweets\n        Marcie: oh i just use my eye bags for sweets\n        Mama:
+      honey its too early to imagine my youngest child with gelatine poking out of
+      her eyes\n        Mama: and you don't have eye bags\n->[i]say something not
+      nice.\n    Marcie: gonna do lots of bad things!!!\n    Marcie: i might even\n
+      \   <<Camera rotate e>>\n    <<Camera zoom 1.1>>\n    Marcie: [jittery=1][b]swear\n
+      \   <<Camera rotate s>>\n    <<Camera zoom 1.2>>\n    Mama: you wouldn't.\n
+      \   <<Camera rotate e>>\n    <<Camera zoom 1.3>>\n    Marcie: try me.\n    ->the
+      f-word\n        <<Camera zoom 1.5>>\n        <<Marcie change_anim GetMad>>\n
+      \       Marcie: {wait}.{wait}.{wait}. {shake}frick.\n    ->the s-word\n        <<Camera
+      zoom 1.5>>\n        <<Marcie change_anim GetMad>>\n        Marcie: {wait}.{wait}.{wait}.
+      {shake}shucks.\n    <<Camera zoom 1.0>>\n    <<Camera rotate s>>\n    Mama:
+      oh.\n    Marcie: why aren't you shocked!\n    Mama: oh i'm just. speechless\n
+      \   Mama: at how rude that was\n    Mama: wash your mouth out with soap or something\n
+      \   <<Marcie change_anim IdleWalk>>\n<<set_flag _move_to_desk>>\n<<wait_for_flag
+      _at_desk>>\nMama: [jittery=1][size=0.8]mmfmfmfmmmfmff\n->mum are you ok\n    Marcie:
+      mum are you okay?    \n    Mama: [jittery=1][size=0.8][b]commffmffeee\n    Marcie:
+      what?\n    <<Mama change_anim SlumpIdleToLook>>\n    <<wait 2>>\n->[i]ignore\n
+      \   Marcie: ...\n    Mama: [jittery=1][big][b]{shake}mmfmfmfmmmfmff\n    ->fine
+      what is it\n        Marcie: ok fine what is it\n        Mama: [jittery=1][size=0.8][b]commffmffeee\n
+      \       Marcie: what?\n        <<Mama change_anim SlumpIdleToLook>>\n        <<wait
+      2>>\n    ->[i]ignore harder\n        Marcie: ...\n        <<Mama change_anim
+      SlumpIdleToLook>>\n        <<wait 2>>\n        Mama: [jittery=1][big][b]{shake}mmfmfmfmmmfmff\n
+      \       Marcie: fine what do you want\nMama: [jittery=0.5][big]{shake}coff[wavey=0.2]e[wavey=0.5]e[wavey=0.8]e[wavey=1.1]e[wavey=1.4]e[jittery=0.6][wavey=1.7]e[wavey=2.0]e\nMarcie:
+      i don't know how to make coffee!\nMama: coffee. milk. sugar. mixed in hot water.\n->why
+      can't you make it!\n    Marcie: why can't you make it!\n    Mama: oh, well,
+      i can't.\n    Mama: someone must've glued me to my seat.\n    Marcie: uh huh.\n
+      \   // try to move\n    Mama: yep definitely can't move. thanks honey.\n    Marcie:
+      ok mum.\n->okay but you owe me!\n    Marcie: okay but you owe me.{wait} [big]big[/big]
+      time.\n    Mama: i'll write you an i.o.u.\n    Mama: i.o.u. one big hug.\n    Marcie:
+      cute.\n    Marcie: i'll do it for no less than one big hug and two cuddles.\n
+      \   Mama: one hug. one cuddle. and a pat on the head.\n    Marcie: you drive
+      a hard bargain\n    Mama: take it or leave it.\n    Marcie: {wait}.{wait}.{wait}.{wait}
+      you've got yourself a deal.\n    Mama: pleasure doing business with you, sweetie.\nMama:
+      milk's in the main room\nMama: the coffee and sugar is behind me.\nMama: maybe
+      drop it in a basket to make it easier to carry?\nMarcie: mum do you not remember
+      the last time you left milk out of the fridge\nMama: oh nonsense, that room
+      is freezing at night.\nMarcie: hmmmmm\nMama: oh- you don't need me to explain
+      that you use [b][w=0.6]the bumpers[/w][/b] to look around do you?\nMarcie: um
+      i actually use the [b][w=0.6]right analog stick[/w][/b] mum? {wait}ever heard
+      of it?\nMama: gosh. {wait}kids these days.\n<<set_flag $watched_intro>>\n<<set_flag
+      $mama.is_slumped>>\n<<start_mission MakeCoffee>>\n<<Mama enable_interact_trigger
+      at_desk>>"
+    hash: 0
+  - pos: {x: 880, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.MeetingBertie
+    lines:
+    - <<Marcie move_along_path Intro.Intro.Marcie.ToBertie>>
+    - <<wait 2>>
+    - <<Bertie change_anim Sit>>
+    - <<wait 0.1>>
+    - <<Bertie hide_object newspaper>>
+    - <<wait 0.1>>
+    - <<Bertie enable_friend_searcher>>
+    - 'Bertie: oh..... morning marzipan.'
+    - 'Bertie: how are you today?'
+    - 'Marcie: hey bertie!!! i''m doing fine!!!'
+    - <<Marcie change_anim Sit>>
+    - 'Marcie: how are you???'
+    - 'Bertie: [jittery=1]ohhh[w=0.6]hhh[w=0.8]hhh[w=1]...........[/w] the usual.'
+    - 'Bertie: my spine is killing me.'
+    - ->aren't you like [b]mostly[/b] spine?
+    - '    Marcie: aren''t you like [b]mostly[/b] spine?'
+    - '    Bertie: hey........... you know i''m sensitive about my long spine....'
+    - '    Marcie: okay but'
+    - '    Bertie: you wouldn''t understand marcie.... all the kids at school called
+      me hedgehog'
+    - '    Marcie: because you''re all spine?'
+    - '    Bertie: ...'
+    - '    Bertie: no...... because i''m shy and like eating bugs'
+    - '    Marcie: ohh uhhh yeaaah that was probably it!'
+    - '    Marcie: forget what i said!'
+    - '    Bertie: i............. '
+    - '    <<set_flag $bertie.talked_about_spine>>'
+    - ->don't you need nerves to feel pain?
+    - '    Marcie: don''t you need nerves to feel pain?'
+    - '    Marcie: we learned about it in science last year.'
+    - '    Bertie: don''t come at me with your "science"'
+    - '    Bertie: if i do have nerves then you are getting on them, pinetree'
+    - '    Bertie: ........... {wait}sorry i didn''t mean that'
+    - '    Marcie: aw i know bertie don''t worry'
+    - 'Bertie: ok well...... sorry to bother you but'
+    - 'Bertie: i uh'
+    - 'Bertie: left my bobble hat in one of these washing machines'
+    - 'Bertie: and this harsh winter is frosting my bones'
+    - ->it's summer
+    - '    Marcie: it''s clearly summer.'
+    - ->can skeletons get cold?
+    - '    Marcie: can... skeletons get cold?'
+    - '    Marcie: don''t you need like... flesh or whatever?'
+    - 'Bertie: look just'
+    - 'Bertie: i don''t ask you why you do things'
+    - 'Bertie: let me be a bundled-up bobble baby bone baby boy.'
+    - <<spawn MilkCarton>>
+    - <<Bertie attach MilkCarton hand_l>>
+    - 'Bertie: i''ll give you this milk?'
+    - 'Marcie: [big]what!!!![/big] you can''t take dairy hostage!!!!'
+    - <<Bertie look_at MilkCarton>>
+    - 'Bertie: i think its gone off anyway'
+    - <<Bertie clear_look_at>>
+    - 'Bertie: why do you even want it'
+    - 'Marcie: [b]you''re[/b] gone off anyway.'
+    - 'Bertie: yeah :('
+    - <<Marcie change_anim IdleWalk>>
+    - <<set_flag bertie.met>>
+    - <<set_flag bertie.is_reading false>>
+    fullString: "<<Marcie move_along_path Intro.Intro.Marcie.ToBertie>>\n<<wait 2>>\n<<Bertie
+      change_anim Sit>>\n<<wait 0.1>>\n<<Bertie hide_object newspaper>>\n<<wait 0.1>>\n<<Bertie
+      enable_friend_searcher>>\nBertie: oh..... morning marzipan.\nBertie: how are
+      you today?\nMarcie: hey bertie!!! i'm doing fine!!!\n<<Marcie change_anim Sit>>\nMarcie:
+      how are you???\nBertie: [jittery=1]ohhh[w=0.6]hhh[w=0.8]hhh[w=1]...........[/w]
+      the usual.\nBertie: my spine is killing me.\n->aren't you like [b]mostly[/b]
+      spine?\n    Marcie: aren't you like [b]mostly[/b] spine?\n    Bertie: hey...........
+      you know i'm sensitive about my long spine....\n    Marcie: okay but\n    Bertie:
+      you wouldn't understand marcie.... all the kids at school called me hedgehog\n
+      \   Marcie: because you're all spine?\n    Bertie: ...\n    Bertie: no......
+      because i'm shy and like eating bugs\n    Marcie: ohh uhhh yeaaah that was probably
+      it!\n    Marcie: forget what i said!\n    Bertie: i............. \n    <<set_flag
+      $bertie.talked_about_spine>>\n->don't you need nerves to feel pain?\n    Marcie:
+      don't you need nerves to feel pain?\n    Marcie: we learned about it in science
+      last year.\n    Bertie: don't come at me with your \"science\"\n    Bertie:
+      if i do have nerves then you are getting on them, pinetree\n    Bertie: ...........
+      {wait}sorry i didn't mean that\n    Marcie: aw i know bertie don't worry\nBertie:
+      ok well...... sorry to bother you but\nBertie: i uh\nBertie: left my bobble
+      hat in one of these washing machines\nBertie: and this harsh winter is frosting
+      my bones\n->it's summer\n    Marcie: it's clearly summer.\n->can skeletons get
+      cold?\n    Marcie: can... skeletons get cold?\n    Marcie: don't you need like...
+      flesh or whatever?\nBertie: look just\nBertie: i don't ask you why you do things\nBertie:
+      let me be a bundled-up bobble baby bone baby boy.\n<<spawn MilkCarton>>\n<<Bertie
+      attach MilkCarton hand_l>>\nBertie: i'll give you this milk?\nMarcie: [big]what!!!![/big]
+      you can't take dairy hostage!!!!\n<<Bertie look_at MilkCarton>>\nBertie: i think
+      its gone off anyway\n<<Bertie clear_look_at>>\nBertie: why do you even want
+      it\nMarcie: [b]you're[/b] gone off anyway.\nBertie: yeah :(\n<<Marcie change_anim
+      IdleWalk>>\n<<set_flag bertie.met>>\n<<set_flag bertie.is_reading false>>"
+    hash: 0
+  - pos: {x: 990, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.Mama.GivenNotCoffee
+    lines:
+    - 'Mama: sweetie, that''s not coffee.'
+    - 'Marcie: well coffee is bad for you anyway'
+    - 'Mama: less preachy more coffee.'
+    fullString: 'Mama: sweetie, that''s not coffee.
+
+      Marcie: well coffee is bad for you anyway
+
+      Mama: less preachy more coffee.'
+    hash: 0
+  - pos: {x: 1100, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.Mama.GivenNothing
+    lines:
+    - 'Mama: [size=0.8][b][j=1]mmfmfmfmfmcoffee.'
+    - 'Marcie: uh huh.'
+    fullString: 'Mama: [size=0.8][b][j=1]mmfmfmfmfmcoffee.
+
+      Marcie: uh huh.'
+    hash: 0
+  - pos: {x: 1210, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.Mama.AfterCoffeeIsFine
+    lines:
+    - 'Mama: i''m just gonna... enjoy this coffee for a bit, sweetie.'
+    - 'Marcie: ok mum!'
+    fullString: 'Mama: i''m just gonna... enjoy this coffee for a bit, sweetie.
+
+      Marcie: ok mum!'
+    hash: 0
+  - pos: {x: 1320, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.Mama.GivenCoffee
+    lines:
+    - 'Marcie: i did it! i made coffee!'
+    - <<Mama change_anim SitUp>>
+    - <<Mama look_at Marcie>>
+    - 'Mama: marzipan you''re an angel!!!'
+    - <<Marcie detach hands>>
+    - <<Mama attach CoffeeCup hands>>
+    - <<Mama change_anim HoldCoffee>>
+    - 'Mama: i knew there was a reason i birthed you'
+    - 'Marcie: please stop saying that but i hope you like it!'
+    - <<Mama look_at CoffeeCup>>
+    - <<Mama change_anim Drink>>
+    - <<Mama change_anim DrinkArms>>
+    - <<wait 1.6>>
+    - <<Mama blink>>
+    - <<wait 0.2>>
+    - <<Mama turn_green>>
+    - <<wait 1.0>>
+    - 'Mama: {wait}.{wait}.{wait}.'
+    - 'Mama: [jittery=1.3][big]mmmmmmmmmmmmm.'
+    - 'Mama: [j=1]that is... {wait}just the best, sweetie.'
+    - 'Marcie: um... are you sure?'
+    - 'Marcie: it took you a long time to swallow that.'
+    - 'Mama: [j=1]just savouring the taste.'
+    - 'Mama: [j=1]its actually [b]so[/b] delicious that i''m gonna save the rest until
+      you''re gone.'
+    - 'Mama: [j=1]i wouldn''t want you to see how much i enjoy it.'
+    - 'Mama: [j=1]why don''t you go and play in the laundrette for a bit while i...
+      {wait}[size=0.8][jittery=1.3][b]drink this.'
+    - 'Marcie: uh okay sure mum!'
+    - <<Mama enable_friend_searcher>>
+    - <<set_flag $mama.given_coffee>>
+    - <<set_flag $mama.is_slumped false>>
+    - <<set_flag $mama.is_sat_at_desk>>
+    - <<Mama clear_look_at>>
+    - <<CoffeeCup remove_from_scene>>
+    fullString: 'Marcie: i did it! i made coffee!
+
+      <<Mama change_anim SitUp>>
+
+      <<Mama look_at Marcie>>
+
+      Mama: marzipan you''re an angel!!!
+
+      <<Marcie detach hands>>
+
+      <<Mama attach CoffeeCup hands>>
+
+      <<Mama change_anim HoldCoffee>>
+
+      Mama: i knew there was a reason i birthed you
+
+      Marcie: please stop saying that but i hope you like it!
+
+      <<Mama look_at CoffeeCup>>
+
+      <<Mama change_anim Drink>>
+
+      <<Mama change_anim DrinkArms>>
+
+      <<wait 1.6>>
+
+      <<Mama blink>>
+
+      <<wait 0.2>>
+
+      <<Mama turn_green>>
+
+      <<wait 1.0>>
+
+      Mama: {wait}.{wait}.{wait}.
+
+      Mama: [jittery=1.3][big]mmmmmmmmmmmmm.
+
+      Mama: [j=1]that is... {wait}just the best, sweetie.
+
+      Marcie: um... are you sure?
+
+      Marcie: it took you a long time to swallow that.
+
+      Mama: [j=1]just savouring the taste.
+
+      Mama: [j=1]its actually [b]so[/b] delicious that i''m gonna save the rest until
+      you''re gone.
+
+      Mama: [j=1]i wouldn''t want you to see how much i enjoy it.
+
+      Mama: [j=1]why don''t you go and play in the laundrette for a bit while i...
+      {wait}[size=0.8][jittery=1.3][b]drink this.
+
+      Marcie: uh okay sure mum!
+
+      <<Mama enable_friend_searcher>>
+
+      <<set_flag $mama.given_coffee>>
+
+      <<set_flag $mama.is_slumped false>>
+
+      <<set_flag $mama.is_sat_at_desk>>
+
+      <<Mama clear_look_at>>
+
+      <<CoffeeCup remove_from_scene>>'
+    hash: 0
+  - pos: {x: 1430, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.Bertie.NoHat
+    lines:
+    - 'Bertie: have you forgotten how to open the washing machines?'
+    - 'Marcie: ok no but why don''t you tell me so i can check if you''re wrong'
+    - 'Bertie: its [b]triangle[/b] to open them and [b]square[/b] to take them out........'
+    - 'Marcie: hmmmmm yeah ok'
+    fullString: 'Bertie: have you forgotten how to open the washing machines?
+
+      Marcie: ok no but why don''t you tell me so i can check if you''re wrong
+
+      Bertie: its [b]triangle[/b] to open them and [b]square[/b] to take them out........
+
+      Marcie: hmmmmm yeah ok'
+    hash: 0
+  - pos: {x: 1540, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.Bertie.GiveHat
+    lines:
+    - <<Marcie detach hands>>
+    - <<Bertie attach BobbleHat head>>
+    - <<Bertie change_anim FistPump>>
+    - 'Bertie: [size=0.8][b]... {wait 0.7}yes!!!'
+    - <<Bertie change_anim Sit>>
+    - 'Bertie: ever since i went bald my head just gets so cold'
+    - 'Marcie: .{wait}.{wait}.{wait}.{wait}.'
+    - 'Bertie: ...... that''s skeleton humour'
+    - 'Marcie: oh....... {wait}[w]{shake}hahahahahahahahahah[/w] ...?'
+    - 'Bertie: too much'
+    - 'Marcie: oh sorry'
+    - 'Bertie: but here is your "milk"... enjoy eating it'
+    - 'Marcie: thanks bert!!!'
+    - <<Bertie detach hand_l>>
+    - <<Marcie attach MilkCarton hands>>
+    - <<set_flag bertie.given_bobble_hat>>
+    fullString: '<<Marcie detach hands>>
+
+      <<Bertie attach BobbleHat head>>
+
+      <<Bertie change_anim FistPump>>
+
+      Bertie: [size=0.8][b]... {wait 0.7}yes!!!
+
+      <<Bertie change_anim Sit>>
+
+      Bertie: ever since i went bald my head just gets so cold
+
+      Marcie: .{wait}.{wait}.{wait}.{wait}.
+
+      Bertie: ...... that''s skeleton humour
+
+      Marcie: oh....... {wait}[w]{shake}hahahahahahahahahah[/w] ...?
+
+      Bertie: too much
+
+      Marcie: oh sorry
+
+      Bertie: but here is your "milk"... enjoy eating it
+
+      Marcie: thanks bert!!!
+
+      <<Bertie detach hand_l>>
+
+      <<Marcie attach MilkCarton hands>>
+
+      <<set_flag bertie.given_bobble_hat>>'
+    hash: 0
+  - pos: {x: 1650, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\Intro.yarn
+    title: Intro.Intro.Bertie.HasHat
+    lines:
+    - 'Marcie: hey bertie! how are you!'
+    - 'Bertie: [i]siiiiiggghhhhhhhhhhhh'
+    - 'Bertie: i''m not bad'
+    - 'Marcie: ... okay'
+    fullString: 'Marcie: hey bertie! how are you!
+
+      Bertie: [i]siiiiiggghhhhhhhhhhhh
+
+      Bertie: i''m not bad
+
+      Marcie: ... okay'
+    hash: 0
+  - pos: {x: 1760, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\MeetingPidge.yarn
+    title: Intro.MeetingPidge.FirstTime
+    lines:
+    - <<setup_cutscene>>
+    - <<Marcie move_along Intro.MeetingPidge.Marcie.ToPidge>>
+    - <<Marcie look_at PigeonMan>>
+    - <<Camera rotate_instant s>>
+    - <<start_cutscene>>
+    - <<wait 1>>
+    - 'Marcie: um, hello'
+    - <<wait 1>>
+    - 'Marcie: hi?'
+    - <<wait 3>>
+    - <<Marcie anim GetMad>>
+    - <<wait 0.2>>
+    - 'Marcie: [big][b]{shake}hello!!!!!!!!!'
+    - <<PigeonMan turn_to Marcie>>
+    - <<wait 1>>
+    - <<PigeonMan change_anim BendRound>>
+    - <<Camera zoom 1.1 1>>
+    - <<Camera follow_targets Marcie PigeonMan>>
+    - <<wait 0.2>>
+    - <<Camera rotate sw>>
+    - <<Marcie change_anim FallDown>>
+    - // knock everything out of marcie's hand
+    - 'PigeonMan: [b][big][beetle]COO'
+    - // marcie falls down
+    - 'Marcie: [big][b][j=1]UHHHH!!!!!'
+    - <<PigeonMan change_anim IntoScrem>>
+    - <<Camera zoom 1.3 1.4>>
+    - <<wait 1.4>>
+    - <<Camera rotate ws>>
+    - <<Marcie change_anim FallFurther>>
+    - <<Marcie look_at PigeonMan>>
+    - 'PigeonMan: [b][big][beetle]COO! COO! COO! COOOOOOOOOOOO!'
+    - 'Marcie: [big][b][j=1]no stop wait i''m sorry wait'
+    - <<Camera zoom 1.6 1>>
+    - 'PigeonMan: [b][big][beetle]COO! COO! COO! COOOOOOOOOOOO!'
+    - <<Camera zoom 1>>
+    - <<Camera rotate s>>
+    - <<wait 0.1>>
+    - <<Camera rotate wn 1>>
+    - <<Robin move_along Intro.MeetingPidge.Robin.BurstIn>>
+    - <<Camera clear_targets>>
+    - 'Robin: marcie are you okay!'
+    - 'Robin: back off, man!'
+    - <<PigeonMan anim IdleWalk 1>>
+    - <<Robin look_at Marcie>>
+    - 'Marcie: [j=1]hhhnnnn hhhhh'
+    - 'Robin: heyheyhey hey hey. its okay.'
+    - 'Robin: what''s his deal???'
+    - ->he just started yelling at me
+    - '    Marcie: [j][b]hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh'
+    - ->i was kinda bugging him i guess
+    - '    Marcie: [j][b]hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh'
+    - 'Robin: hey. look at me.'
+    - <<Marcie look_at Robin>>
+    - 'Robin: i''ve got you.'
+    - <<Marcie clear_look_at>>
+    - <<Marcie anim StandUp>>
+    - <<wait 1>>
+    - <<Robin anim IdleWalk>>
+    - <<wait 0.5>>
+    - <<Marcie move_along Intro.MeetingPidge.Marcie.WalkWithRobin>>
+    - <<Camera rotate s 1.3>>
+    - <<wait 0.2>>
+    - <<Robin move_along Intro.MeetingPidge.Robin.WalkWithMarcie>>
+    - 'Robin: what a dick!!!!'
+    - <<Robin stop_moving>>
+    - <<Robin disable_friend_searcher>>
+    - <<Robin anim PutUpDukes>>
+    - <<wait 0.2>>
+    - <<Marcie stop_moving>>
+    - 'Robin: next time? i''ll give ''im one of these'
+    - <<Marcie start_moving>>
+    - 'Marcie: [j][b]aw... don''t worry, i''m okay'
+    - <<Robin enable_friend_searcher>>
+    - <<Robin anim IdleWalk>>
+    - <<Robin start_moving>>
+    - 'Robin: uh huh.'
+    - 'Robin: hey i know what''ll distract you'
+    - 'Robin: i need some help getting something down from the shelves in the cupboard'
+    - 'Marcie: [j=1]oh! i can help'
+    - 'Marcie: [j][b]i am {wait}totally{wait} okay now'
+    - 'Robin: uh huh. okay'
+    - 'Robin: come on, lets go'
+    - <<Robin clear_look_at>>
+    - <<set_flag pigeon.met>>
+    - <<set_flag storage.cluttered>>
+    - <<set_flag storage_door_unlocked>>
+    fullString: "<<setup_cutscene>>\n<<Marcie move_along Intro.MeetingPidge.Marcie.ToPidge>>\n<<Marcie
+      look_at PigeonMan>>\n<<Camera rotate_instant s>>\n<<start_cutscene>>\n<<wait
+      1>>\nMarcie: um, hello\n<<wait 1>>\nMarcie: hi?\n<<wait 3>>\n<<Marcie anim GetMad>>\n<<wait
+      0.2>>\nMarcie: [big][b]{shake}hello!!!!!!!!!\n<<PigeonMan turn_to Marcie>>\n<<wait
+      1>>\n<<PigeonMan change_anim BendRound>>\n<<Camera zoom 1.1 1>>\n<<Camera follow_targets
+      Marcie PigeonMan>>\n<<wait 0.2>>\n<<Camera rotate sw>>\n<<Marcie change_anim
+      FallDown>>\n// knock everything out of marcie's hand\nPigeonMan: [b][big][beetle]COO\n//
+      marcie falls down\nMarcie: [big][b][j=1]UHHHH!!!!!\n<<PigeonMan change_anim
+      IntoScrem>>\n<<Camera zoom 1.3 1.4>>\n<<wait 1.4>>\n<<Camera rotate ws>>\n<<Marcie
+      change_anim FallFurther>>\n<<Marcie look_at PigeonMan>>\nPigeonMan: [b][big][beetle]COO!
+      COO! COO! COOOOOOOOOOOO!\nMarcie: [big][b][j=1]no stop wait i'm sorry wait\n<<Camera
+      zoom 1.6 1>>\nPigeonMan: [b][big][beetle]COO! COO! COO! COOOOOOOOOOOO!\n<<Camera
+      zoom 1>>\n<<Camera rotate s>>\n<<wait 0.1>>\n<<Camera rotate wn 1>>\n<<Robin
+      move_along Intro.MeetingPidge.Robin.BurstIn>>\n<<Camera clear_targets>>\nRobin:
+      marcie are you okay!\nRobin: back off, man!\n<<PigeonMan anim IdleWalk 1>>\n<<Robin
+      look_at Marcie>>\nMarcie: [j=1]hhhnnnn hhhhh\nRobin: heyheyhey hey hey. its
+      okay.\nRobin: what's his deal???\n->he just started yelling at me\n    Marcie:
+      [j][b]hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh\n->i was kinda bugging him i guess\n    Marcie:
+      [j][b]hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh\nRobin: hey. look at me.\n<<Marcie look_at
+      Robin>>\nRobin: i've got you.\n<<Marcie clear_look_at>>\n<<Marcie anim StandUp>>\n<<wait
+      1>>\n<<Robin anim IdleWalk>>\n<<wait 0.5>>\n<<Marcie move_along Intro.MeetingPidge.Marcie.WalkWithRobin>>\n<<Camera
+      rotate s 1.3>>\n<<wait 0.2>>\n<<Robin move_along Intro.MeetingPidge.Robin.WalkWithMarcie>>\nRobin:
+      what a dick!!!!\n<<Robin stop_moving>>\n<<Robin disable_friend_searcher>>\n<<Robin
+      anim PutUpDukes>>\n<<wait 0.2>>\n<<Marcie stop_moving>>\nRobin: next time? i'll
+      give 'im one of these\n<<Marcie start_moving>>\nMarcie: [j][b]aw... don't worry,
+      i'm okay\n<<Robin enable_friend_searcher>>\n<<Robin anim IdleWalk>>\n<<Robin
+      start_moving>>\nRobin: uh huh.\nRobin: hey i know what'll distract you\nRobin:
+      i need some help getting something down from the shelves in the cupboard\nMarcie:
+      [j=1]oh! i can help\nMarcie: [j][b]i am {wait}totally{wait} okay now\nRobin:
+      uh huh. okay\nRobin: come on, lets go\n<<Robin clear_look_at>>\n<<set_flag pigeon.met>>\n<<set_flag
+      storage.cluttered>>\n<<set_flag storage_door_unlocked>>"
+    hash: 0
+  - pos: {x: 1870, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\MeetingPidge.yarn
+    title: Intro.MeetingPidge.SpeakingToBertie
+    lines:
+    - <<spawn_entity Bird Pidge1>>
+    - <<spawn_entity Bird Pidge2>>
+    - <<spawn_entity Bird Pidge3>>
+    - <<Pidge1 set_position Pigeon.InitialArrival>>
+    - <<Pidge2 set_position Pigeon.InitialArrival>>
+    - <<Pidge3 set_position Pigeon.InitialArrival>>
+    - <<Camera zoom 2>>
+    - <<Marcie look_at PigeonMan>>
+    - 'Marcie: gaaaaaaaaaaaaaaaaaaaaaaasp'
+    - <<Marcie clear_look_at>>
+    - <<Camera zoom 1>>
+    - 'Bertie: yup'
+    - 'Bertie: he''s back again...'
+    - 'Marcie: king of the wheat!!!!'
+    - 'Bertie: yup'
+    - 'Bertie: as if my day couldn''t get any worse'
+    - 'Marcie: last time he was here he washed a loaf of wholemeal and broke a washer!!'
+    - 'Bertie: oh i remember'
+    - 'Bertie: i was scrubbing yeast out of the filter for weeks :('
+    - 'Marcie: oh bert :('
+    - 'Bertie: you gotta do something about him'
+    - 'Bertie: before this whole place is pigeons'
+    - 'Bertie: i don''t wanna get pecked :('
+    - 'Marcie: hmm. i''ll see if i can tell him off'
+    - <<set_flag $pigeon.entered>>
+    fullString: '<<spawn_entity Bird Pidge1>>
+
+      <<spawn_entity Bird Pidge2>>
+
+      <<spawn_entity Bird Pidge3>>
+
+      <<Pidge1 set_position Pigeon.InitialArrival>>
+
+      <<Pidge2 set_position Pigeon.InitialArrival>>
+
+      <<Pidge3 set_position Pigeon.InitialArrival>>
+
+      <<Camera zoom 2>>
+
+      <<Marcie look_at PigeonMan>>
+
+      Marcie: gaaaaaaaaaaaaaaaaaaaaaaasp
+
+      <<Marcie clear_look_at>>
+
+      <<Camera zoom 1>>
+
+      Bertie: yup
+
+      Bertie: he''s back again...
+
+      Marcie: king of the wheat!!!!
+
+      Bertie: yup
+
+      Bertie: as if my day couldn''t get any worse
+
+      Marcie: last time he was here he washed a loaf of wholemeal and broke a washer!!
+
+      Bertie: oh i remember
+
+      Bertie: i was scrubbing yeast out of the filter for weeks :(
+
+      Marcie: oh bert :(
+
+      Bertie: you gotta do something about him
+
+      Bertie: before this whole place is pigeons
+
+      Bertie: i don''t wanna get pecked :(
+
+      Marcie: hmm. i''ll see if i can tell him off
+
+      <<set_flag $pigeon.entered>>'
+    hash: 0
+  - pos: {x: 1980, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\MeetingRobin.yarn
+    title: Intro.MeetingRobin.Robin.Intro
+    lines:
+    - <<skip_to_next_after_char 6>>
+    - 'Marcie: um hi! what are you doing here'
+    - <<Robin change_anim KneelingHitHead>>
+    - <<Robin start_emitting sweat>>
+    - 'Robin: [big][j]AHHHHHHHH{shake 1} HELLO'
+    - 'Marcie: [big]A{shake 1}HH{shake 1}HH!!!'
+    - 'Robin: [big]A{shake 1.5}HHHH{shake 1.5}HHH!!!'
+    - 'Marcie: [big]{shake 0.5}uh i didn''t[/big] mean [jittery=1]to s[size=0.8]ca[jittery=1.2]re
+      you...'
+    - <<Robin anim KneelingToSit>>
+    - <<Robin stop_emitting sweat>>
+    - <<Robin enable_friend_searcher>>
+    - <<Robin look_at Marcie>>
+    - <<Camera follow_targets Robin Marcie>>
+    - <<complete_line_after_char 20>>
+    - 'Robin: nooooooo no its my bad'
+    - <<complete_line_after_char 30>>
+    - 'Marcie: [j]no no [b]i''m[/b] sorry i''d have been freaked out too'
+    - <<complete_line_after_char 40>>
+    - 'Robin: no i mean i was in a washing machine i don''t blame you for being confused'
+    - <<complete_line_after_char 20>>
+    - 'Marcie: [j]no really its my fault i''m so sorry'
+    - <<complete_line_after_char 30>>
+    - 'Robin: no really i can explain i mean'
+    - <<back_to_normal>>
+    - <<wait 2>>
+    - <<Robin look_at @washing_machine.coffee>>
+    - 'Robin: i saw what looked like... coffee grounds and milk ...... in this washing
+      machine'
+    - <<Robin look_at Marcie>>
+    - <<Camera clear_targets>>
+    - 'Robin: and thought i''d check it out'
+    - 'Robin: i know that sounds crazy'
+    - ->wow yeah that is crazy...
+    - '    Marcie: haha wow that is crazy....... in a washing machine? noooo'
+    - ->no that makes sense actually
+    - '    Marcie: no no actually that.... makes sense'
+    - 'Robin: anyway. do you wanna try that again? i''ll be [big][b]much[/b][/big]
+      cooler.'
+    - 'Marcie: okay sure!'
+    - 'Robin: okay go away and come back.'
+    - <<Robin disable_friend_searcher>>
+    - <<Robin turn_to_face @washing_machine.coffee>>
+    - <<Robin change_anim Kneeling 0.5>>
+    - <<set_flag robin.met>>
+    fullString: "<<skip_to_next_after_char 6>>\nMarcie: um hi! what are you doing
+      here\n<<Robin change_anim KneelingHitHead>>\n<<Robin start_emitting sweat>>\nRobin:
+      [big][j]AHHHHHHHH{shake 1} HELLO\nMarcie: [big]A{shake 1}HH{shake 1}HH!!!\nRobin:
+      [big]A{shake 1.5}HHHH{shake 1.5}HHH!!!\nMarcie: [big]{shake 0.5}uh i didn't[/big]
+      mean [jittery=1]to s[size=0.8]ca[jittery=1.2]re you...\n<<Robin anim KneelingToSit>>\n<<Robin
+      stop_emitting sweat>>\n<<Robin enable_friend_searcher>>\n<<Robin look_at Marcie>>\n<<Camera
+      follow_targets Robin Marcie>>\n<<complete_line_after_char 20>>\nRobin: nooooooo
+      no its my bad\n<<complete_line_after_char 30>>\nMarcie: [j]no no [b]i'm[/b]
+      sorry i'd have been freaked out too\n<<complete_line_after_char 40>>\nRobin:
+      no i mean i was in a washing machine i don't blame you for being confused\n<<complete_line_after_char
+      20>>\nMarcie: [j]no really its my fault i'm so sorry\n<<complete_line_after_char
+      30>>\nRobin: no really i can explain i mean\n<<back_to_normal>>\n<<wait 2>>\n<<Robin
+      look_at @washing_machine.coffee>>\nRobin: i saw what looked like... coffee grounds
+      and milk ...... in this washing machine\n<<Robin look_at Marcie>>\n<<Camera
+      clear_targets>>\nRobin: and thought i'd check it out\nRobin: i know that sounds
+      crazy\n->wow yeah that is crazy...\n    Marcie: haha wow that is crazy.......
+      in a washing machine? noooo\n->no that makes sense actually\n    Marcie: no
+      no actually that.... makes sense\nRobin: anyway. do you wanna try that again?
+      i'll be [big][b]much[/b][/big] cooler.\nMarcie: okay sure!\nRobin: okay go away
+      and come back.\n<<Robin disable_friend_searcher>>\n<<Robin turn_to_face @washing_machine.coffee>>\n<<Robin
+      change_anim Kneeling 0.5>>\n<<set_flag robin.met>>"
+    hash: 0
+  - pos: {x: 2090, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\MeetingRobin.yarn
+    title: Intro.MeetingRobin.Robin.IntroAttempt2
+    lines:
+    - 'Marcie: um hi!'
+    - <<Camera zoom 1.4>>
+    - <<Robin change_anim ShadeSwitch>>
+    - <<Robin hide_object phone>>
+    - <<Robin turn_to_face Marcie>>
+    - <<Robin clear_look_at>>
+    - <<Robin enable_friend_searcher>>
+    - <<wait 0.2>>
+    - <<Robin show_object shades>>
+    - <<Robin change_anim Nod>>
+    - <<wait 2>>
+    - 'Robin: [wavey=1][b]supppppp. [size=0.8]is that still cool. yeah'
+    - ->[i]be genuinely amazed
+    - '    Marcie: [wavey][size=0.8][b]whoa.'
+    - '    <<Camera zoom 1>>'
+    - '    <<Robin change_anim ShadeSwitch>>'
+    - '    <<wait 0.2>>'
+    - '    <<Robin hide_object shades>>'
+    - '    Robin: how was that?'
+    - '    Marcie: that ruled!!! how did you do it!!!!!'
+    - ->[i]act cool even though you are genuinely amazed
+    - '    Marcie: uh psh seen better........'
+    - '    <<Camera zoom 1>>'
+    - '    <<Robin change_anim ShadeSwitch>>'
+    - '    <<wait 0.2>>'
+    - '    <<Robin hide_object shades>>'
+    - '    Robin: how was that?'
+    - '    Marcie: it was ok i guess'
+    - '    Marcie: i like don''t even want to know how you did it'
+    - 'Robin: [size=0.8][b]a magician never reveals her secrets.'
+    - 'Marcie: [size=0.8][b]... wait are you a magician????'
+    - 'Robin: [size=0.8][b]... [jittery=1]{wait}no.'
+    - 'Robin: regrettably i''m just robin.'
+    - 'Marcie: oh. that''s fine too! i''m Marcie!'
+    - 'Robin: hi Marcie!'
+    - <<Robin change_anim ScratchHead>>
+    - <<wait 2>>
+    - 'Robin: oh! i didn''t explain'
+    - 'Robin: i don''t just go putting my head in random appliances'
+    - 'Robin: i was just hired here!'
+    - 'Marcie: oh!!! you were?'
+    - 'Robin: yes!!! the owner very kindly hooked me up with a job'
+    - 'Marcie: what!!! she didn''t mention that to me!!!'
+    - 'Robin: i... do [b]you[/b] work here?'
+    - ->no my mum does
+    - '    Marcie: no no no no'
+    - '    Marcie: well, kind of'
+    - '    Marcie: its run by my mum!'
+    - ->yes i actually run the place
+    - '    Marcie: yes i am actually the owner and pro-piet-er'
+    - '    Marcie: and security'
+    - '    Marcie: and chief sock finder'
+    - '    Robin: wow thats a lot of positions!!! how do you have the time?'
+    - '    Marcie: well finding socks takes up most of my day'
+    - '    Marcie: owning and pro-piet-ing is easy'
+    - '    <<wait 2>>'
+    - '    Marcie: ........... okay fine you got me!!!!! my mum runs it'
+    - 'Robin: ooooooooooooooooooooooooooooohhhhh '
+    - 'Robin: she didn''t mention she had another child!'
+    - 'Marcie: she does!!!!!! its me'
+    - 'Robin: oh i got that'
+    - 'Robin: yeah i just finished university and moved back home. hence. this'
+    - 'Marcie: wow! finished university!!!'
+    - 'Robin: yes i am very old.'
+    - 'Robin: i''m a decrepit old lady.'
+    - 'Marcie: de-cre-pit?'
+    - 'Robin: oh it means really really [b]really[/b] old. {wait}and like, falling
+      apart. [size=0.8][b]and that''s me.'
+    - 'Robin: you should see my spine!'
+    - ->i'm okay thanks!
+    - '    Marcie: um i''m okay thank you'
+    - '    Robin: well suit yourself'
+    - ->wait can i really
+    - '    Marcie: wait can i really'
+    - '    Robin: yeah if you fancy'
+    - '    Marcie: ... i don''t think i do but thank you for offering'
+    - <<if $bertie__talked_about_spine is true>>
+    - '    Marcie: this is the second spine chat i''ve had already today'
+    - '    Robin: that''s wild. i hope you have many many more'
+    - <<endif>>
+    - 'Robin: right. would you mind telling your mam that i''ve arrived?'
+    - 'Robin: i''m gonna go grab some stuff to clean this washing machine'
+    - 'Robin: wouldn''t want someone washing their trousers in this and ending up
+      with'
+    - 'Robin: [slow][b]cappuchinos'
+    - 'Marcie: ...'
+    - 'Robin: ...'
+    - 'Marcie: ...'
+    - 'Robin: ...'
+    - 'Marcie: alright... see you around'
+    - <<Robin remove_from_scene>>
+    - <<set_flag robin.talked_to>>
+    fullString: "Marcie: um hi!\n<<Camera zoom 1.4>>\n<<Robin change_anim ShadeSwitch>>\n<<Robin
+      hide_object phone>>\n<<Robin turn_to_face Marcie>>\n<<Robin clear_look_at>>\n<<Robin
+      enable_friend_searcher>>\n<<wait 0.2>>\n<<Robin show_object shades>>\n<<Robin
+      change_anim Nod>>\n<<wait 2>>\nRobin: [wavey=1][b]supppppp. [size=0.8]is that
+      still cool. yeah\n->[i]be genuinely amazed\n    Marcie: [wavey][size=0.8][b]whoa.\n
+      \   <<Camera zoom 1>>\n    <<Robin change_anim ShadeSwitch>>\n    <<wait 0.2>>\n
+      \   <<Robin hide_object shades>>\n    Robin: how was that?\n    Marcie: that
+      ruled!!! how did you do it!!!!!\n->[i]act cool even though you are genuinely
+      amazed\n    Marcie: uh psh seen better........\n    <<Camera zoom 1>>\n    <<Robin
+      change_anim ShadeSwitch>>\n    <<wait 0.2>>\n    <<Robin hide_object shades>>\n
+      \   Robin: how was that?\n    Marcie: it was ok i guess\n    Marcie: i like
+      don't even want to know how you did it\nRobin: [size=0.8][b]a magician never
+      reveals her secrets.\nMarcie: [size=0.8][b]... wait are you a magician????\nRobin:
+      [size=0.8][b]... [jittery=1]{wait}no.\nRobin: regrettably i'm just robin.\nMarcie:
+      oh. that's fine too! i'm Marcie!\nRobin: hi Marcie!\n<<Robin change_anim ScratchHead>>\n<<wait
+      2>>\nRobin: oh! i didn't explain\nRobin: i don't just go putting my head in
+      random appliances\nRobin: i was just hired here!\nMarcie: oh!!! you were?\nRobin:
+      yes!!! the owner very kindly hooked me up with a job\nMarcie: what!!! she didn't
+      mention that to me!!!\nRobin: i... do [b]you[/b] work here?\n->no my mum does\n
+      \   Marcie: no no no no\n    Marcie: well, kind of\n    Marcie: its run by my
+      mum!\n->yes i actually run the place\n    Marcie: yes i am actually the owner
+      and pro-piet-er\n    Marcie: and security\n    Marcie: and chief sock finder\n
+      \   Robin: wow thats a lot of positions!!! how do you have the time?\n    Marcie:
+      well finding socks takes up most of my day\n    Marcie: owning and pro-piet-ing
+      is easy\n    <<wait 2>>\n    Marcie: ........... okay fine you got me!!!!! my
+      mum runs it\nRobin: ooooooooooooooooooooooooooooohhhhh \nRobin: she didn't mention
+      she had another child!\nMarcie: she does!!!!!! its me\nRobin: oh i got that\nRobin:
+      yeah i just finished university and moved back home. hence. this\nMarcie: wow!
+      finished university!!!\nRobin: yes i am very old.\nRobin: i'm a decrepit old
+      lady.\nMarcie: de-cre-pit?\nRobin: oh it means really really [b]really[/b] old.
+      {wait}and like, falling apart. [size=0.8][b]and that's me.\nRobin: you should
+      see my spine!\n->i'm okay thanks!\n    Marcie: um i'm okay thank you\n    Robin:
+      well suit yourself\n->wait can i really\n    Marcie: wait can i really\n    Robin:
+      yeah if you fancy\n    Marcie: ... i don't think i do but thank you for offering\n<<if
+      $bertie__talked_about_spine is true>>\n    Marcie: this is the second spine
+      chat i've had already today\n    Robin: that's wild. i hope you have many many
+      more\n<<endif>>\nRobin: right. would you mind telling your mam that i've arrived?\nRobin:
+      i'm gonna go grab some stuff to clean this washing machine\nRobin: wouldn't
+      want someone washing their trousers in this and ending up with\nRobin: [slow][b]cappuchinos\nMarcie:
+      ...\nRobin: ...\nMarcie: ...\nRobin: ...\nMarcie: alright... see you around\n<<Robin
+      remove_from_scene>>\n<<set_flag robin.talked_to>>"
+    hash: 0
+  - pos: {x: 2200, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\MeetingRobin.yarn
+    title: Intro.MeetingRobin.RobinState
+    lines:
+    - <<@washing_machine.coffee open>>
+    - <<Robin disable_auto_anim>>
+    - <<Robin disable_friend_searcher>>
+    - <<Robin anim Kneeling>>
+    - <<Robin move_near @washing_machine.coffee -4 0 0>>
+    - <<Robin turn_to_face @washing_machine.coffee>>
+    fullString: '<<@washing_machine.coffee open>>
+
+      <<Robin disable_auto_anim>>
+
+      <<Robin disable_friend_searcher>>
+
+      <<Robin anim Kneeling>>
+
+      <<Robin move_near @washing_machine.coffee -4 0 0>>
+
+      <<Robin turn_to_face @washing_machine.coffee>>'
+    hash: 0
+  - pos: {x: 2310, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\MeetingRobin.yarn
+    title: Intro.MeetingRobin.Mama.AboutRobin
+    lines:
+    - 'Marcie: mum!!! someone new came in!!!'
+    - 'Mama: now? its 6:15 in the morning'
+    - 'Mama: are we even open? [b][size=0.8]did i leave the open sign the wrong way
+      around?'
+    - 'Marcie: no, robin!'
+    - 'Mama: robin..... ?'
+    - 'Marcie: you know, the new person you hired and didn''t tell me about......'
+    - 'Mama: ...............'
+    - 'Mama: {shake 1}[b]oh!!![/b] robin!!! i completely forgot about that!'
+    - 'Mama: she starts today?'
+    - 'Marcie: [b][j]i guess so yeah!!!!!'
+    - 'Mama: sorry marcie i would''ve told you!'
+    - 'Mama: i know her mum and she asked me if i could give robin some part time
+      work for the summer'
+    - 'Mama: and i could desperately use the help these days so!'
+    - 'Marcie: yeah i mean it makes sense i just'
+    - 'Marcie: would''ve liked to have been introduced is all '
+    - 'Marcie: [j][b]you know i''m bad with new people!'
+    - 'Mama: i''m so sorry sweetie. did you manage to have a chat?'
+    - 'Marcie: yeah. kinda'
+    - <<wait 1>>
+    - 'Marcie: ... she seems nice.'
+    - 'Mama: i hope so, honey!'
+    - 'Mama: can you help her out today? show her the ropes?'
+    - ->i'll try!
+    - '    Marcie: i''ll try mum!'
+    - ->we have ropes???
+    - '    Marcie: we have ropes??? why????'
+    - '    Mama: i hate that you''re at the age now where i can''t tell if you''re
+      joking or not'
+    - '    Marcie: >:)'
+    - 'Marcie: i''ll go ask if she needs anything'
+    - 'Marcie: please don''t hire anyone else while i''m gone'
+    - 'Mama: no promises'
+    - <<set_flag mama.talked_to_about_robin>>
+    - <<set_flag bertie.standing_by_door>>
+    fullString: "Marcie: mum!!! someone new came in!!!\nMama: now? its 6:15 in the
+      morning\nMama: are we even open? [b][size=0.8]did i leave the open sign the
+      wrong way around?\nMarcie: no, robin!\nMama: robin..... ?\nMarcie: you know,
+      the new person you hired and didn't tell me about......\nMama: ...............\nMama:
+      {shake 1}[b]oh!!![/b] robin!!! i completely forgot about that!\nMama: she starts
+      today?\nMarcie: [b][j]i guess so yeah!!!!!\nMama: sorry marcie i would've told
+      you!\nMama: i know her mum and she asked me if i could give robin some part
+      time work for the summer\nMama: and i could desperately use the help these days
+      so!\nMarcie: yeah i mean it makes sense i just\nMarcie: would've liked to have
+      been introduced is all \nMarcie: [j][b]you know i'm bad with new people!\nMama:
+      i'm so sorry sweetie. did you manage to have a chat?\nMarcie: yeah. kinda\n<<wait
+      1>>\nMarcie: ... she seems nice.\nMama: i hope so, honey!\nMama: can you help
+      her out today? show her the ropes?\n->i'll try!\n    Marcie: i'll try mum!\n->we
+      have ropes???\n    Marcie: we have ropes??? why????\n    Mama: i hate that you're
+      at the age now where i can't tell if you're joking or not\n    Marcie: >:)\nMarcie:
+      i'll go ask if she needs anything\nMarcie: please don't hire anyone else while
+      i'm gone\nMama: no promises\n<<set_flag mama.talked_to_about_robin>>\n<<set_flag
+      bertie.standing_by_door>>"
+    hash: 0
+  - pos: {x: 2420, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\001
+      Intro\PrankingThePidge.yarn
+    title: Intro.PrankingThePidge.ThePlan
+    lines:
+    - 'Marcie: okay here''s the plan'
+    - 'Marcie: this guy hates doing his own laundry'
+    - 'Marcie: and he will happily wait around until someone offers to do it for him'
+    - 'Marcie: i''m gonna do that'
+    - 'Marcie: and then i''m gonna put it in with the mushrooms'
+    - 'Robin: okay! what''s my job!!!'
+    - 'Marcie: moral support!'
+    - 'Robin: ...'
+    - 'Marcie: you''re very important to the team'
+    - 'Robin: i am 10 minutes late for work already'
+    - 'Marcie: too late ur invested!!!'
+    fullString: 'Marcie: okay here''s the plan
+
+      Marcie: this guy hates doing his own laundry
+
+      Marcie: and he will happily wait around until someone offers to do it for him
+
+      Marcie: i''m gonna do that
+
+      Marcie: and then i''m gonna put it in with the mushrooms
+
+      Robin: okay! what''s my job!!!
+
+      Marcie: moral support!
+
+      Robin: ...
+
+      Marcie: you''re very important to the team
+
+      Robin: i am 10 minutes late for work already
+
+      Marcie: too late ur invested!!!'
+    hash: 0
+  - pos: {x: 2530, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\002
+      Dream1\Jellyfish.yarn
+    title: Dream1.Jellyfish.JellyfishFirstBump
+    lines:
+    - '@dream1.bumpedjellyfish: oh! {wait}i''m so sorry. {wait}i didn''t mean to get
+      in your way'
+    - 'Marcie: oh! thats okay!'
+    - '@dream1.bumpedjellyfish: my sincerest apologies, i''m very clumsy'
+    - 'BackJellyfish: james. stop fumbling and let the young soul pass'
+    - 'RightJellyfish: jenna, what have i told you about talking like that'
+    - 'BackJellyfish: like what, jerome? properly?'
+    - 'RightJellyfish: its not proper. its just wanky.'
+    - 'BackJellyfish: maybe you''re wanky. ever think of that?'
+    - 'Marcie: actually i just wanted to squeeze past here'
+    - 'LeftJellyfish: friends... please... we have a wondering soul here'
+    fullString: '@dream1.bumpedjellyfish: oh! {wait}i''m so sorry. {wait}i didn''t
+      mean to get in your way
+
+      Marcie: oh! thats okay!
+
+      @dream1.bumpedjellyfish: my sincerest apologies, i''m very clumsy
+
+      BackJellyfish: james. stop fumbling and let the young soul pass
+
+      RightJellyfish: jenna, what have i told you about talking like that
+
+      BackJellyfish: like what, jerome? properly?
+
+      RightJellyfish: its not proper. its just wanky.
+
+      BackJellyfish: maybe you''re wanky. ever think of that?
+
+      Marcie: actually i just wanted to squeeze past here
+
+      LeftJellyfish: friends... please... we have a wondering soul here'
+    hash: 0
+  - pos: {x: 2640, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\004
+      CantGoOutside\CantGoOutside.RobinReturns.yarn
+    title: CantGoOutside.RobinReturns.Robin
+    lines:
+    - 'Robin: hi'
+    fullString: 'Robin: hi'
+    hash: 0
+  - pos: {x: 2750, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\006
+      PapaHangs\MeetingPapa.yarn
+    title: PapaHangs.MeetingPapa.Intro
+    lines:
+    - <<Papa move_along_path PapaHangs.MeetingPapa.Papa.WalkingIn>>
+    - <<Robin set_position PapaHangs.MeetingPapa.Robin.Sitting>>
+    - <<Robin set_movement_mode Kinematic>>
+    - <<Robin anim Sit>>
+    - <<Robin show_object bike_stuff>>
+    - <<Marcie set_position PapaHangs.MeetingPapa.Marcie.Chillin>>
+    - <<Camera move_instant Marcie>>
+    - <<Camera rotate_instant e>>
+    - 'Robin: i can''t believe biffa is still hanging around! and they still call
+      him biffa!'
+    - 'Marcie: yeah!!!! i''m in his geography class'
+    - 'Robin: oof. i''m sorry about that'
+    - 'Marcie: why does everyone call him biffa?'
+    - 'Robin: well when i was in year seven, two of the boys, stabber and jabber,'
+    - 'Robin: they picked him up and threw him one of those big bins???'
+    - 'Robin: you know the ones'
+    - <<Papa start_moving>>
+    - 'Marcie: hey, dad!! what are you doing here!'
+    - 'Papa: hello marzipan'
+    - 'Papa: oh i''m just here to visit your mam'
+    - 'Papa: and drop off some things'
+    - 'Papa: and hang out with my lil pine tree for a bit'
+    - 'Marcie: awh!!! dad!!!'
+    - 'Marcie: hey, robin, this is my dad!!!'
+    - 'Robin: hello mr. pine!'
+    - 'Papa: ... oh! hello i didn''t see you there'
+    - 'Robin: [size=0.8][b]... how'
+    - 'Marcie: he''s here to visit my mum and drop off things!!!'
+    - 'Robin: oh sure i''ve been standing here!'
+    - 'Robin: what do you do, mr. pine?'
+    - 'Papa: ....................'
+    - <<Papa disable_friend_searcher>>
+    - <<Papa change_anim BirdLand>>
+    - <<wait 5>>
+    - <<Papa change_anim BirdFlyAway>>
+    - <<wait 3>>
+    - <<Papa enable_friend_searcher>>
+    - 'Papa: ...... oh me?'
+    - 'Papa: i work at papa pine''s detergent delivery!'
+    - 'Robin: oh neat! what do you do?'
+    - 'Papa: oh lots of stuff. we deliver all sorts of detergent'
+    - 'Robin: yeah but like, what do [b]you[/b] do there'
+    - 'Papa: oh i own it! and do some deliveries sometimes!'
+    - 'Marcie: yeah he owns it!!! he''s [b]the[/b] papa pine!!!'
+    - 'Robin: what was it called before you had kids?'
+    - 'Papa: ... what do you mean?'
+    - 'Robin: before you were a... uh, a papa?'
+    - 'Papa: oh. well'
+    - 'Papa: i find that i''ve always been a papa in spirit'
+    - 'Robin: i... okay'
+    - <<Papa change_anim BirdLand>>
+    - <<wait 2>>
+    - 'Robin: [size=0.8][b]marcie, how does he do that'
+    - 'Marcie: [size=0.8][b]do what?'
+    - 'Robin: [size=0.8][b]sigh'
+    - <<Papa change_anim BirdFlyAway>>
+    - 'Papa: well i better go see your mam!'
+    - 'Papa: thanks for chatting to me, kids'
+    - 'Papa: see you soon'
+    - 'Marcie: bye dad!!!'
+    - 'Robin: see you soon mr. pine!'
+    - <<wait 3>>
+    - 'Robin: lovely guy.'
+    - 'Marcie: the best.'
+    fullString: '<<Papa move_along_path PapaHangs.MeetingPapa.Papa.WalkingIn>>
+
+      <<Robin set_position PapaHangs.MeetingPapa.Robin.Sitting>>
+
+      <<Robin set_movement_mode Kinematic>>
+
+      <<Robin anim Sit>>
+
+      <<Robin show_object bike_stuff>>
+
+      <<Marcie set_position PapaHangs.MeetingPapa.Marcie.Chillin>>
+
+      <<Camera move_instant Marcie>>
+
+      <<Camera rotate_instant e>>
+
+      Robin: i can''t believe biffa is still hanging around! and they still call him
+      biffa!
+
+      Marcie: yeah!!!! i''m in his geography class
+
+      Robin: oof. i''m sorry about that
+
+      Marcie: why does everyone call him biffa?
+
+      Robin: well when i was in year seven, two of the boys, stabber and jabber,
+
+      Robin: they picked him up and threw him one of those big bins???
+
+      Robin: you know the ones
+
+      <<Papa start_moving>>
+
+      Marcie: hey, dad!! what are you doing here!
+
+      Papa: hello marzipan
+
+      Papa: oh i''m just here to visit your mam
+
+      Papa: and drop off some things
+
+      Papa: and hang out with my lil pine tree for a bit
+
+      Marcie: awh!!! dad!!!
+
+      Marcie: hey, robin, this is my dad!!!
+
+      Robin: hello mr. pine!
+
+      Papa: ... oh! hello i didn''t see you there
+
+      Robin: [size=0.8][b]... how
+
+      Marcie: he''s here to visit my mum and drop off things!!!
+
+      Robin: oh sure i''ve been standing here!
+
+      Robin: what do you do, mr. pine?
+
+      Papa: ....................
+
+      <<Papa disable_friend_searcher>>
+
+      <<Papa change_anim BirdLand>>
+
+      <<wait 5>>
+
+      <<Papa change_anim BirdFlyAway>>
+
+      <<wait 3>>
+
+      <<Papa enable_friend_searcher>>
+
+      Papa: ...... oh me?
+
+      Papa: i work at papa pine''s detergent delivery!
+
+      Robin: oh neat! what do you do?
+
+      Papa: oh lots of stuff. we deliver all sorts of detergent
+
+      Robin: yeah but like, what do [b]you[/b] do there
+
+      Papa: oh i own it! and do some deliveries sometimes!
+
+      Marcie: yeah he owns it!!! he''s [b]the[/b] papa pine!!!
+
+      Robin: what was it called before you had kids?
+
+      Papa: ... what do you mean?
+
+      Robin: before you were a... uh, a papa?
+
+      Papa: oh. well
+
+      Papa: i find that i''ve always been a papa in spirit
+
+      Robin: i... okay
+
+      <<Papa change_anim BirdLand>>
+
+      <<wait 2>>
+
+      Robin: [size=0.8][b]marcie, how does he do that
+
+      Marcie: [size=0.8][b]do what?
+
+      Robin: [size=0.8][b]sigh
+
+      <<Papa change_anim BirdFlyAway>>
+
+      Papa: well i better go see your mam!
+
+      Papa: thanks for chatting to me, kids
+
+      Papa: see you soon
+
+      Marcie: bye dad!!!
+
+      Robin: see you soon mr. pine!
+
+      <<wait 3>>
+
+      Robin: lovely guy.
+
+      Marcie: the best.'
+    hash: 0
+  - pos: {x: 2860, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\Misc.yarn
+    title: Door.IsLocked
+    lines:
+    - 'Marcie: huh. locked.'
+    fullString: 'Marcie: huh. locked.'
+    hash: 0
+  - pos: {x: 2970, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\Misc.yarn
+    title: StorageDoor.IsLocked
+    lines:
+    - 'Marcie: ... i guess its locked now'
+    - 'Marcie: [jittery=1]cool cool co[size=0.8]ol cool cool cool cool'
+    fullString: 'Marcie: ... i guess its locked now
+
+      Marcie: [jittery=1]cool cool co[size=0.8]ol cool cool cool cool'
+    hash: 0
+  - pos: {x: 3080, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: TestDialogue.Start
+    lines:
+    - 'Bertie: hey cool it {wait 1.0}{shake}[jittery=2.0]works![/j]'
+    - <<wait 3>>
+    - 'Marcie: [jittery][swirly=2.0][rainbow][b]yup!!!!!!!!!!!'
+    fullString: 'Bertie: hey cool it {wait 1.0}{shake}[jittery=2.0]works![/j]
+
+      <<wait 3>>
+
+      Marcie: [jittery][swirly=2.0][rainbow][b]yup!!!!!!!!!!!'
+    hash: 0
+  - pos: {x: 3190, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: TestDialogue.Flatten
+    lines:
+    - <<Marcie anim Flatten>>
+    - 'Marcie: [b][j][size=0.8]hhhhhhhhhhhhhhhhhhh'
+    fullString: '<<Marcie anim Flatten>>
+
+      Marcie: [b][j][size=0.8]hhhhhhhhhhhhhhhhhhh'
+    hash: 0
+  - pos: {x: 3300, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: TestDialogue.TurnAndLook
+    lines:
+    - 'Marcie: hey dude what''s [j]shakin[/j]'
+    - <<turnToFace Bertie Marcie>>
+    - <<lookAt Sunflower Marcie>>
+    - 'Bertie: oh not much'
+    - <<lookAt Bertie Sunflower>>
+    - 'Bertie: have you met this sunflower? he''s the worst'
+    - <<lookAt Sunflower Bertie>>
+    - <<lookAt Marcie Sunflower>>
+    - <<wind Sunflower 1>>
+    - 'Sunflower: wtf {shake}[bold][color=green]leaf[/c][/b] me {shake}[bold][color=green]aloe[/c][/b]ne'
+    - <<lookAt Marcie Bertie>>
+    - <<lookAt Bertie Marcie>>
+    - <<lookAt Sunflower Marcie>>
+    - 'Marcie: wow you''re right i hate him'
+    - 'Bertie: yeah'
+    - <<freeLook Sunflower>>
+    - <<freeLook Marcie>>
+    - <<freeLook Bertie>>
+    fullString: 'Marcie: hey dude what''s [j]shakin[/j]
+
+      <<turnToFace Bertie Marcie>>
+
+      <<lookAt Sunflower Marcie>>
+
+      Bertie: oh not much
+
+      <<lookAt Bertie Sunflower>>
+
+      Bertie: have you met this sunflower? he''s the worst
+
+      <<lookAt Sunflower Bertie>>
+
+      <<lookAt Marcie Sunflower>>
+
+      <<wind Sunflower 1>>
+
+      Sunflower: wtf {shake}[bold][color=green]leaf[/c][/b] me {shake}[bold][color=green]aloe[/c][/b]ne
+
+      <<lookAt Marcie Bertie>>
+
+      <<lookAt Bertie Marcie>>
+
+      <<lookAt Sunflower Marcie>>
+
+      Marcie: wow you''re right i hate him
+
+      Bertie: yeah
+
+      <<freeLook Sunflower>>
+
+      <<freeLook Marcie>>
+
+      <<freeLook Bertie>>'
+    hash: 0
+  - pos: {x: 3410, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: TestDialogue.SkeletonEntity
+    lines:
+    - 'Bertie: blargh'
+    - <<move Bertie IntroCutsceneMarcie>>
+    fullString: 'Bertie: blargh
+
+      <<move Bertie IntroCutsceneMarcie>>'
+    hash: 0
+  - pos: {x: 3520, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: TestDialogue.SkeletonTest
+    lines:
+    - <<rotate Camera ne>>
+    - <<zoom Camera 1.2>>
+    - <<setDarkness Camera 1>>
+    - 'Bertie: bjglkdfjg testin dialogue cam stuff'
+    - 'Bertie: yay marzipan yay how u doin'
+    - 'Marcie: not bad i guess. {wait 0.1}how are you'
+    - 'Bertie: [big][j]GOOD!!!!!!!![/big] so good.'
+    - <<rotate Camera n>>
+    - <<zoom Camera 1>>
+    fullString: '<<rotate Camera ne>>
+
+      <<zoom Camera 1.2>>
+
+      <<setDarkness Camera 1>>
+
+      Bertie: bjglkdfjg testin dialogue cam stuff
+
+      Bertie: yay marzipan yay how u doin
+
+      Marcie: not bad i guess. {wait 0.1}how are you
+
+      Bertie: [big][j]GOOD!!!!!!!![/big] so good.
+
+      <<rotate Camera n>>
+
+      <<zoom Camera 1>>'
+    hash: 0
+  - pos: {x: 3630, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: Test.SmallText
+    lines:
+    - 'Bertie: hey look at how smooth these text bubbles are'
+    - 'Bertie: that''s time that could''ve been spent on literally anything else huh'
+    fullString: 'Bertie: hey look at how smooth these text bubbles are
+
+      Bertie: that''s time that could''ve been spent on literally anything else huh'
+    hash: 0
+  - pos: {x: 3740, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: test.test_1
+    lines:
+    - 'Marcie: hi'
+    - <<set_flag $test_test_string this is a test string>>
+    - <<set_flag $cool_yeah 4>>
+    - <<if $cool_yeah == 2>>
+    - '    Bertie: hello {$test.test_string}, what''s up'
+    - <<elseif $cool_yeah == 4>>
+    - '    Bertie: blglgllhhghgh'
+    - <<endif>>
+    fullString: "Marcie: hi\n<<set_flag $test_test_string this is a test string>>\n<<set_flag
+      $cool_yeah 4>>\n<<if $cool_yeah == 2>>\n    Bertie: hello {$test.test_string},
+      what's up\n<<elseif $cool_yeah == 4>>\n    Bertie: blglgllhhghgh\n<<endif>>"
+    hash: 0
+  - pos: {x: 3850, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: test.skip_line
+    lines:
+    - <<skip_line>>
+    - 'Marcie: hi'
+    - 'Robin: hello!!!'
+    fullString: '<<skip_line>>
+
+      Marcie: hi
+
+      Robin: hello!!!'
+    hash: 0
+  - pos: {x: 3960, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: test.dontlookatme
+    lines:
+    - 'Bertie: [beetle]so this is the new dialogue effect huh'
+    - 'Bertie: [beetle]at least you''ve moved on from ripping off paper mario to ripping
+      off mutazione'
+    - 'Marcie: yeah'
+    fullString: 'Bertie: [beetle]so this is the new dialogue effect huh
+
+      Bertie: [beetle]at least you''ve moved on from ripping off paper mario to ripping
+      off mutazione
+
+      Marcie: yeah'
+    hash: 0
+  - pos: {x: 4070, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: test.actionchar
+    lines:
+    - 'Bertie: [b][big]{shake}"hey spines mcgee!!!!!!"'
+    fullString: 'Bertie: [b][big]{shake}"hey spines mcgee!!!!!!"'
+    hash: 0
+  - pos: {x: 4180, y: 50}
+    filename: C:/Users/mostu/Documents/GitHub/laundry-day/laundry-day/Assets/Dialogue\Misc\TestDialogue.yarn
+    title: FunNode
+    lines:
+    - 'Marcie: [b][j=1]aaaaaaaahhhhhhhhhhhhhhhhh'
+    - 'Marcie: [b][j=1]not a big fan of this'
+    fullString: 'Marcie: [b][j=1]aaaaaaaahhhhhhhhhhhhhhhhh
+
+      Marcie: [b][j=1]not a big fan of this'
+    hash: 0
+  prefabs:
+  - {fileID: 9176625261823221578, guid: f32ffb523a8a87c45a218e988150fa58, type: 3}
+  - {fileID: 8151798935068200887, guid: 5f9095cf1047f5c4dabe255e51a4b274, type: 3}
+  - {fileID: 197828058313822602, guid: e7f4c1655c8af704fab634df888565c3, type: 3}
+  - {fileID: 2063039424256493179, guid: 6d280a875caaa5146974467ec909b79b, type: 3}
+  - {fileID: 7810282116115418854, guid: 65b5bd2840f0662459ce789819064d28, type: 3}
+  - {fileID: 528733390974066507, guid: f2a351f6c843a5b40adab341c13465a3, type: 3}
+  - {fileID: 8364876394397599770, guid: 909a744d996412348a8f931f87f2df28, type: 3}
+  - {fileID: 871450933358722984, guid: b09639b45c27ba34ebdd9017307f6a85, type: 3}
+  - {fileID: 5298561637252498878, guid: a0861b4a0bd776b44bc6196db831d328, type: 3}
+  - {fileID: 6363626351209829369, guid: 4c6dc86a6e419bd4fba3ef599f7cdbd8, type: 3}
+  - {fileID: 8146800255376975266, guid: a0a0a4150c8b37b49810fb895d236a9b, type: 3}
+  - {fileID: 1305446824430525695, guid: 41b5447ee31b3174dba325f79fc21f5e, type: 3}
+  - {fileID: 7252012823542746842, guid: ddf20568312db4243abe2f3a5bba403c, type: 3}
+  - {fileID: 3271122996610419024, guid: ebed903edc3d53645baf29c57432866b, type: 3}
+  - {fileID: 2402175354744702602, guid: 6ccbb45b1f2a0694c97c31b0dc351f6a, type: 3}
+  - {fileID: 6073909546871681115, guid: 4f21d1d48405a1e47908ca6f90d69d05, type: 3}
+  - {fileID: 9101595442983133061, guid: c48ce9a327771db4b9fc36f10d809061, type: 3}
+  - {fileID: 8933679937361029058, guid: 66679944c186f4a40b2ca75ef6fdfc6d, type: 3}
+  - {fileID: 7922869788549962052, guid: c3d9779d159b19846a5631de81515c3a, type: 3}

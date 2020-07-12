@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     private PlayerEntity entity;
+    public bool performingAction = false;
 
     public void MoveAside()
     {
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!canMove)
+        if (!canMove || performingAction)
         {
             return;
         }

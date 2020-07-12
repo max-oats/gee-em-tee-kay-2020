@@ -158,6 +158,15 @@ public class PlayerEntity : BaseEntity
     {
         BuryAncestor();
 
+        animator.CrossFadeInFixedTime("PlantAntler", 0.1f);
+
+        StartCoroutine(MoveAsideAfter(ancestor, tileX, tileY));
+    }
+
+    IEnumerator MoveAsideAfter(Ancestor ancestor, int tileX, int tileY)
+    {
+        yield return new WaitForSeconds(0.9f);
+        
         // Move out of square
         playerController.MoveAside();
 
