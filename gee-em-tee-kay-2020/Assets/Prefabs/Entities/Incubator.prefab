@@ -51,7 +51,7 @@ MonoBehaviour:
     initialDesired: 0
     isAngular: 0
   facing: 0
-  debugColorWithEggs: {r: 1, g: 0, b: 0.81786346, a: 1}
+  debugColorWithEggs: {r: 1, g: 0, b: 0.81786346, a: 0}
   debugColorWhenWatered: {r: 0.33189106, g: 0, b: 1, a: 1}
   eggs:
   - {fileID: 2077377581608018103}
@@ -193,12 +193,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1378557312334611569, guid: b1888f045180ef947899a8dd5b0d10f6,
+    - target: {fileID: 9189414016106321795, guid: b1888f045180ef947899a8dd5b0d10f6,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9189414016106321795, guid: b1888f045180ef947899a8dd5b0d10f6,
+    - target: {fileID: 1378557312334611569, guid: b1888f045180ef947899a8dd5b0d10f6,
         type: 3}
       propertyPath: m_IsActive
       value: 0
