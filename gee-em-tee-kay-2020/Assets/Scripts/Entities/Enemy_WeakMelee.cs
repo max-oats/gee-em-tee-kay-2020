@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Enemy_WeakMelee : BaseEnemy
 {
@@ -20,11 +22,12 @@ public class Enemy_WeakMelee : BaseEnemy
             {
                 Game.worldMap.RemoveInhabitant(currentWorldTile, this);
 
-                // Trigger animation
-                //StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(nextTile)));
+                //Trigger animation
+                StartCoroutine(MoveCoroutine(transform.position, Game.worldMap.GetTilePos(nextTile)));
+
+                FaceDirection(Socks.Utils.GetDirection(currentWorldTile, nextTile));
 
                 Game.worldMap.AddInhabitant(nextTile, this);
-                gameObject.transform.position = Game.worldMap.GetTilePos(nextTile);
             }
         }
         else 
@@ -41,6 +44,8 @@ public class Enemy_WeakMelee : BaseEnemy
 
                 Debug.Log("Enemy attacking!");
 
+                GetComponentInChildren<Animator>().CrossFadeInFixedTime("Attack", 0.1f);
+
                 // Trigger attack animation
                 Game.worldMap.InteractWith(worldTreeTile, enemyParams);
             }
@@ -55,6 +60,11 @@ public class Enemy_WeakMelee : BaseEnemy
     public override EntityType GetEntityType()
     {
         return EntityType.Enemy_WeakMelee;
+    }
+    
+    void LateUpdate()
+    {
+        UpdateRotation();
     }
 
     protected override void Die()
