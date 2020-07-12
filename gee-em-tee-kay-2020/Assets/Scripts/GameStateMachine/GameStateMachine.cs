@@ -13,8 +13,9 @@ public class GameStateMachine : MonoBehaviour
         TransitionToState(gameState_Playing);
     }
 
-    public void GameOver()
+    public void GameOver(string reason)
     {
+        gameState_GameOver.reason = reason;
         TransitionToState(gameState_GameOver);
     }
 

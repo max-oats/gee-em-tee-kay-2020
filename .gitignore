@@ -23,6 +23,7 @@ ExportedObj/
 *.svd
 *.pdb
 *.opendb
+*.vscode*
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -36,5 +37,7 @@ sysinfo.txt
 *.unitypackage
 gee-em-tee-kay-2020/Assets/ShaderForge.meta
 gee-em-tee-kay-2020/Assets/ShaderForge/
+
+# Machine specific settings
 gee-em-tee-kay-2020/ProjectSettings/
 gee-em-tee-kay-2020/ProjectSettings/*

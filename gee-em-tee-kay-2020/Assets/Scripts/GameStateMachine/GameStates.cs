@@ -41,10 +41,12 @@ class GameState_Playing : BaseGameState
 
 class GameState_GameOver : BaseGameState
 {
+    public string reason = null;
+
     public override void EnterState()
     {
         // Bring up black screen and sad graphic
-        Debug.Log("Game Over!");
+        Debug.LogFormat("Game Over: {0}", reason);
     }
 
     public override void LeaveState()

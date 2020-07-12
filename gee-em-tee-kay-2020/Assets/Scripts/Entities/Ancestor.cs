@@ -12,4 +12,9 @@ public class Ancestor : BaseEntity
         }
         return false;
     }
+
+    public override EntityType GetEntityType()
+    {
+        return EntityType.Ancestor;
+    }
 }

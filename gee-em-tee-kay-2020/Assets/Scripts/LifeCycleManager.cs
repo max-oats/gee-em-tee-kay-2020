@@ -26,6 +26,6 @@ public class LifeCycleManager : MonoBehaviour
             }
         }
 
-        Game.gameStateMachine.GameOver();
+        Game.gameStateMachine.GameOver("No viable incubators");
     }
 }

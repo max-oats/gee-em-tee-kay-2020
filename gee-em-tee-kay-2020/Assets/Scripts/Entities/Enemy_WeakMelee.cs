@@ -4,4 +4,9 @@ public class Enemy_WeakMelee : BaseEnemy
     {
         // Do the moving and such
     }
+
+    public override EntityType GetEntityType()
+    {
+        return EntityType.Enemy_WeakMelee;
+    }
 }

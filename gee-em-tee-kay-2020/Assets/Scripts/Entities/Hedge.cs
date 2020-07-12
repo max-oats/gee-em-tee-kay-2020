@@ -4,4 +4,9 @@ public class Hedge : BaseEntity
     {
         return false;
     }
+
+    public override EntityType GetEntityType()
+    {
+        return EntityType.Hedge;
+    }
 }

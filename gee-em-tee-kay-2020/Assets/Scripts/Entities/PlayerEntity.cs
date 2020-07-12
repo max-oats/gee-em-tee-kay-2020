@@ -40,6 +40,11 @@ public class PlayerEntity : BaseEntity
         return true;
     }
 
+    public override EntityType GetEntityType()
+    {
+        return EntityType.Player;
+    }
+
     public void GatherAncestor(Ancestor inAncestor)
     {
         // Trigger animation
